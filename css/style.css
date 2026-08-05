@@ -464,12 +464,12 @@ ul { list-style: none; }
 .project-title { font-size: 1.2rem; font-weight: 700; margin-bottom: .6rem; }
 .project-desc { color: var(--ink-2); font-size: .95rem; line-height: 1.9; margin-bottom: 1.6rem; }
 
-/* 图片卡片：图与图注为一体，舒展排列 */
+/* 图片卡片：图与图注为一体，两列大图舒展排列 */
 .project-figures {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.4rem;
-  margin-bottom: 1.8rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
 .project-figure {
@@ -505,6 +505,24 @@ ul { list-style: none; }
 }
 
 .project-figure figcaption strong { color: var(--ink-2); }
+
+/* 单图项目：图片与文字要点左右分栏，控制图片合理尺寸 */
+.project-split {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 1.8rem;
+}
+
+.project-split .project-figure { margin: 0; }
+
+.project-split .project-points { grid-template-columns: 1fr; margin-bottom: 0; }
+
+/* 桌面端：重点项目两列大图交错排布，增强设计感 */
+@media (min-width: 901px) {
+  .project-figures .project-figure:nth-child(even) { margin-top: 3rem; }
+}
 
 /* 亮点要点：舒展的卡片 */
 .project-points {
@@ -839,6 +857,7 @@ a.contact-card:hover { border-color: var(--ink); transform: translateY(-3px); }
   .project-head { flex-direction: column; gap: .8rem; }
   .project-head-meta { text-align: left; }
   .project-figures { grid-template-columns: 1fr; }
+  .project-split { grid-template-columns: 1fr; }
   .project-points { grid-template-columns: 1fr; }
 
   .footer-inner { flex-direction: column; text-align: center; }
