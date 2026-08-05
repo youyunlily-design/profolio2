@@ -373,46 +373,40 @@ ul { list-style: none; }
 .skill-card:hover { border-color: var(--line-2); transform: translateY(-3px); }
 
 .skill-card h4 { font-size: 1.05rem; margin-bottom: .6rem; }
+.skill-card h4.skill-title-lg { font-size: 1.4rem; margin-bottom: .8rem; }
 .skill-card p { color: var(--ink-2); font-size: .92rem; }
 .skill-card .tag-list { margin-top: 1.1rem; }
 
-/* ---------- 项目卡片 ---------- */
+/* ---------- 项目卡片（卡片式布局） ---------- */
 .project-card {
-  display: grid;
-  grid-template-columns: 5fr 6fr;
+  position: relative;
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  padding: 2.6rem 2.6rem 2.2rem;
+  margin-bottom: 2.5rem;
   overflow: hidden;
-  margin-bottom: 2rem;
   transition: border-color .25s, box-shadow .25s;
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--cover-a, #4f46e5), var(--cover-b, #818cf8));
 }
 
 .project-card:hover { border-color: var(--line-2); box-shadow: var(--shadow-md); }
 
-/* 项目封面：暖白底 + 顶部项目色细线（信息密集的摘要面板） */
-.project-cover {
-  position: relative;
-  background: var(--bg-alt);
+/* 卡片头部：标题在左、时间角色在右 */
+.project-head {
   display: flex;
   align-items: flex-start;
-  padding: 2.4rem;
-  min-height: 280px;
-}
-
-.project-cover::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--cover-a), var(--cover-b));
-}
-
-.project-cover-inner {
-  color: var(--ink);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.6rem;
 }
 
 .project-category {
@@ -423,120 +417,88 @@ ul { list-style: none; }
   border: 1px solid var(--line-2);
   border-radius: 4px;
   padding: .28rem .75rem;
-  margin-bottom: 1.1rem;
+  margin-bottom: 1rem;
   color: var(--ink-2);
 }
 
-.project-cover h3 {
+.project-head h3 {
   font-family: var(--font-serif);
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: 700;
-  margin-bottom: .3rem;
+  line-height: 1.3;
 }
 
-.project-cover-time { font-size: .9rem; color: var(--ink-3); margin-top: .4rem; }
+.project-head-meta { text-align: right; }
 
-/* 封面关键成果指标 */
-.cover-metrics {
+.project-cover-time { font-size: .9rem; color: var(--ink-3); line-height: 1.7; }
+
+/* 关键成果指标 */
+.project-metrics {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: .9rem;
-  margin: 1.3rem 0 1.5rem;
-  padding-top: 1.3rem;
-  border-top: 1px solid var(--line);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.8rem;
 }
 
-.cover-metric {
-  background: var(--bg);
+.metric-chip {
+  background: var(--bg-alt);
   border: 1px solid var(--line);
-  border-radius: 8px;
-  padding: .75rem .9rem;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
   transition: border-color .2s;
 }
 
-.project-card:hover .cover-metric { border-color: var(--line-2); }
+.project-card:hover .metric-chip { border-color: var(--line-2); }
 
-.cover-metric strong {
+.metric-chip strong {
   display: block;
   font-family: var(--font-serif);
-  font-size: 1.12rem;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.4;
+  color: var(--ink);
 }
 
-.cover-metric span { font-size: .75rem; color: var(--ink-3); }
+.metric-chip span { font-size: .78rem; color: var(--ink-3); }
 
-/* 重点项目（项目 1）：通栏大卡片 */
-.project-featured {
-  display: block;
-  border: 1px solid var(--line-2);
-  box-shadow: var(--shadow-md);
-}
+.project-title { font-size: 1.2rem; font-weight: 700; margin-bottom: .6rem; }
+.project-desc { color: var(--ink-2); font-size: .95rem; line-height: 1.9; margin-bottom: 1.6rem; }
 
-.project-featured .project-cover::before { height: 4px; }
-
-.featured-cover { min-height: 0; }
-
-.featured-head {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 2.5rem;
-  width: 100%;
-}
-
-.featured-head .cover-metrics {
-  width: min(440px, 42%);
-  flex-shrink: 0;
-  margin: 0;
-  padding-top: 0;
-  border-top: none;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.project-gallery.gallery-wide { grid-template-columns: repeat(3, 1fr); }
-
-.project-body { padding: 2.4rem; }
-
-.project-meta {
-  display: flex;
-  gap: 1.5rem;
-  font-size: .82rem;
-  letter-spacing: .03em;
-  color: var(--ink-3);
-  margin-bottom: 1.1rem;
-}
-
-.project-title { font-size: 1.2rem; font-weight: 700; margin-bottom: .8rem; }
-.project-desc { color: var(--ink-2); font-size: .95rem; margin-bottom: 1rem; }
-
-/* 项目图片与图注 */
-.project-figure { margin: 1.3rem 0 1.5rem; }
-
-/* 项目截图画廊（多张截图并排） */
-.project-gallery {
+/* 图片卡片：图与图注为一体，舒展排列 */
+.project-figures {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
-  gap: 1.1rem;
-  margin: 1.3rem 0 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.4rem;
+  margin-bottom: 1.8rem;
 }
 
-.project-gallery .project-figure { margin: 0; }
+.project-figure {
+  margin: 0;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color .2s;
+}
+
+.project-figure:hover { border-color: var(--line-2); }
 
 .project-figure img {
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--line);
+  height: auto;
+  display: block;
+  cursor: zoom-in;
   transition: transform .4s ease;
 }
 
-.project-card:hover .project-figure img { transform: scale(1.015); }
+.project-figure:hover img { transform: scale(1.02); }
 
 .project-figure figcaption {
-  margin-top: .65rem;
-  padding-left: .85rem;
+  margin: .9rem .9rem 1rem;
+  padding: .7rem .85rem;
+  background: var(--bg-alt);
   border-left: 2px solid var(--accent);
+  border-radius: 6px;
   font-size: .8rem;
   color: var(--ink-3);
   line-height: 1.75;
@@ -544,29 +506,49 @@ ul { list-style: none; }
 
 .project-figure figcaption strong { color: var(--ink-2); }
 
+/* 亮点要点：舒展的卡片 */
 .project-points {
-  margin-bottom: 1.3rem;
+  list-style: none;
   display: grid;
-  gap: .5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: 1.8rem;
 }
 
 .project-points li {
   position: relative;
-  padding-left: 1.4rem;
-  font-size: .93rem;
-  color: var(--ink);
+  background: var(--bg-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.3rem 1.2rem 2.2rem;
+  transition: border-color .2s;
 }
+
+.project-card:hover .project-points li { border-color: var(--line-2); }
 
 .project-points li::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: .62em;
-  width: 7px;
-  height: 7px;
+  left: 1.15rem;
+  top: 1.5rem;
+  width: 8px;
+  height: 8px;
   border-radius: 1px;
   background: var(--accent);
   opacity: .85;
+}
+
+.point-title {
+  display: block;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: .35rem;
+}
+
+.point-text {
+  font-size: .92rem;
+  line-height: 1.85;
+  color: var(--ink-2);
 }
 
 /* ---------- 时间线 ---------- */
@@ -792,13 +774,9 @@ a.contact-card:hover { border-color: var(--ink); transform: translateY(-3px); }
 
   .edu-grid { grid-template-columns: 1fr; }
 
-  .project-card { grid-template-columns: 1fr; }
-  .project-cover { min-height: 200px; }
-
-  /* 重点项目通栏头部：标题与指标上下堆叠 */
-  .project-featured .featured-head { flex-direction: column; align-items: flex-start; gap: 1.3rem; }
-  .featured-head .cover-metrics { width: 100%; }
-  .project-gallery.gallery-wide { grid-template-columns: repeat(2, 1fr); }
+  /* 项目卡片：平板端指标两列、要点两列 */
+  .project-metrics { grid-template-columns: repeat(2, 1fr); }
+  .project-points { grid-template-columns: repeat(2, 1fr); }
 
   .contact-grid { grid-template-columns: 1fr; }
 }
@@ -856,11 +834,12 @@ a.contact-card:hover { border-color: var(--ink); transform: translateY(-3px); }
     gap: 1.5rem;
   }
 
-  .cover-metrics { margin-top: 1.1rem; }
-  .project-gallery.gallery-wide { grid-template-columns: 1fr; }
-
-  .project-body { padding: 1.6rem; }
-  .project-meta { flex-direction: column; gap: .3rem; }
+  /* 项目卡片：移动端头部堆叠、指标两列、图片与要点单列 */
+  .project-card { padding: 2rem 1.4rem 1.8rem; }
+  .project-head { flex-direction: column; gap: .8rem; }
+  .project-head-meta { text-align: left; }
+  .project-figures { grid-template-columns: 1fr; }
+  .project-points { grid-template-columns: 1fr; }
 
   .footer-inner { flex-direction: column; text-align: center; }
 }
