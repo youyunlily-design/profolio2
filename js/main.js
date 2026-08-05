@@ -60,6 +60,20 @@
     revealEls.forEach(function (el) {
       observer.observe(el);
     });
+
+    // 兜底：加载完成后，若视口内元素仍被动画隐藏（个别浏览器 IO 异常），立即显示
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        revealEls.forEach(function (el) {
+          if (!el.classList.contains('visible')) {
+            var r = el.getBoundingClientRect();
+            if (r.top < window.innerHeight && r.bottom > 0) {
+              el.classList.add('visible');
+            }
+          }
+        });
+      }, 1200);
+    });
   } else {
     // 老旧浏览器兜底：直接全部显示
     revealEls.forEach(function (el) {
@@ -72,7 +86,7 @@
   introEls.forEach(function (el, i) {
     setTimeout(function () {
       el.classList.add('show');
-    }, 600 + i * 500);
+    }, 400 + i * 500);
   });
 
   /* ---------- 5. 页脚年份自动更新 ---------- */
@@ -80,4 +94,44 @@
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
+
+  /* ---------- 6. 图片灯箱：点击项目图全屏过渡查看（参考 Codrops） ---------- */
+  var lightbox = document.getElementById('lightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  var lightboxCap = document.getElementById('lightboxCap');
+  var lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, caption) {
+    lightboxImg.src = src;
+    lightboxCap.innerHTML = caption;
+    lightbox.classList.add('open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden'; // 锁住页面滚动
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.project-figure img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      var figure = img.closest('figure');
+      var fig = figure ? figure.querySelector('figcaption') : null;
+      openLightbox(img.src, fig ? fig.innerHTML : '');
+    });
+  });
+
+  lightboxClose.addEventListener('click', closeLightbox);
+
+  // 点击黑色背景关闭
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+
+  // Esc 关闭
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
 })();

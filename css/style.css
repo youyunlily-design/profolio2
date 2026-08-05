@@ -621,6 +621,88 @@ a.contact-card:hover { border-color: var(--ink); transform: translateY(-3px); }
   color: var(--ink-3);
 }
 
+/* ---------- 图片灯箱：点击项目图全屏过渡查看（参考 Codrops 内容过渡） ---------- */
+.project-figure img { cursor: zoom-in; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 14, 12, .93);
+  padding: 4vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s ease, visibility .35s;
+}
+
+.lightbox.open { opacity: 1; visibility: visible; }
+
+.lightbox figure {
+  max-width: min(1080px, 94vw);
+  text-align: center;
+}
+
+.lightbox img {
+  max-width: 100%;
+  max-height: 78vh;
+  margin: 0 auto;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, .12);
+  transform: scale(.96);
+  transition: transform .4s ease;
+}
+
+.lightbox.open img { transform: scale(1); }
+
+.lightbox figcaption {
+  margin: 1rem auto 0;
+  max-width: 42rem;
+  text-align: left;
+  color: rgba(255, 255, 255, .85);
+  font-size: .9rem;
+  line-height: 1.75;
+  border-left: 2px solid var(--accent);
+  padding-left: .9rem;
+}
+
+.lightbox figcaption strong { color: #fff; }
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s, transform .3s;
+}
+
+.lightbox-close:hover { background: rgba(255, 255, 255, .3); transform: rotate(90deg); }
+
+.lightbox-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, .4);
+  font-size: .78rem;
+}
+
+@media (max-width: 720px) {
+  .lightbox img { max-height: 70vh; }
+  .lightbox-close { top: 12px; right: 14px; }
+}
+
 /* ---------- 滚动出现动画 ---------- */
 .reveal {
   opacity: 0;
@@ -634,9 +716,9 @@ a.contact-card:hover { border-color: var(--ink); transform: translateY(-3px); }
 .reveal.d2 { transition-delay: .2s; }
 .reveal.d3 { transition-delay: .3s; }
 
-/* Hero 下方元素衔接阅读节奏出现（介绍区逐段浮现约 2.1s 完成） */
-.hero-actions { transition-delay: 2.5s; }
-.hero-stats { transition-delay: 3s; }
+/* Hero 下方元素衔接阅读节奏出现（介绍区逐段浮现约 1.9s 完成） */
+.hero-actions { transition-delay: 2.2s; }
+.hero-stats { transition-delay: 2.5s; }
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 900px) {
@@ -674,9 +756,24 @@ a.contact-card:hover { border-color: var(--ink); transform: translateY(-3px); }
 
   .nav-cta { text-align: center; margin-top: .5rem; }
 
-  .hero { padding: 140px 0 70px; }
-  .hero-stats { flex-wrap: wrap; row-gap: 1.2rem; }
-  .hero-stats li { padding: 0 1.3rem; }
+  /* 移动端：首页内容紧凑化，尽量一屏内看完 */
+  .hero { padding: 84px 0 44px; }
+
+  .hero-eyebrow { font-size: .74rem; letter-spacing: .26em; gap: .65rem; margin-bottom: 1rem; }
+  .hero-eyebrow::before,
+  .hero-eyebrow::after { width: 30px; }
+
+  .hero-intro { margin-bottom: 1.3rem; }
+  .hero-about { font-size: 1.7rem; margin-bottom: .85rem; }
+  .hero-intro p { font-size: .92rem; line-height: 1.72; margin-bottom: .75rem; }
+
+  .hero-actions { gap: .55rem; margin-bottom: 1.4rem; }
+  .hero-actions .btn { padding: .55rem 1.1rem; font-size: .86rem; }
+
+  .hero-stats { flex-wrap: wrap; row-gap: .9rem; }
+  .hero-stats li { padding: 0 1.05rem; }
+  .hero-stats li strong { font-size: 1.2rem; }
+  .hero-stats li span { font-size: .72rem; }
   .section { padding: 76px 0; }
 
   .edu-card { grid-template-columns: 1fr; }
