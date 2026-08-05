@@ -67,7 +67,15 @@
     });
   }
 
-  /* ---------- 4. 页脚年份自动更新 ---------- */
+  /* ---------- 4. Hero 介绍逐段浮现（约每 0.5s 出现下一段，符合阅读节奏） ---------- */
+  var introEls = document.querySelectorAll('#heroIntro > *');
+  introEls.forEach(function (el, i) {
+    setTimeout(function () {
+      el.classList.add('show');
+    }, 600 + i * 500);
+  });
+
+  /* ---------- 5. 页脚年份自动更新 ---------- */
   var yearEl = document.getElementById('year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();

@@ -195,20 +195,35 @@ ul { list-style: none; }
   background: var(--line-2);
 }
 
-.hero-title {
-  font-family: var(--font-serif);
-  font-size: clamp(2.5rem, 5.5vw, 4rem);
-  line-height: 1.25;
-  font-weight: 700;
-  letter-spacing: .02em;
-  margin-bottom: 1.6rem;
+/* Hero 介绍区：逐段浮现，符合自然阅读节奏 */
+.hero-intro {
+  max-width: 42rem;
+  margin: 0 auto 2.4rem;
 }
 
-.hero-desc {
+.hero-about,
+.hero-intro p {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.hero-about.show,
+.hero-intro p.show { opacity: 1; transform: none; }
+
+.hero-about {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4vw, 2.6rem);
+  font-weight: 700;
+  margin-bottom: 1.3rem;
+}
+
+.hero-intro p {
+  font-size: 1.06rem;
+  line-height: 1.95;
   color: var(--ink-2);
-  font-size: 1.05rem;
-  max-width: 34rem;
-  margin: 0 auto 2.4rem;
+  margin-bottom: 1.15rem;
+  text-align: left;
 }
 
 .hero-actions {
@@ -618,6 +633,10 @@ a.contact-card:hover { border-color: var(--ink); transform: translateY(-3px); }
 .reveal.d1 { transition-delay: .1s; }
 .reveal.d2 { transition-delay: .2s; }
 .reveal.d3 { transition-delay: .3s; }
+
+/* Hero 下方元素衔接阅读节奏出现（介绍区逐段浮现约 2.1s 完成） */
+.hero-actions { transition-delay: 2.5s; }
+.hero-stats { transition-delay: 3s; }
 
 /* ---------- 响应式 ---------- */
 @media (max-width: 900px) {
