@@ -63,17 +63,15 @@
       <div class="section-head reveal">
         <p class="section-tag">ABOUT</p>
         <h2 class="section-title">关于我</h2>
-        <p class="section-sub">教育与能力概况，欢迎通过项目案例进一步了解我。</p>
       </div>
 
-      <!-- 教育背景 -->
-      <div class="edu-card reveal">
-        <div class="edu-info">
+      <!-- 教育背景：桌面端左右两张卡片 -->
+      <div class="edu-grid">
+        <div class="edu-card reveal">
           <h3 class="edu-school">北京邮电大学 <span class="edu-major">通信工程 · 本科</span></h3>
           <p class="edu-time">2024.09 — 2028.06</p>
           <p class="edu-desc">
             专业综合排名 <strong>105/560</strong>，英语六级 <strong>611</strong> 分。
-            主动补足产品岗位所需技能，形成了「技术 + 产品」复合视角。
           </p>
           <div class="tag-list">
             <span class="tag">电子电路基础</span>
@@ -83,7 +81,7 @@
             <span class="tag">微处理器与系统</span>
           </div>
         </div>
-        <div class="edu-stat">
+        <div class="edu-card edu-stat reveal">
           <div class="stat-block">
             <strong>105/560</strong>
             <span>专业综合排名</span>
@@ -148,37 +146,58 @@
         </p>
       </div>
 
-      <!-- 项目 1：途泊 · 龙虾实验助手 -->
-      <article class="project-card reveal">
-        <div class="project-cover" style="--cover-a:#4f46e5;--cover-b:#818cf8;">
-          <div class="project-cover-inner">
-            <span class="project-category">AI 产品 · 交互优化与数据闭环</span>
-            <h3>途泊 · 龙虾实验助手</h3>
-            <p>2026.03 — 至今</p>
+      <!-- 项目 1（重点项目）：途泊 · 龙虾实验助手 -->
+      <article class="project-card project-featured reveal">
+        <div class="project-cover featured-cover" style="--cover-a:#4f46e5;--cover-b:#818cf8;">
+          <div class="project-cover-inner featured-head">
+            <div class="featured-title">
+              <span class="project-category">★ 重点项目 · AI 产品</span>
+              <h3>途泊 · 龙虾实验助手</h3>
+              <p class="project-cover-time">2026.03 — 至今 · 实验组成员 · FastAPI / OpenClaw / Python</p>
+            </div>
+            <div class="cover-metrics">
+              <div class="cover-metric"><strong>4~5 → 1~2</strong><span>实验入口步骤</span></div>
+              <div class="cover-metric"><strong>20+</strong><span>实验场景识别</span></div>
+              <div class="cover-metric"><strong>30+</strong><span>体验反馈迭代</span></div>
+              <div class="cover-metric"><strong>15+→20+</strong><span>场景拓展</span></div>
+            </div>
           </div>
         </div>
         <div class="project-body">
           <div class="project-meta">
             <span>角色：实验组成员、独立承担龙虾的接入 &amp; 功能改进</span>
-            <span>技术栈：FastAPI · OpenClaw · Python</span>
+            <span>技术栈：FastAPI · OpenClaw · Prompt Engineering · Python</span>
           </div>
           <h4 class="project-title">全局浮窗 AI 助手 + 实验数据闭环建设</h4>
           <p class="project-desc">
-            独立负责「龙虾实验助手」的产品交互优化与数据闭环建设，
-            将 AI 助手升级为实验全程随时可调用的全局浮窗，并打通真实实验数据回传链路。
+            独立负责「龙虾实验助手」的产品交互优化与数据闭环建设：
+            将 AI 助手升级为实验全程随时可调用的全局浮窗，并打通真实实验数据回传链路，
+            实现「一句话进实验 → 自动配置 → 结果实时回传」的完整闭环。
           </p>
-          <div class="project-gallery">
+          <div class="project-gallery gallery-wide">
             <figure class="project-figure">
               <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
-              <figcaption><strong>图注：</strong>全局浮窗式 AI 助手 —— 固定右侧面板嵌入实验平台，支持实验全过程随时调用、随时提问</figcaption>
+              <figcaption><strong>图注：</strong>全局浮窗式 AI 助手 —— 固定右侧面板嵌入实验平台，实验全过程随时调用、随时提问</figcaption>
             </figure>
             <figure class="project-figure">
-              <img src="assets/p1_img2.png" alt="自然语言识别实验意图" loading="lazy" />
-              <figcaption><strong>图注：</strong>自然语言识别实验意图 —— 一句话列出 20+ 类通信实验并一键跳转，快速进入对应实验</figcaption>
+              <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
+              <figcaption><strong>图注：</strong>自然语言 → 实验意图 —— 提问「2FSK 解调方式」，助手按知识库作答并自动配置实验、提供虚实平台跳转入口</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
+              <figcaption><strong>图注：</strong>一句话进入实验 —— 自然语言识别出 20+ 类通信实验场景，一键跳转进入</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
+              <figcaption><strong>图注：</strong>虚实结合实验配置 —— QPSK 256K 仿真参数自动预填，一键下发实验箱 / 启动仿真引擎</figcaption>
             </figure>
             <figure class="project-figure">
               <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
               <figcaption><strong>图注：</strong>实验数据实时回传 —— 星座图 / 眼图 / BER 曲线与实测 BER（2.000e-3）直接回传平台</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
+              <figcaption><strong>图注：</strong>智能实验助手对话页 —— 支持模型选择与通信原理问答引导的独立对话形态</figcaption>
             </figure>
           </div>
           <ul class="project-points">
@@ -203,7 +222,18 @@
           <div class="project-cover-inner">
             <span class="project-category">AI 算法 · 项目负责人</span>
             <h3>基于深度学习的人机对战模型</h3>
-            <p>五子棋 AI 对战系统</p>
+            <p class="project-cover-time">五子棋 AI 对战系统</p>
+            <div class="cover-metrics">
+              <div class="cover-metric"><strong>3 阶段</strong><span>混合决策策略</span></div>
+              <div class="cover-metric"><strong>Self-Play</strong><span>持续生成棋局</span></div>
+              <div class="cover-metric"><strong>DeepSeek</strong><span>高质量棋谱辅助</span></div>
+              <div class="cover-metric"><strong>PyTorch</strong><span>深度网络训练</span></div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">PyTorch</span>
+              <span class="tag">Self-Play</span>
+              <span class="tag">DeepSeek</span>
+            </div>
           </div>
         </div>
         <div class="project-body">
@@ -240,7 +270,18 @@
           <div class="project-cover-inner">
             <span class="project-category">活动运营 · 组织管理</span>
             <h3>校辩论赛事策划与运营</h3>
-            <p>2025.09 至今 · 校辩论队</p>
+            <p class="project-cover-time">2025.09 至今 · 校辩论队</p>
+            <div class="cover-metrics">
+              <div class="cover-metric"><strong>10+</strong><span>组织校内赛事</span></div>
+              <div class="cover-metric"><strong>100+</strong><span>参与成员</span></div>
+              <div class="cover-metric"><strong>1000+</strong><span>观众人次</span></div>
+              <div class="cover-metric"><strong>10+</strong><span>人执行小组</span></div>
+            </div>
+            <div class="tag-list">
+              <span class="tag">活动策划</span>
+              <span class="tag">团队协作</span>
+              <span class="tag">项目管理</span>
+            </div>
           </div>
         </div>
         <div class="project-body">
