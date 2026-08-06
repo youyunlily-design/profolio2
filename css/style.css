@@ -320,29 +320,29 @@ em { font-style: italic; }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.08fr .92fr;
-  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: 1.12fr .88fr;
+  gap: clamp(3rem, 6vw, 6rem);
   align-items: center;
-  padding: 140px 0 90px;
+  padding: 150px 0 90px;
 }
 
-.hero-copy { max-width: 660px; }
+.hero-copy { min-width: 0; }
 
 .hero-eyebrow {
   font-size: .78rem;
   letter-spacing: .4em;
   text-transform: uppercase;
   color: var(--ink-2);
-  margin-bottom: 2.2rem;
+  margin-bottom: 2rem;
 }
 
 .hero-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(3rem, 7vw, 5.6rem);
+  font-size: clamp(3rem, 7vw, 5.8rem);
   line-height: 1.05;
   letter-spacing: -.01em;
-  margin-bottom: 2rem;
+  margin-bottom: 1.8rem;
 }
 
 .hero-desc {
@@ -350,10 +350,38 @@ em { font-style: italic; }
   font-size: clamp(.95rem, 1.4vw, 1.05rem);
   max-width: 34rem;
   line-height: 1.9;
-  margin-bottom: 2.6rem;
+  margin-bottom: 2rem;
 }
 
-.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 4rem; }
+.hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+  border-top: 1px solid var(--line-2);
+  padding-top: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.hs-item strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.1;
+  margin-bottom: .35rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.hs-item span { font-size: .72rem; letter-spacing: .08em; color: var(--ink-3); }
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.2rem; }
 
 .hero-figure {
   position: relative;
@@ -549,9 +577,27 @@ em { font-style: italic; }
    ============================================================ */
 .about-layout {
   display: grid;
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: 1fr 1.1fr;
   gap: clamp(3rem, 7vw, 7rem);
   align-items: start;
+}
+
+.about-intro { padding-top: 1rem; }
+
+.about-lead {
+  color: var(--ink-2);
+  font-size: clamp(1rem, 1.5vw, 1.1rem);
+  line-height: 1.95;
+  margin: 1.8rem 0 2.6rem;
+  max-width: 30rem;
+}
+
+.about-figure { max-width: 30rem; }
+
+.about-figure img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
 }
 
 .about-blocks { border-top: 1px solid var(--line-2); }
@@ -581,19 +627,11 @@ em { font-style: italic; }
 
 .about-block p:last-child { color: var(--ink-2); font-size: .95rem; line-height: 1.85; }
 
-.about-side { position: sticky; top: 100px; }
-
-.about-figure img {
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-}
-
 .about-keywords {
   display: flex;
   flex-wrap: wrap;
   gap: .7rem;
-  margin-top: 2rem;
+  margin-top: 2.2rem;
 }
 
 .kw {
@@ -609,25 +647,17 @@ em { font-style: italic; }
 .kw:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-2px); }
 
 /* ============================================================
-   ⑤ Skills · 横向滚动胶囊
+   ⑤ Skills · 无限横向流动胶囊（每行缓慢左移 + 正弦上下漂浮）
    ============================================================ */
 .skills-hscroll {
   display: flex;
-  gap: 1.6rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding: .6rem 0 1.6rem;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
+  flex-direction: column;
+  gap: 1.2rem;
 }
 
-.skills-hscroll::-webkit-scrollbar { display: none; }
-
 .skill-group {
-  flex: 0 0 min(340px, 82vw);
-  scroll-snap-align: start;
   border-top: 1px solid var(--line-2);
-  padding: 1.6rem 1.4rem 2rem 0;
+  padding: 1.8rem 0;
 }
 
 .skill-group-label {
@@ -642,13 +672,46 @@ em { font-style: italic; }
   color: var(--ink-3);
   font-size: .85rem;
   line-height: 1.7;
-  margin-bottom: 1.3rem;
+  margin-bottom: 1.6rem;
 }
 
-.pill-row {
+/* 轨道：整行按正弦轨迹上下漂浮（相位 --fdelay 不同制造层次） */
+.marquee {
+  overflow: hidden;
+  will-change: transform;
+  animation: marqueeFloat var(--float, 8s) ease-in-out infinite;
+  animation-delay: var(--fdelay, 0s);
+}
+
+/* 内容：两组相同行无缝循环，translateX(-50%) 恰好一屏 */
+.marquee-track {
   display: flex;
-  flex-wrap: wrap;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeX var(--speed, 36s) linear infinite;
+}
+
+.marquee-row {
+  display: flex;
   gap: .6rem;
+  padding-right: .6rem;
+  flex: 0 0 auto;
+}
+
+@keyframes marqueeX {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes marqueeFloat {
+  0%, 100% { transform: translate3d(0, -9px, 0); }
+  50% { transform: translate3d(0, 9px, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee, .marquee-track { animation: none; }
+  .marquee-track { flex-wrap: wrap; width: auto; }
+  .marquee-row[aria-hidden="true"] { display: none; }
 }
 
 /* ============================================================
@@ -1181,11 +1244,13 @@ em { font-style: italic; }
 @media (max-width: 900px) {
   .hero-grid { grid-template-columns: 1fr; gap: 3rem; padding-top: 130px; }
   .hero-figure img { min-height: 340px; max-height: 420px; }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
   .focus-grid, .about-layout, .feat-card, .contact-row { grid-template-columns: 1fr; }
   .feat-card { padding: 2.5rem 0; }
   .feat-card.flip .feat-media { order: 0; }
   .feat-card.flip .feat-copy { order: 1; }
-  .about-side { position: static; }
+  .about-intro { padding-top: 0; }
+  .about-figure { max-width: 24rem; }
   .ach-grid { grid-template-columns: repeat(2, 1fr); }
   .ach-num { grid-column: span 1; }
   .ach-quote { grid-column: span 2; }
