@@ -132,6 +132,118 @@
       .pe-cols { grid-template-columns: 1fr; }
       .pe-col-body { min-height: 30vh; }
     }
+
+    /* ===== 动态叙事：Question 便签 / 打字机 / Insight ===== */
+    .pe-q-note {
+      display: inline-block;
+      position: relative;
+      background: var(--bg-2);
+      border: 1px solid var(--line-2);
+      box-shadow: 0 14px 34px rgba(35, 42, 34, .07);
+      padding: 1.5rem 1.7rem;
+      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+      font-weight: 500;
+      line-height: 1.65;
+      color: var(--ink);
+      opacity: 0;
+      transform: translateX(-46px) rotate(-1.5deg);
+      transition: opacity .55s var(--ease), transform .6s cubic-bezier(.34, 1.56, .64, 1);
+    }
+
+    .pe-q-note::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--accent);
+    }
+
+    .pe-q-note.in {
+      opacity: 1;
+      transform: translateX(0) rotate(-1.5deg);
+    }
+
+    .pe-think {
+      font-size: clamp(1rem, 1.7vw, 1.16rem);
+      line-height: 2;
+      color: var(--ink-2);
+      min-height: 4.6em;
+      white-space: pre-wrap;
+    }
+
+    .pe-think::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: 1.05em;
+      background: var(--accent);
+      margin-left: 3px;
+      vertical-align: -0.12em;
+      animation: caretBlink 1s steps(2, start) infinite;
+    }
+
+    .pe-think.done::after { display: none; }
+
+    @keyframes caretBlink { to { visibility: hidden; } }
+
+    .pe-insight {
+      margin-top: 2.8rem;
+      border-left: 3px solid var(--accent);
+      background: rgba(74, 110, 88, .07);
+      padding: 1.4rem 1.6rem;
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+
+    .pe-insight.show { opacity: 1; transform: none; }
+
+    .pe-insight-label {
+      display: block;
+      font-size: .68rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .6rem;
+    }
+
+    .pe-insight-text {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.02rem, 1.8vw, 1.2rem);
+      line-height: 1.7;
+      color: var(--ink);
+    }
+
+    .pe-control {
+      margin-top: 2.6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      opacity: 0;
+      transition: opacity .5s var(--ease);
+    }
+
+    .pe-control.show { opacity: 1; }
+
+    .pe-progress {
+      font-size: .78rem;
+      letter-spacing: .24em;
+      color: var(--ink-3);
+      font-variant-numeric: tabular-nums;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pe-q-note, .pe-insight, .pe-control {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .pe-think::after { animation: none; }
+    }
   </style>
 </head>
 <body>
@@ -159,18 +271,162 @@
     <!-- 主体：Question / My Thinking -->
     <section class="pe-body">
       <div class="container pe-cols">
-        <div class="pe-col">
+        <div class="pe-col pe-q">
           <p class="pe-col-tag pe-anim" style="animation-delay:.2s">Question <small>01</small></p>
-          <div class="pe-col-body pe-anim" style="animation-delay:.3s"></div>
+          <div class="pe-col-body">
+            <div class="pe-q-note" aria-live="polite"></div>
+          </div>
         </div>
-        <div class="pe-col">
+        <div class="pe-col pe-t">
           <p class="pe-col-tag pe-anim" style="animation-delay:.26s">My Thinking <small>02</small></p>
-          <div class="pe-col-body pe-anim" style="animation-delay:.36s"></div>
+          <div class="pe-col-body">
+            <div class="pe-think" aria-live="polite"></div>
+            <div class="pe-insight" aria-hidden="true">
+              <span class="pe-insight-label">Insight</span>
+              <p class="pe-insight-text"></p>
+            </div>
+            <div class="pe-control">
+              <span class="pe-progress">01 / 03</span>
+              <button class="pe-next btn btn-ghost" type="button">Next Question</button>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
   </main>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Brain Storming 内容：Question → Thinking（逐字）→ Insight（产品判断） */
+    var steps = [
+      {
+        q: 'How can a portfolio speak before I do?',
+        thinking: [
+          '作品集是无声的自我介绍。',
+          '第一屏的留白、字体、节奏，都在替我说「我是谁」。',
+          '我想让它先安静地展示审美，再慢慢展示逻辑。'
+        ],
+        insight: '设计不是装饰，是说服的前置步骤——先建立信任，再讲细节。'
+      },
+      {
+        q: 'What should the scroll feel like?',
+        thinking: [
+          '浏览者不是读者，是观众。',
+          '每一屏只给一个焦点：图讲故事、文字引导、目录同步，滚动像翻阅一本杂志。',
+          '节奏比内容更能留下印象。'
+        ],
+        insight: '好叙事像呼吸——一进一出、一图一题，克制比喧闹更有记忆点。'
+      },
+      {
+        q: 'How much of "me" should AI write?',
+        thinking: [
+          'Prompt Engineering 不是替我做选择，而是逼我把模糊的想法说清楚。',
+          '我把判断写进 Prompt，AI 把草稿铺开，我再把判断留下。',
+          '页面最终的声音，仍是我的。'
+        ],
+        insight: '工具放大品味，不替代品味——Prompt 的质量，就是思考的清晰度。'
+      }
+    ];
+
+    var note = document.querySelector('.pe-q-note');
+    var think = document.querySelector('.pe-think');
+    var insight = document.querySelector('.pe-insight');
+    var insightText = document.querySelector('.pe-insight-text');
+    var progress = document.querySelector('.pe-progress');
+    var control = document.querySelector('.pe-control');
+    var nextBtn = document.querySelector('.pe-next');
+
+    var idx = 0;
+    var busy = false;
+
+    function pad(n) { return (n < 10 ? '0' : '') + n; }
+
+    function showInsight(text) {
+      insightText.textContent = text;
+      insight.setAttribute('aria-hidden', 'false');
+      insight.classList.add('show');
+    }
+
+    /* 打字机：逐字显示多行思考，句间自然停顿 */
+    function typeLines(lines, done) {
+      think.textContent = '';
+      think.classList.remove('done');
+      var li = 0, ci = 0;
+      function tick() {
+        if (li >= lines.length) {
+          think.classList.add('done');
+          done();
+          return;
+        }
+        var line = lines[li];
+        if (ci < line.length) {
+          ci++;
+          think.textContent = lines.slice(0, li).join('') + line.slice(0, ci);
+          setTimeout(tick, prefersReduced ? 0 : 42);
+        } else {
+          li++;
+          ci = 0;
+          think.textContent = lines.slice(0, li).join('');
+          setTimeout(tick, prefersReduced ? 0 : 480);
+        }
+      }
+      tick();
+    }
+
+    function render() {
+      var step = steps[idx];
+      busy = true;
+
+      progress.textContent = pad(idx + 1) + ' / ' + pad(steps.length);
+
+      /* Step 1：Question 便签从左侧滑入 */
+      note.textContent = step.q;
+      note.classList.remove('in');
+      void note.offsetWidth;
+      note.classList.add('in');
+
+      /* 重置右侧 */
+      think.textContent = '';
+      think.classList.remove('done');
+      insight.classList.remove('show');
+      insight.setAttribute('aria-hidden', 'true');
+      control.classList.remove('show');
+
+      nextBtn.textContent = (idx + 1 < steps.length) ? 'Next Question' : 'That\u2019s the process';
+      nextBtn.classList.toggle('is-last', idx + 1 >= steps.length);
+
+      /* Step 2：停留片刻 → Step 3：逐字思考 → Step 4：Insight 出现 */
+      setTimeout(function () {
+        typeLines(step.thinking, function () {
+          setTimeout(function () {
+            showInsight(step.insight);
+            setTimeout(function () {
+              control.classList.add('show');
+              busy = false;
+            }, prefersReduced ? 40 : 520);
+          }, prefersReduced ? 40 : 260);
+        });
+      }, prefersReduced ? 60 : 1150);
+    }
+
+    nextBtn.addEventListener('click', function () {
+      if (busy) return;
+      if (idx + 1 < steps.length) {
+        idx++;
+        render();
+      } else {
+        window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+      }
+    });
+
+    render();
+  })();
+  </script>
 
 </body>
 </html>
