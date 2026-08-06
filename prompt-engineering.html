@@ -25,6 +25,12 @@
       to   { opacity: 1; transform: rotate(-4deg); }
     }
 
+    /* Brain Storming 标签微漂浮（入场后开始，不抢主体） */
+    @keyframes tagFloat {
+      0%, 100% { transform: rotate(-4deg) translateY(0); }
+      50%      { transform: rotate(-3.2deg) translateY(-7px); }
+    }
+
     .pe-anim {
       opacity: 0;
       animation: peFade .9s var(--ease) forwards;
@@ -80,7 +86,7 @@
       padding: clamp(1rem, 2.2vw, 1.6rem) clamp(1.2rem, 2.4vw, 1.8rem);
       width: clamp(200px, 16vw, 300px);
       transform: rotate(-4deg);
-      animation: peTagIn .9s var(--ease) .25s forwards;
+      animation: peTagIn .9s var(--ease) .25s forwards, tagFloat 3.4s ease-in-out 1.15s infinite;
     }
 
     @media (max-width: 760px) {
@@ -139,14 +145,16 @@
       position: relative;
       background: var(--bg-2);
       border: 1px solid var(--line-2);
-      box-shadow: 0 14px 34px rgba(35, 42, 34, .07);
-      padding: 1.5rem 1.7rem;
-      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
-      font-weight: 500;
-      line-height: 1.65;
+      border-radius: 14px;
+      box-shadow: 0 18px 40px rgba(35, 42, 34, .10), 0 2px 6px rgba(35, 42, 34, .05);
+      padding: 1.6rem 1.8rem;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      line-height: 1.6;
       color: var(--ink);
       opacity: 0;
-      transform: translateX(-46px) rotate(-1.5deg);
+      transform: translateX(-46px) rotate(-2.2deg);
       transition: opacity .55s var(--ease), transform .6s cubic-bezier(.34, 1.56, .64, 1);
     }
 
@@ -157,12 +165,24 @@
       top: 0;
       bottom: 0;
       width: 3px;
+      border-radius: 3px 0 0 3px;
       background: var(--accent);
+    }
+
+    .pe-q-note::after {
+      content: "";
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(74, 110, 88, .35);
     }
 
     .pe-q-note.in {
       opacity: 1;
-      transform: translateX(0) rotate(-1.5deg);
+      transform: translateX(0) rotate(-2.2deg);
     }
 
     .pe-think {
@@ -190,11 +210,14 @@
 
     .pe-insight {
       margin-top: 2.8rem;
+      border: 1px solid var(--line);
       border-left: 3px solid var(--accent);
-      background: rgba(74, 110, 88, .07);
-      padding: 1.4rem 1.6rem;
+      border-radius: 16px;
+      background: var(--bg);
+      box-shadow: 0 16px 36px rgba(35, 42, 34, .08);
+      padding: 1.5rem 1.7rem;
       opacity: 0;
-      transform: translateY(16px);
+      transform: translateY(16px) scale(.98);
       transition: opacity .7s var(--ease), transform .7s var(--ease);
     }
 
