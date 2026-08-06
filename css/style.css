@@ -320,7 +320,7 @@ em { font-style: italic; }
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.12fr .88fr;
+  grid-template-columns: 1.05fr .95fr;
   gap: clamp(3rem, 6vw, 6rem);
   align-items: center;
   padding: 150px 0 90px;
@@ -577,7 +577,7 @@ em { font-style: italic; }
    ============================================================ */
 .about-layout {
   display: grid;
-  grid-template-columns: 1fr 1.1fr;
+  grid-template-columns: .85fr 1.15fr;
   gap: clamp(3rem, 7vw, 7rem);
   align-items: start;
 }
@@ -600,7 +600,12 @@ em { font-style: italic; }
   object-fit: cover;
 }
 
-.about-blocks { border-top: 1px solid var(--line-2); }
+.about-blocks {
+  border-top: 1px solid var(--line-2);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(2rem, 4vw, 3.5rem);
+}
 
 .about-block {
   display: grid;
@@ -630,8 +635,11 @@ em { font-style: italic; }
 .about-keywords {
   display: flex;
   flex-wrap: wrap;
+  align-content: start;
   gap: .7rem;
-  margin-top: 2.2rem;
+  margin-top: 0;
+  padding: 1.9rem 0;
+  border-bottom: 1px solid var(--line);
 }
 
 .kw {
@@ -1251,6 +1259,7 @@ em { font-style: italic; }
   .feat-card.flip .feat-copy { order: 1; }
   .about-intro { padding-top: 0; }
   .about-figure { max-width: 24rem; }
+  .about-blocks { grid-template-columns: repeat(2, 1fr); }
   .ach-grid { grid-template-columns: repeat(2, 1fr); }
   .ach-num { grid-column: span 1; }
   .ach-quote { grid-column: span 2; }
@@ -1286,4 +1295,5 @@ em { font-style: italic; }
   .contact-grid { grid-template-columns: 1fr; }
   .modal-metrics { grid-template-columns: 1fr; }
   .about-block { grid-template-columns: 1fr; gap: .4rem; }
+  .about-blocks { grid-template-columns: 1fr; }
 }
