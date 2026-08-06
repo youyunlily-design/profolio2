@@ -843,6 +843,7 @@ em { font-style: italic; }
 #story-p1 .story-block {
   opacity: .65;
   transform: scale(1);
+  padding-left: 2.5rem; /* 绿线 → 留白 → 标题 → 正文，内容整体右移形成呼吸感 */
   transition: opacity .5s var(--ease), transform .5s var(--ease), box-shadow .5s var(--ease);
 }
 
