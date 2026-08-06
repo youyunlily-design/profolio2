@@ -506,63 +506,18 @@
                 </dl>
               </header>
 
-              <div class="story-reading">
-                <div class="story-indicator" aria-hidden="true">
-                  <span class="si-item is-active" data-step="overview">Overview</span>
-                  <span class="si-item" data-step="challenge">Challenge</span>
-                  <span class="si-item" data-step="solution">Solution</span>
-                  <span class="si-item" data-step="impact">Impact</span>
-                  <span class="si-item" data-step="reflection">Reflection</span>
+              <section class="story-impact">
+                <h4>Impact</h4>
+                <div class="story-metrics">
+                  <div class="metric"><strong>3 阶段</strong><span>混合决策</span></div>
+                  <div class="metric"><strong>Self-Play</strong><span>持续生成棋局</span></div>
+                  <div class="metric"><strong>DeepSeek</strong><span>高质量棋谱</span></div>
+                  <div class="metric"><strong>PyTorch</strong><span>深度网络训练</span></div>
                 </div>
-                <div class="story-body">
-                  <section class="story-block" data-step="overview">
-                    <h4>Overview</h4>
-                    <p>规则引擎快速过滤必胜、必防局面，深度网络完成棋局价值评估，DeepSeek 在复杂局面提供策略建议与高质量棋谱——生成更高质量的训练样本。</p>
-                  </section>
-                  <section class="story-block" data-step="challenge">
-                    <h4>Challenge</h4>
-                    <p class="story-point"><em>Pain Points</em>纯自博弈训练初期棋局数据质量不足、策略单一，模型难以收敛；不依赖海量人工棋谱的前提下，需要快速生成高质量训练样本。</p>
-                    <p class="story-point"><em>Challenge</em>让规则、网络与大模型按局面复杂度分工，比任何单一方案收敛更快。</p>
-                    <p class="story-point"><em>Opportunity</em>三者协同，样本质量更高，训练从冷启动走向持续进化。</p>
-                  </section>
-                  <section class="story-block" data-step="solution">
-                    <h4>Solution</h4>
-                    <div class="flow">
-                      <span class="flow-step">棋局输入</span><span class="flow-arrow">→</span>
-                      <span class="flow-step">规则引擎<br>必胜 / 必防</span><span class="flow-arrow">→</span>
-                      <span class="flow-step">深度网络<br>价值评估</span><span class="flow-arrow">→</span>
-                      <span class="flow-step">DeepSeek<br>复杂局面</span><span class="flow-arrow">→</span>
-                      <span class="flow-step">标准落子</span>
-                    </div>
-                  </section>
-                  <section class="story-block" data-step="impact">
-                    <h4>Impact</h4>
-                    <div class="story-metrics">
-                      <div class="metric"><strong>3 阶段</strong><span>混合决策</span></div>
-                      <div class="metric"><strong>Self-Play</strong><span>持续生成棋局</span></div>
-                      <div class="metric"><strong>DeepSeek</strong><span>高质量棋谱</span></div>
-                      <div class="metric"><strong>PyTorch</strong><span>深度网络训练</span></div>
-                    </div>
-                    <p class="story-value-biz">训练集质量显著提升，模型棋局判断能力与攻防策略随训练集更新不断进化。</p>
-                  </section>
-                  <section class="story-block" data-step="reflection">
-                    <h4>Reflection</h4>
-                    <p class="story-point"><em>What Worked</em>把算法问题当作产品问题拆解：先用「最可靠」的规则兜底，再用「最聪明」的大模型增强。</p>
-                    <p class="story-point"><em>What I'd Improve</em>扩大复杂局面的棋谱覆盖面，进一步约束生成样本的稳定性。</p>
-                    <p class="story-point"><em>Next Iteration</em>大模型的工程价值不在于生成，而在于可控约束下稳定供给高质量数据。</p>
-                  </section>
-                </div>
-              </div>
+                <p class="story-value-biz">训练集质量显著提升，模型棋局判断能力与攻防策略随训练集更新不断进化。</p>
+              </section>
 
-              <footer class="story-footer">
-                <div class="story-stack">
-                  <p class="story-stack-label">Tech Stack</p>
-                  <div class="tag-list">
-                    <span class="tag">PyTorch</span><span class="tag">Self-Play</span><span class="tag">DeepSeek</span><span class="tag">Prompt Engineering</span>
-                  </div>
-                </div>
-                <button class="btn btn-ghost js-project-open" data-project="p2">查看完整项目详情 →</button>
-              </footer>
+              <button class="btn btn-ghost js-project-open" data-project="p2">查看完整项目详情 →</button>
             </div>
           </article>
 

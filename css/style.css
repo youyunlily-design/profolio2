@@ -903,6 +903,23 @@ em { font-style: italic; }
   font-size: .88rem;
 }
 
+/* ---- 项目卡片（Project 02 简洁展示：标题 → Impact → 按钮） ---- */
+.story-impact {
+  padding: 1.2rem 0 0;
+}
+
+.story-impact h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: .98rem;
+  letter-spacing: .02em;
+  margin-bottom: .65rem;
+}
+
+.story-impact .story-metrics { margin-bottom: 1rem; }
+
+#story-p2 .story-right > .btn { margin-top: 1.6rem; }
+
 /* ---- 底部固定区：Tech Stack + CTA ---- */
 .story-footer {
   margin-top: 1.6rem;
