@@ -185,6 +185,65 @@
     else document.addEventListener('DOMContentLoaded', runHeroIntro);
   }
 
+  /* ---------- 4.7 Project 01 · 滚动阅读步进（6 步：概述→挑战→方案→影响→反思→收尾） ----------
+     只在 #story-p1 生效；左图交叉淡化，右栏仅改变强调、永不移动内容。
+     阅读线取视口 52% 高度：小节标题越过该线即激活对应步；
+     最后一个小节整体越过阅读线后进入第 6 步（收尾：无激活项，展示最后一张图）。 */
+  var storyP1 = $('#story-p1');
+  if (storyP1) {
+    var p1Blocks = $$('.story-block', storyP1);
+    var p1Figs = $$('.story-fig', storyP1);
+    var p1Items = $$('.si-item', storyP1);
+    var p1Step = -2; // -2 未初始化 / -1 收尾步 / 0~4 对应 5 个小节
+    var p1Ticking = false;
+
+    function setP1Step(step) {
+      if (step === p1Step) return;
+      p1Step = step;
+      var i;
+      for (i = 0; i < p1Blocks.length; i++) p1Blocks[i].classList.toggle('is-active', i === step);
+      for (i = 0; i < p1Items.length; i++) p1Items[i].classList.toggle('is-active', i === step);
+      var figIdx = step < 0 ? p1Figs.length - 1 : step; // 收尾步展示最后一张图
+      p1Figs.forEach(function (fig, idx) {
+        if (idx === figIdx) {
+          fig.classList.add('is-active');
+          fig.classList.remove('is-out');
+        } else if (fig.classList.contains('is-active')) {
+          fig.classList.add('is-out');
+          fig.classList.remove('is-active');
+          setTimeout(function () { fig.classList.remove('is-out'); }, 560);
+        } else {
+          fig.classList.remove('is-out');
+        }
+      });
+    }
+
+    function updateP1Step() {
+      p1Ticking = false;
+      var vh = window.innerHeight;
+      var line = vh * 0.52;
+      var active = 0;
+      var i, r;
+      for (i = 0; i < p1Blocks.length; i++) {
+        r = p1Blocks[i].getBoundingClientRect();
+        if (r.top <= line) active = i;
+      }
+      if (p1Blocks.length) {
+        r = p1Blocks[p1Blocks.length - 1].getBoundingClientRect();
+        if (r.bottom < line) active = -1;
+      }
+      setP1Step(active);
+    }
+
+    function requestP1Step() {
+      if (!p1Ticking) { p1Ticking = true; requestAnimationFrame(updateP1Step); }
+    }
+
+    window.addEventListener('scroll', requestP1Step, { passive: true });
+    window.addEventListener('resize', requestP1Step, { passive: true });
+    requestP1Step();
+  }
+
   /* ---------- 5. 数字计数动画 ---------- */
   function animateCount(el) {
     if (el.dataset.done) return;
