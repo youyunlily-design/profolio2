@@ -11,12 +11,33 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎯</text></svg>" />
   <style>
-    /* 本页专属排版（仅此页使用） */
-    .pe-hero {
-      min-height: calc(100vh - 72px);
-      display: flex;
-      align-items: center;
-      padding: clamp(90px, 10vw, 160px) 0;
+    /* ===== 本页专属排版：Interactive Brainstorming Case Study ===== */
+
+    /* 轻微入场动画（reduced-motion 下自动关闭） */
+    @keyframes peFade {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* Brain Storming 标签专属入场：保持 -4deg 旋转 */
+    @keyframes peTagIn {
+      from { opacity: 0; transform: rotate(-7deg) translateY(12px); }
+      to   { opacity: 1; transform: rotate(-4deg); }
+    }
+
+    .pe-anim {
+      opacity: 0;
+      animation: peFade .9s var(--ease) forwards;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .pe-anim, .pe-tag { opacity: 1; animation: none; }
+    }
+
+    /* ---- Statement 区（紧凑，不占 Hero 大部分空间） ---- */
+    .pe-statement {
+      position: relative;            /* 容纳右上角 Brain Storming 标签 */
+      padding: clamp(110px, 12vw, 170px) 0 clamp(40px, 5vw, 70px);
     }
 
     .pe-kicker {
@@ -24,24 +45,92 @@
       letter-spacing: .34em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 1.6rem;
-    }
-
-    .pe-title {
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(2.4rem, 6vw, 4.6rem);
-      line-height: 1.12;
-      letter-spacing: -.01em;
-      max-width: 16em;
       margin-bottom: 1.8rem;
     }
 
-    .pe-sub {
-      color: var(--ink-2);
-      font-size: clamp(1rem, 1.6vw, 1.15rem);
-      line-height: 1.9;
-      max-width: 36rem;
+    .pe-stmt {
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: clamp(2rem, 4.6vw, 3.4rem);
+      line-height: 1.22;
+      letter-spacing: -.01em;
+      max-width: 15em;
+    }
+
+    .pe-stmt em {
+      font-family: var(--serif);
+      font-style: italic;
+      color: var(--accent);
+      font-weight: 400;
+    }
+
+    /* ---- 右上角 Brain Storming 视觉标签（约 1/8 页面面积） ---- */
+    .pe-tag {
+      position: absolute;
+      top: clamp(96px, 13vh, 150px);
+      right: clamp(20px, 5vw, 64px);
+      background: var(--accent);
+      color: var(--bg);
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.7rem, 3.6vw, 2.5rem);
+      line-height: 1.15;
+      letter-spacing: .01em;
+      text-align: center;
+      padding: clamp(1rem, 2.2vw, 1.6rem) clamp(1.2rem, 2.4vw, 1.8rem);
+      width: clamp(200px, 16vw, 300px);
+      transform: rotate(-4deg);
+      animation: peTagIn .9s var(--ease) .25s forwards;
+    }
+
+    @media (max-width: 760px) {
+      .pe-tag {
+        position: static;
+        margin: 0 0 2.4rem auto;
+        width: clamp(180px, 46vw, 240px);
+      }
+    }
+
+    /* ---- 主体：左 Question / 右 My Thinking ---- */
+    .pe-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 7vw, 8rem);
+      padding: clamp(80px, 9vw, 130px) 0 clamp(120px, 12vw, 190px);
+    }
+
+    .pe-col-tag {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      font-size: .78rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2.4rem;
+    }
+
+    .pe-col-tag::before {
+      content: "";
+      width: 2.4rem;
+      height: 1px;
+      background: var(--accent);
+      flex: none;
+    }
+
+    .pe-col-tag small {
+      font-size: .7rem;
+      letter-spacing: .2em;
+      color: var(--ink-3);
+    }
+
+    .pe-col-body {
+      min-height: 42vh;             /* 留白：具体问题内容稍后填充 */
+    }
+
+    @media (max-width: 760px) {
+      .pe-cols { grid-template-columns: 1fr; }
+      .pe-col-body { min-height: 30vh; }
     }
   </style>
 </head>
@@ -57,13 +146,30 @@
   </header>
 
   <main>
-    <section class="pe-hero">
+
+    <!-- Statement + 右上角 Brain Storming 标签 -->
+    <section class="pe-statement">
       <div class="container">
-        <p class="pe-kicker">Case Study — Prompt Engineering</p>
-        <h1 class="pe-title">How I Used Prompt Engineering to Design My Personal Portfolio</h1>
-        <p class="pe-sub">我的 Prompt Engineering 方法论，以及它如何贯穿这份作品集的设计与构建过程。内容筹备中。</p>
+        <p class="pe-kicker pe-anim">Interactive Brainstorming Case Study</p>
+        <h1 class="pe-stmt pe-anim" style="animation-delay:.12s">The website is my project of <em>Prompt Engineering</em></h1>
+      </div>
+      <div class="pe-tag" aria-hidden="true">Brain Storming</div>
+    </section>
+
+    <!-- 主体：Question / My Thinking -->
+    <section class="pe-body">
+      <div class="container pe-cols">
+        <div class="pe-col">
+          <p class="pe-col-tag pe-anim" style="animation-delay:.2s">Question <small>01</small></p>
+          <div class="pe-col-body pe-anim" style="animation-delay:.3s"></div>
+        </div>
+        <div class="pe-col">
+          <p class="pe-col-tag pe-anim" style="animation-delay:.26s">My Thinking <small>02</small></p>
+          <div class="pe-col-body pe-anim" style="animation-delay:.36s"></div>
+        </div>
       </div>
     </section>
+
   </main>
 
 </body>
