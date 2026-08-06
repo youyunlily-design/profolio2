@@ -1058,6 +1058,18 @@ em { font-style: italic; }
   margin-bottom: .8rem;
 }
 
+/* AI Prompt Engineering 能力入口：标题与按钮同一水平行 */
+.skill-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: .8rem;
+}
+
+.skill-head .skill-group-label { margin-bottom: 0; }
+
 .skill-group-desc {
   color: var(--ink-3);
   font-size: .85rem;
@@ -1065,24 +1077,25 @@ em { font-style: italic; }
   margin-bottom: 1.6rem;
 }
 
-/* Capabilities 入口按钮（AI Prompt Engineering → 独立 Case Study 页） */
+/* Capabilities 入口按钮（AI Prompt Engineering → 独立 Case Study 页）
+   莫兰迪灰：低饱和灰绿，与站点 sage 主色系协调 */
 .skill-cta {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  margin-top: 1.4rem;
   font-size: .82rem;
   letter-spacing: .08em;
-  color: var(--ink);
-  border: 1px solid var(--line-2);
+  color: #F4F6F2;
+  background: #7A847D;
+  border: 1px solid #7A847D;
   padding: .7rem 1.4rem;
   transition: background .35s, color .35s, border-color .35s, transform .35s var(--ease);
 }
 
 .skill-cta:hover {
-  background: var(--ink);
-  color: var(--bg);
-  border-color: var(--ink);
+  background: #68726B;
+  border-color: #68726B;
+  color: #FFF;
   transform: translateY(-2px);
 }
 
