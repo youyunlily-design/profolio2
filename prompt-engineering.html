@@ -286,7 +286,7 @@
               <p class="pe-insight-text"></p>
             </div>
             <div class="pe-control">
-              <span class="pe-progress">01 / 03</span>
+              <span class="pe-progress">01 / 07</span>
               <button class="pe-next btn btn-ghost" type="button">Next Question</button>
             </div>
           </div>
@@ -305,31 +305,68 @@
     /* Brain Storming 内容：Question → Thinking（逐字）→ Insight（产品判断） */
     var steps = [
       {
-        q: 'How can a portfolio speak before I do?',
+        q: 'Why did I redesign my portfolio?',
         thinking: [
-          '作品集是无声的自我介绍。',
-          '第一屏的留白、字体、节奏，都在替我说「我是谁」。',
-          '我想让它先安静地展示审美，再慢慢展示逻辑。'
+          '传统 PDF Portfolio 可以展示我的经历，',
+          '但是无法完整表达：我如何思考、如何设计、如何解决问题。',
+          '我希望作品集不仅展示结果，也展示过程。'
         ],
-        insight: '设计不是装饰，是说服的前置步骤——先建立信任，再讲细节。'
+        insight: 'A portfolio should show how I think, not only what I built.'
       },
       {
-        q: 'What should the scroll feel like?',
+        q: 'What should this website actually solve?',
         thinking: [
-          '浏览者不是读者，是观众。',
-          '每一屏只给一个焦点：图讲故事、文字引导、目录同步，滚动像翻阅一本杂志。',
-          '节奏比内容更能留下印象。'
+          '如果只是做一个漂亮网页，',
+          '它仍然只是一个展示页面。',
+          '我希望它成为一个产品：展示我的项目经历、设计审美、产品思维，以及 AI 协作方式。'
         ],
-        insight: '好叙事像呼吸——一进一出、一图一题，克制比喧闹更有记忆点。'
+        insight: 'A portfolio can become an interactive product experience.'
       },
       {
-        q: 'How much of "me" should AI write?',
+        q: 'How can AI understand my design taste?',
         thinking: [
-          'Prompt Engineering 不是替我做选择，而是逼我把模糊的想法说清楚。',
-          '我把判断写进 Prompt，AI 把草稿铺开，我再把判断留下。',
-          '页面最终的声音，仍是我的。'
+          'AI 不知道什么叫高级设计。',
+          '所以我不能只告诉 AI："Create a beautiful website"。',
+          '我需要提供：参考案例、设计原则、目标、限制条件。'
         ],
-        insight: '工具放大品味，不替代品味——Prompt 的质量，就是思考的清晰度。'
+        insight: 'Better context creates better collaboration.'
+      },
+      {
+        q: 'How do I collaborate with AI?',
+        thinking: [
+          '我没有把 AI 当作代码生成工具。',
+          '而是在不同阶段赋予 AI 不同角色：',
+          'Product Designer',
+          'Frontend Engineer',
+          'UX Reviewer'
+        ],
+        insight: 'AI becomes a design partner, not only a generation tool.'
+      },
+      {
+        q: 'Why does the first AI output often feel wrong?',
+        thinking: [
+          '第一次生成只是起点。',
+          'AI 输出需要人工评估。',
+          '找到：哪里不像我的目标？为什么不符合预期？',
+          '然后重新优化 Prompt。'
+        ],
+        insight: 'Prompt Engineering is an iterative process.'
+      },
+      {
+        q: 'How do I know whether my prompt works?',
+        thinking: [
+          '我的方法：每次修改功能前，先生成一个样本。',
+          '通过样本判断：Prompt 是否准确表达需求。'
+        ],
+        insight: 'Evaluate before you optimize.'
+      },
+      {
+        q: 'What changed after iterations?',
+        thinking: [
+          '最大的变化不是网页变漂亮。',
+          '而是：AI 从一个生成工具，变成我的设计协作者。'
+        ],
+        insight: 'Human judgment + AI generation creates better products.'
       }
     ];
 
