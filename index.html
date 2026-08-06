@@ -3,76 +3,86 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="卢沁园 的作品集 - 产品岗实习生，北京邮电大学通信工程在读，热爱用产品思维解决问题。" />
-  <title>卢沁园 · 产品作品集</title>
+  <meta name="description" content="卢沁园 · AI Product Builder —— 喜欢把复杂的问题，变成简单自然的交互体验。AI Agent / Product Design / Prompt Engineering。" />
+  <title>卢沁园 · AI Product Builder</title>
   <link rel="stylesheet" href="css/style.css" />
-  <!-- 站点图标：使用内联 SVG 占位，可自行替换为 favicon.ico -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎯</text></svg>" />
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-  <!-- ==================== 顶部导航 ==================== -->
+  <!-- ===== 鼠标跟随光效 ===== -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ===== 顶部导航 ===== -->
   <header class="nav" id="nav">
     <div class="container nav-inner">
-      <a href="#home" class="nav-logo">卢沁园<span class="nav-logo-dot">.</span></a>
+      <a href="#hero" class="nav-logo" data-scroll>卢沁园<span class="nav-logo-dot">.</span></a>
       <nav class="nav-links" id="navLinks">
-        <a href="#home">首页</a>
-        <a href="#about">关于我</a>
-        <a href="#projects">项目案例</a>
-        <a href="#experience">经历</a>
-        <a href="#contact">联系方式</a>
-        <a href="#contact" class="btn btn-sm nav-cta">联系我</a>
+        <a href="#why" data-scroll>Why AI</a>
+        <a href="#about" data-scroll>About</a>
+        <a href="#projects" data-scroll>Projects</a>
+        <a href="#skills" data-scroll>Skills</a>
+        <a href="#experience" data-scroll>Experience</a>
+        <a href="#contact" data-scroll>Contact</a>
+        <a href="2028届-北京邮电大学卢沁园.pdf" download="卢沁园_产品实习生简历.pdf" class="nav-cta">下载简历</a>
       </nav>
-      <button class="nav-toggle" id="navToggle" aria-label="打开菜单">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单"><span></span><span></span><span></span></button>
     </div>
+    <div class="nav-progress" id="navProgress" aria-hidden="true"></div>
   </header>
 
-  <!-- ==================== 首页 Hero ==================== -->
-  <section class="hero" id="home">
-    <div class="container hero-inner">
-      <div class="hero-text">
-        <p class="hero-eyebrow reveal">你好，我是卢沁园</p>
-        <div class="hero-intro" id="heroIntro">
-          <h1 class="hero-about">About Me</h1>
-          <p>我喜欢探索新技术，也喜欢把复杂的问题变成简单、好用的解决方案。</p>
-          <p>从 AI Agent、Prompt Engineering 到产品设计，我始终保持着对技术的好奇心，并乐于将想法快速落地，在实践中不断迭代优化。我的辩论经历让我拥有良好的沟通表达与团队协作能力，也让我习惯站在不同视角思考问题；项目经历则让我逐渐形成了从需求分析、方案设计到工程实现的完整思维。</p>
-          <p>希望未来能够继续在 AI 与产品交叉领域持续探索，打造真正有价值、有温度的智能产品。</p>
-        </div>
-        <div class="hero-actions reveal">
-          <a href="2028届-北京邮电大学卢沁园.pdf" download="卢沁园_产品实习生简历.pdf" class="btn btn-primary">
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-            下载简历
-          </a>
-          <a href="#projects" class="btn btn-ghost">查看项目案例</a>
-          <a href="#contact" class="btn btn-ghost">与我联系</a>
-        </div>
-        <ul class="hero-stats reveal">
-          <li><strong>105/560</strong><span>专业综合排名</span></li>
-          <li><strong>611</strong><span>英语六级 CET-6</span></li>
-          <li><strong>10+</strong><span>组织策划赛事</span></li>
-        </ul>
-      </div>
+  <!-- ===== ① Hero ===== -->
+  <section class="hero" id="hero">
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner" id="heroInner">
+      <p class="hero-eyebrow reveal" data-reveal="blur">卢沁园 · AI Product Builder</p>
+      <h1 class="hero-title" id="heroTitle">Building AI Experiences<br /><span class="grad">That Feel Natural.</span></h1>
+      <p class="hero-keywords" id="heroKeywords">AI Agent&ensp;·&ensp;Product Design&ensp;·&ensp;Prompt Engineering</p>
+      <div class="hero-scroll" aria-hidden="true"><span>SCROLL</span><i></i></div>
     </div>
   </section>
 
-  <!-- ==================== 关于我 ==================== -->
-  <section class="section" id="about">
+  <!-- ===== ② Why AI ===== -->
+  <section class="why" id="why">
+    <div class="container why-inner">
+      <p class="why-statement reveal" data-reveal="mask">
+        Technology should disappear.<br /><span class="grad">Experience should remain.</span>
+      </p>
+      <p class="why-sub reveal" data-reveal="blur" style="--d:.15s">我喜欢把复杂的问题，变成简单自然的交互体验。</p>
+    </div>
+  </section>
+
+  <!-- ===== ③ About Me ===== -->
+  <section class="section about" id="about">
     <div class="container">
-      <div class="section-head reveal">
-        <p class="section-tag">ABOUT</p>
-        <h2 class="section-title">关于我</h2>
+      <div class="section-head reveal" data-reveal="mask">
+        <p class="section-tag">ABOUT — 关于我 · 我的思考方式</p>
+        <h2 class="section-title">Technology is a means.<br />People are the end.</h2>
       </div>
 
-      <!-- 教育背景：桌面端左右两张卡片 -->
-      <div class="edu-grid">
-        <div class="edu-card reveal">
+      <div class="about-story">
+        <p class="about-p reveal" data-reveal="up">我喜欢探索新技术，也喜欢把复杂的问题变成简单、好用的解决方案。</p>
+        <p class="about-p reveal" data-reveal="up" style="--d:.12s">从 AI Agent、Prompt Engineering 到产品设计，我始终保持着对技术的好奇心，并乐于将想法快速落地，在实践中不断迭代优化。我的辩论经历让我拥有良好的沟通表达与团队协作能力，也让我习惯站在不同视角思考问题；项目经历则让我逐渐形成了从需求分析、方案设计到工程实现的完整思维。</p>
+        <p class="about-p reveal" data-reveal="up" style="--d:.24s">希望未来能够继续在 AI 与产品交叉领域持续探索，打造真正有价值、有温度的智能产品。</p>
+      </div>
+
+      <div class="about-keywords">
+        <span class="kw reveal" data-reveal="blur">AI Agent</span>
+        <span class="kw reveal" data-reveal="blur" style="--d:.1s">Product Thinking</span>
+        <span class="kw reveal" data-reveal="blur" style="--d:.2s">Creative Problem Solving</span>
+        <span class="kw reveal" data-reveal="blur" style="--d:.3s">Prompt Engineering</span>
+      </div>
+
+      <!-- 教育背景（保留原内容） -->
+      <div class="edu-block reveal" data-reveal="up">
+        <div class="edu-left">
+          <p class="edu-label">EDUCATION</p>
           <h3 class="edu-school">北京邮电大学 <span class="edu-major">通信工程 · 本科</span></h3>
           <p class="edu-time">2024.09 — 2028.06</p>
-          <p class="edu-desc">
-            专业综合排名 <strong>105/560</strong>，英语六级 <strong>611</strong> 分。
-          </p>
+          <p class="edu-desc">专业综合排名 <strong>105/560</strong>，英语六级 <strong>611</strong> 分。</p>
+        </div>
+        <div class="edu-right">
           <div class="tag-list">
             <span class="tag">电子电路基础</span>
             <span class="tag">数据结构与算法</span>
@@ -81,266 +91,168 @@
             <span class="tag">微处理器与系统</span>
           </div>
         </div>
-        <div class="edu-card edu-stat reveal">
-          <div class="stat-block">
-            <strong>105/560</strong>
-            <span>专业综合排名</span>
-          </div>
-          <div class="stat-block">
-            <strong>611</strong>
-            <span>CET-6 成绩</span>
-          </div>
-          <div class="stat-block">
-            <strong>4+</strong>
-            <span>技能方向</span>
-          </div>
-        </div>
       </div>
 
-      <!-- 技能 -->
-      <h3 class="block-title reveal">技能清单</h3>
+      <div class="about-stats">
+        <div class="stat reveal" data-reveal="up"><strong data-count="105" data-suffix="/560">0</strong><span>专业综合排名</span></div>
+        <div class="stat reveal" data-reveal="up" style="--d:.1s"><strong data-count="611">0</strong><span>英语六级 CET-6</span></div>
+        <div class="stat reveal" data-reveal="up" style="--d:.2s"><strong data-count="10" data-suffix="+">0</strong><span>组织策划赛事</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ④ Featured Projects（全屏故事） ===== -->
+  <section class="section projects" id="projects">
+    <div class="container">
+      <div class="section-head reveal" data-reveal="mask">
+        <p class="section-tag">PROJECTS — 项目案例</p>
+        <h2 class="section-title">Selected Works</h2>
+        <p class="section-sub">从产品交互、数据闭环到 AI 算法落地，每个项目都完整展示我的思考与执行过程。</p>
+      </div>
+    </div>
+
+    <div class="projects-stack">
+
+      <!-- 项目 1 -->
+      <article class="project-panel" data-tone="#4f46e5">
+        <div class="container project-panel-inner">
+          <p class="project-num reveal" data-reveal="blur">01 / Featured</p>
+          <p class="project-cn reveal" data-reveal="blur">途泊 · 龙虾实验助手</p>
+          <h3 class="project-big reveal" data-reveal="mask">Reimagining Human–Experiment<br />Interaction.</h3>
+          <p class="project-role reveal" data-reveal="up">2026.03 — 至今 · 实验组成员&ensp;|&ensp;独立承担龙虾的接入 &amp; 功能改进&ensp;|&ensp;AI 产品 / 数据闭环</p>
+          <p class="project-desc reveal" data-reveal="up">独立负责「龙虾实验助手」的产品交互优化与数据闭环建设：将 AI 助手升级为实验全程随时可调用的全局浮窗，并打通真实实验数据回传链路，实现「一句话进实验 → 自动配置 → 结果实时回传」的完整闭环。</p>
+          <div class="project-chips">
+            <span class="chip reveal" data-reveal="up">Challenge&ensp;·&ensp;4~5 步 → 1~2 步</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.1s">Prompt&ensp;·&ensp;多轮优化回答边界</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.2s">Data Loop&ensp;·&ensp;实验数据实时回传</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.3s">Recognition&ensp;·&ensp;20+ 场景识别</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric"><strong><span data-count="20" data-suffix="+">0</span></strong><span>实验识别</span></div>
+            <div class="metric"><strong><span data-count="30" data-suffix="+">0</span></strong><span>用户反馈</span></div>
+            <div class="metric"><strong><span data-count="5">0</span></strong><span>实验组测试</span></div>
+            <div class="metric"><strong>4~5 → 1~2</strong><span>入口步骤</span></div>
+          </div>
+          <button class="btn btn-ghost js-project-open" data-project="p1">查看完整项目详情 →</button>
+        </div>
+      </article>
+
+      <!-- 项目 2 -->
+      <article class="project-panel" data-tone="#0ea5e9">
+        <div class="container project-panel-inner">
+          <p class="project-num reveal" data-reveal="blur">02</p>
+          <p class="project-cn reveal" data-reveal="blur">基于深度学习的人机对战模型</p>
+          <h3 class="project-big reveal" data-reveal="mask">Hybrid Decision<br />Intelligence.</h3>
+          <p class="project-role reveal" data-reveal="up">五子棋 AI 对战系统 · 项目负责人&ensp;|&ensp;方案设计 + 工程实现&ensp;|&ensp;AI 算法</p>
+          <p class="project-desc reveal" data-reveal="up">基于 PyTorch 实现深度神经网络训练，结合 Self-Play 持续生成棋局数据，用三阶段混合决策策略解决传统自博弈训练初期数据质量不足、策略单一的问题。</p>
+          <div class="project-chips">
+            <span class="chip reveal" data-reveal="up">Rule Engine</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.1s">Neural Network</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.2s">DeepSeek</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.3s">Self-Play</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric"><strong>3 阶段</strong><span>混合决策</span></div>
+            <div class="metric"><strong>Self-Play</strong><span>持续生成棋局</span></div>
+            <div class="metric"><strong>DeepSeek</strong><span>高质量棋谱</span></div>
+            <div class="metric"><strong>PyTorch</strong><span>深度网络训练</span></div>
+          </div>
+          <button class="btn btn-ghost js-project-open" data-project="p2">查看完整项目详情 →</button>
+        </div>
+      </article>
+
+      <!-- 项目 3 -->
+      <article class="project-panel" data-tone="#f59e0b">
+        <div class="container project-panel-inner">
+          <p class="project-num reveal" data-reveal="blur">03</p>
+          <p class="project-cn reveal" data-reveal="blur">校辩论赛事策划与运营</p>
+          <h3 class="project-big reveal" data-reveal="mask">From Zero to<br />1000+ Audience.</h3>
+          <p class="project-role reveal" data-reveal="up">2025.09 — 至今 · 校辩论队赛事负责人&ensp;|&ensp;活动运营 / 组织管理</p>
+          <p class="project-desc reveal" data-reveal="up">累计负责组织校内赛事十余场，参与成员超百人、观众总计超千人。全程负责赛事策划、赛程安排、团队分工与现场执行。</p>
+          <div class="project-chips">
+            <span class="chip reveal" data-reveal="up">10+ 场赛事</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.1s">100+ 参与成员</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.2s">1000+ 观众人次</span>
+            <span class="chip reveal" data-reveal="up" style="--d:.3s">10+ 人执行小组</span>
+          </div>
+          <div class="project-metrics">
+            <div class="metric"><strong><span data-count="10" data-suffix="+">0</span></strong><span>组织校内赛事</span></div>
+            <div class="metric"><strong><span data-count="100" data-suffix="+">0</span></strong><span>参与成员</span></div>
+            <div class="metric"><strong><span data-count="1000" data-suffix="+">0</span></strong><span>观众人次</span></div>
+            <div class="metric"><strong><span data-count="10" data-suffix="+">0</span></strong><span>人执行小组</span></div>
+          </div>
+          <button class="btn btn-ghost js-project-open" data-project="p3">查看完整项目详情 →</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== ⑤ Skills ===== -->
+  <section class="section skills" id="skills">
+    <div class="container">
+      <div class="section-head reveal" data-reveal="mask">
+        <p class="section-tag">SKILLS — 技能清单</p>
+        <h2 class="section-title">Capabilities</h2>
+      </div>
+
+      <div class="tag-cloud" id="tagCloud" aria-hidden="false">
+        <span class="cloud-tag">Python</span>
+        <span class="cloud-tag">FastAPI</span>
+        <span class="cloud-tag">OpenClaw</span>
+        <span class="cloud-tag">Prompt Engineering</span>
+        <span class="cloud-tag">Figma</span>
+        <span class="cloud-tag">Workflow Design</span>
+        <span class="cloud-tag">LLM</span>
+        <span class="cloud-tag">Agent</span>
+        <span class="cloud-tag">SQL</span>
+        <span class="cloud-tag">Git</span>
+        <span class="cloud-tag">C++</span>
+        <span class="cloud-tag">VSCode</span>
+        <span class="cloud-tag">MCP</span>
+      </div>
+
       <div class="skills-grid">
-        <div class="skill-card reveal">
-          <h4 class="skill-title-lg">产品基础能力</h4>
+        <div class="skill-card reveal" data-reveal="up">
+          <h4>产品基础能力</h4>
           <p>熟悉 Figma，自主进行项目实战 10+ 次</p>
           <p>熟悉 Office、飞书、Notion 等协作工具</p>
           <div class="tag-list">
-            <span class="tag">Figma</span>
-            <span class="tag">原型设计</span>
-            <span class="tag">交互流程</span>
+            <span class="tag">Figma</span><span class="tag">原型设计</span><span class="tag">交互流程</span>
           </div>
         </div>
-        <div class="skill-card reveal">
+        <div class="skill-card reveal" data-reveal="up" style="--d:.12s">
           <h4>数据分析</h4>
           <p>熟悉 SQL，掌握数据查询与可视化</p>
           <p>在 Sqliteviz 平台多次实操</p>
           <div class="tag-list">
-            <span class="tag">SQL</span>
-            <span class="tag">Sqliteviz</span>
-            <span class="tag">数据分析</span>
+            <span class="tag">SQL</span><span class="tag">Sqliteviz</span><span class="tag">数据分析</span>
           </div>
         </div>
-        <div class="skill-card reveal">
+        <div class="skill-card reveal" data-reveal="up" style="--d:.24s">
           <h4>技术基础</h4>
-          <p><strong>有 Prompt Engineering 实战经验</strong></p>
+          <p class="strong-line">有 Prompt Engineering 实战经验</p>
           <p>可独立完成基础算法实现与工程调试</p>
           <p>了解 MCP 与 Agent Workflow</p>
           <div class="tag-list">
-            <span class="tag">Python</span>
-            <span class="tag">C++</span>
-            <span class="tag">VSCode</span>
-            <span class="tag">MCP / Agent</span>
+            <span class="tag">Python</span><span class="tag">C++</span><span class="tag">VSCode</span><span class="tag">MCP / Agent</span>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 项目案例 ==================== -->
-  <section class="section section-alt" id="projects">
+  <!-- ===== ⑥ Experience ===== -->
+  <section class="section experience" id="experience">
     <div class="container">
-      <div class="section-head reveal">
-        <p class="section-tag">PROJECTS</p>
-        <h2 class="section-title">项目案例</h2>
-        <p class="section-sub">
-          从产品交互、数据闭环到 AI 算法落地，每个项目都完整展示我的思考与执行过程。
-        </p>
-      </div>
-
-      <!-- 项目 1（重点项目）：途泊 · 龙虾实验助手 -->
-      <article class="project-card reveal" style="--cover-a:#4f46e5;--cover-b:#818cf8;">
-        <header class="project-head">
-          <div class="project-head-main">
-            <span class="project-category">★ 重点项目 · AI 产品</span>
-            <h3>途泊 · 龙虾实验助手</h3>
-          </div>
-          <div class="project-head-meta">
-            <p class="project-cover-time">2026.03 — 至今 · 实验组成员</p>
-            <p class="project-cover-time">独立承担龙虾的接入 &amp; 功能改进</p>
-          </div>
-        </header>
-
-        <div class="project-metrics">
-          <div class="metric-chip"><strong>4~5 → 1~2</strong><span>实验入口步骤</span></div>
-          <div class="metric-chip"><strong>20+</strong><span>实验场景识别</span></div>
-          <div class="metric-chip"><strong>30+</strong><span>体验反馈迭代</span></div>
-          <div class="metric-chip"><strong>15+ → 20+</strong><span>场景拓展</span></div>
-        </div>
-
-        <h4 class="project-title">全局浮窗 AI 助手 + 实验数据闭环建设</h4>
-        <p class="project-desc">
-          独立负责「龙虾实验助手」的产品交互优化与数据闭环建设：将 AI 助手升级为实验全程随时可调用的全局浮窗，
-          并打通真实实验数据回传链路，实现「一句话进实验 → 自动配置 → 结果实时回传」的完整闭环。
-        </p>
-
-        <div class="project-figures">
-          <figure class="project-figure reveal" style="transition-delay:.05s">
-            <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
-            <figcaption><strong>图注：</strong>全局浮窗式 AI 助手 —— 固定右侧面板嵌入实验平台，实验全过程随时调用、随时提问</figcaption>
-          </figure>
-          <figure class="project-figure reveal" style="transition-delay:.2s">
-            <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
-            <figcaption><strong>图注：</strong>自然语言 → 实验意图 —— 提问「2FSK 解调方式」，助手按知识库作答并自动配置实验、提供虚实平台跳转入口</figcaption>
-          </figure>
-          <figure class="project-figure reveal" style="transition-delay:.35s">
-            <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
-            <figcaption><strong>图注：</strong>一句话进入实验 —— 自然语言识别出 20+ 类通信实验场景，一键跳转进入</figcaption>
-          </figure>
-          <figure class="project-figure reveal" style="transition-delay:.5s">
-            <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
-            <figcaption><strong>图注：</strong>虚实结合实验配置 —— QPSK 256K 仿真参数自动预填，一键下发实验箱 / 启动仿真引擎</figcaption>
-          </figure>
-          <figure class="project-figure reveal" style="transition-delay:.65s">
-            <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
-            <figcaption><strong>图注：</strong>实验数据实时回传 —— 星座图 / 眼图 / BER 曲线与实测 BER（2.000e-3）直接回传平台</figcaption>
-          </figure>
-          <figure class="project-figure reveal" style="transition-delay:.8s">
-            <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
-            <figcaption><strong>图注：</strong>智能实验助手对话页 —— 支持模型选择与通信原理问答引导的独立对话形态</figcaption>
-          </figure>
-        </div>
-
-        <ul class="project-points">
-          <li class="reveal" style="transition-delay:.1s">
-            <span class="point-title">交互优化</span>
-            <span class="point-text">将助手由独立页面升级为全局浮窗式 AI 助手，实验入口操作由 4~5 步缩减至 1~2 步，降低平台使用门槛、提升实验交互效率与产品易用性。</span>
-          </li>
-          <li class="reveal" style="transition-delay:.25s">
-            <span class="point-title">数据闭环</span>
-            <span class="point-text">与第三方厂商协同打通实验箱数据回传链路，推动 IQ 参数等真实实验数据实时回传平台；拓展实验场景由 15+ 种提升至 20+ 类通信实验的自然语言识别，实现一句话快速进入对应实验。</span>
-          </li>
-          <li class="reveal" style="transition-delay:.4s">
-            <span class="point-title">手册与迭代</span>
-            <span class="point-text">自主撰写平台使用手册，联系专业内 5 个实验组试用并收集 30+ 条体验反馈；围绕回答边界与交互流程多轮优化 Prompt，提升 AI 回答与实验运行结果的一致性。</span>
-          </li>
-        </ul>
-
-        <div class="tag-list">
-          <span class="tag">FastAPI</span>
-          <span class="tag">OpenClaw</span>
-          <span class="tag">Prompt Engineering</span>
-          <span class="tag">Python</span>
-          <span class="tag">Figma</span>
-          <span class="tag">数据闭环</span>
-        </div>
-      </article>
-
-      <!-- 项目 2：基于深度学习的人机对战模型 -->
-      <article class="project-card reveal" style="--cover-a:#0ea5e9;--cover-b:#67e8f9;">
-        <header class="project-head">
-          <div class="project-head-main">
-            <span class="project-category">AI 算法 · 项目负责人</span>
-            <h3>基于深度学习的人机对战模型</h3>
-          </div>
-          <div class="project-head-meta">
-            <p class="project-cover-time">五子棋 AI 对战系统 · 项目负责人</p>
-            <p class="project-cover-time">方案设计 + 工程实现</p>
-          </div>
-        </header>
-
-        <div class="project-metrics">
-          <div class="metric-chip"><strong>3 阶段</strong><span>混合决策策略</span></div>
-          <div class="metric-chip"><strong>Self-Play</strong><span>持续生成棋局</span></div>
-          <div class="metric-chip"><strong>DeepSeek</strong><span>高质量棋谱辅助</span></div>
-          <div class="metric-chip"><strong>PyTorch</strong><span>深度网络训练</span></div>
-        </div>
-
-        <h4 class="project-title">Rule Engine + Neural Network + DeepSeek 三阶段混合决策</h4>
-        <p class="project-desc">
-          基于 PyTorch 实现深度神经网络训练，结合 Self-Play 持续生成棋局数据，
-          用三阶段混合决策策略解决传统自博弈训练初期数据质量不足、策略单一的问题。
-        </p>
-
-        <div class="project-split">
-          <figure class="project-figure reveal" style="transition-delay:.1s">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system,%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines,%20deep%20blue%20and%20cyan%20color%20palette,%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策流程示意" loading="lazy" />
-            <figcaption><strong>图注：</strong>三阶段混合决策示意 —— 规则引擎 + 深度网络 + DeepSeek 协同生成高质量训练样本</figcaption>
-          </figure>
-          <ul class="project-points">
-            <li class="reveal" style="transition-delay:.2s">
-              <span class="point-text">自主调研 AlphaZero、Leela Zero 等自博弈思路及主流棋类 AI 产品，设计三阶段混合决策策略：规则引擎快速过滤必胜、必防局面，深度网络完成棋局价值评估，DeepSeek 在复杂局面下提供策略建议与高质量棋谱，生成更高质量的训练样本。</span>
-            </li>
-            <li class="reveal" style="transition-delay:.35s">
-              <span class="point-text">基于新增高质量棋局持续更新训练集，实现模型棋局判断能力与攻防策略的持续优化。</span>
-            </li>
-            <li class="reveal" style="transition-delay:.5s">
-              <span class="point-text">设计面向棋局分析场景的 Prompt，约束模型输出标准化落子建议及策略解释，提升大模型生成训练数据的一致性和可用性。</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="tag-list">
-          <span class="tag">PyTorch</span>
-          <span class="tag">Self-Play</span>
-          <span class="tag">DeepSeek</span>
-          <span class="tag">Prompt Engineering</span>
-        </div>
-      </article>
-
-      <!-- 项目 3：校辩论赛事 -->
-      <article class="project-card reveal" style="--cover-a:#f59e0b;--cover-b:#fcd34d;">
-        <header class="project-head">
-          <div class="project-head-main">
-            <span class="project-category">活动运营 · 组织管理</span>
-            <h3>校辩论赛事策划与运营</h3>
-          </div>
-          <div class="project-head-meta">
-            <p class="project-cover-time">2025.09 — 至今 · 校辩论队</p>
-            <p class="project-cover-time">赛事负责人</p>
-          </div>
-        </header>
-
-        <div class="project-metrics">
-          <div class="metric-chip"><strong>10+</strong><span>组织校内赛事</span></div>
-          <div class="metric-chip"><strong>100+</strong><span>参与成员</span></div>
-          <div class="metric-chip"><strong>1000+</strong><span>观众人次</span></div>
-          <div class="metric-chip"><strong>10+</strong><span>人执行小组</span></div>
-        </div>
-
-        <h4 class="project-title">从 0 到 1 组织十余人团队运营全校赛事</h4>
-        <p class="project-desc">
-          累计负责组织校内赛事十余场，参与成员超百人、观众总计超千人。
-          全程负责赛事策划、赛程安排、团队分工与现场执行。
-        </p>
-
-        <div class="project-split">
-          <figure class="project-figure reveal" style="transition-delay:.1s">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20a%20university%20debate%20competition%20on%20stage,%20speaker%20podium%20with%20microphone,%20warm%20amber%20and%20orange%20color%20palette,%20clean%20minimal%20style%20with%20audience%20silhouettes&image_size=landscape_4_3" alt="辩论赛事组织流程示意" loading="lazy" />
-            <figcaption><strong>图注：</strong>赛事组织流程示意 —— 统筹 10+ 人工作小组，服务百名选手与超千名观众</figcaption>
-          </figure>
-          <ul class="project-points">
-            <li class="reveal" style="transition-delay:.2s">
-              <span class="point-text">设计赛事流程与规则，建立可复用的执行清单。</span>
-            </li>
-            <li class="reveal" style="transition-delay:.35s">
-              <span class="point-text">统筹 10+ 人工作小组，保障多场赛事顺利落地。</span>
-            </li>
-            <li class="reveal" style="transition-delay:.5s">
-              <span class="point-text">通过宣传与运营将单场观众规模提升至百人级。</span>
-            </li>
-          </ul>
-        </div>
-
-        <div class="tag-list">
-          <span class="tag">活动策划</span>
-          <span class="tag">团队协作</span>
-          <span class="tag">项目管理</span>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <!-- ==================== 经历时间线 ==================== -->
-  <section class="section" id="experience">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="section-tag">EXPERIENCE</p>
-        <h2 class="section-title">我的经历</h2>
+      <div class="section-head reveal" data-reveal="mask">
+        <p class="section-tag">EXPERIENCE — 我的经历</p>
+        <h2 class="section-title">Path</h2>
         <p class="section-sub">教育、实践与成长的关键节点。</p>
       </div>
 
       <div class="timeline">
-        <div class="timeline-item reveal">
+        <div class="timeline-item reveal" data-reveal="up">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <p class="timeline-time">2024.09 — 2028.06</p>
@@ -348,7 +260,7 @@
             <p>专业综合排名 105/560，六级 611。完成电子电路、数据结构、通信原理、人工智能等核心课程。</p>
           </div>
         </div>
-        <div class="timeline-item reveal">
+        <div class="timeline-item reveal" data-reveal="up">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <p class="timeline-time">2025 — 2026 年</p>
@@ -356,7 +268,7 @@
             <p>在课程设计中自主编写 Skills；基本掌握 SQL 语法，并在 Sqliteviz 平台多次实操。</p>
           </div>
         </div>
-        <div class="timeline-item reveal">
+        <div class="timeline-item reveal" data-reveal="up">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <p class="timeline-time">2025.09 — 至今</p>
@@ -364,7 +276,7 @@
             <p>累计负责组织校内赛事十余场，参与成员超百人、观众超千人，锻炼了统筹与表达能力。</p>
           </div>
         </div>
-        <div class="timeline-item reveal">
+        <div class="timeline-item reveal" data-reveal="up">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <p class="timeline-time">2026 年</p>
@@ -372,7 +284,7 @@
             <p>2026 年自学 Figma，通过 10+ 个项目进行实战练习，完成平台产品原型设计与交互流程制作，形成从需求到原型的完整输出能力。</p>
           </div>
         </div>
-        <div class="timeline-item reveal">
+        <div class="timeline-item reveal" data-reveal="up">
           <div class="timeline-dot"></div>
           <div class="timeline-card">
             <p class="timeline-time">2026.03 — 至今</p>
@@ -384,71 +296,242 @@
     </div>
   </section>
 
-  <!-- ==================== 联系方式 ==================== -->
-  <section class="section section-alt" id="contact">
+  <!-- ===== ⑦ Contact ===== -->
+  <section class="section contact" id="contact">
     <div class="container contact-inner">
-      <div class="section-head reveal">
-        <p class="section-tag">CONTACT</p>
-        <h2 class="section-title">联系我</h2>
-        <p class="section-sub">如果你对我的项目感兴趣，或者想交流产品想法，欢迎随时联系。</p>
-      </div>
+      <p class="contact-statement reveal" data-reveal="mask">Let's Build Something<br /><span class="grad">Meaningful.</span></p>
+      <p class="contact-sub reveal" data-reveal="blur" style="--d:.15s">如果你对我的项目感兴趣，或者想交流产品想法，欢迎随时联系。</p>
 
       <div class="contact-grid">
-        <a class="contact-card reveal" href="https://mail.qq.com/" target="_blank" rel="noopener">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
+        <a class="contact-card reveal" data-reveal="up" href="https://mail.qq.com/" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
           <p class="contact-label">邮箱 Email</p>
           <p class="contact-value">you_yunlily@qq.com</p>
           <span class="contact-hint">点击跳转 QQ 邮箱，直接发送文件 →</span>
         </a>
-
-        <div class="contact-card reveal">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-          </svg>
+        <div class="contact-card reveal" data-reveal="up" style="--d:.1s">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
           <p class="contact-label">电话 Phone</p>
           <p class="contact-value">18710175002</p>
           <span class="contact-hint">工作日 9:00 — 21:00 可接听</span>
         </div>
-
-        <div class="contact-card reveal">
-          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-          </svg>
+        <div class="contact-card reveal" data-reveal="up" style="--d:.2s">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           <p class="contact-label">微信 WeChat</p>
           <p class="contact-value">lily67388</p>
           <span class="contact-hint">添加时请备注「产品实习」</span>
         </div>
+        <a class="contact-card reveal" data-reveal="up" style="--d:.3s" href="https://github.com/youyunlily-design" target="_blank" rel="noopener">
+          <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          <p class="contact-label">GitHub</p>
+          <p class="contact-value">youyunlily-design</p>
+          <span class="contact-hint">作品代码与部署仓库 →</span>
+        </a>
       </div>
 
-      <div class="contact-download reveal">
-        <a href="2028届-北京邮电大学卢沁园.pdf" download="卢沁园_产品实习生简历.pdf" class="btn btn-primary">
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          下载我的简历（PDF）
-        </a>
+      <div class="contact-download reveal" data-reveal="up">
+        <a href="2028届-北京邮电大学卢沁园.pdf" download="卢沁园_产品实习生简历.pdf" class="btn btn-primary">下载我的简历（PDF）</a>
       </div>
     </div>
   </section>
 
-  <!-- ==================== 页脚 ==================== -->
+  <!-- ===== 页脚 ===== -->
   <footer class="footer">
     <div class="container footer-inner">
-      <p>© <span id="year"></span> 卢沁园 · 产品作品集</p>
+      <p>© <span id="year"></span> 卢沁园 · AI Product Builder</p>
       <p>用产品思维，把想法变成现实</p>
     </div>
   </footer>
 
-  <!-- ==================== 图片灯箱（点击项目图全屏过渡查看） ==================== -->
+  <!-- ===== 项目详情 全屏 Modal ===== -->
+  <div class="modal" id="modal-p1" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close aria-label="关闭">&times;</button>
+      <div class="modal-body">
+        <p class="modal-tag">★ 重点项目 · AI 产品</p>
+        <h3 class="modal-title">途泊 · 龙虾实验助手</h3>
+        <p class="modal-meta">2026.03 — 至今 · 实验组成员&ensp;|&ensp;独立承担龙虾的接入 &amp; 功能改进</p>
+
+        <div class="modal-metrics">
+          <div class="metric"><strong><span data-count="4">0</span>~<span data-count="5">0</span> → <span data-count="1">0</span>~<span data-count="2">0</span></strong><span>实验入口步骤</span></div>
+          <div class="metric"><strong><span data-count="20" data-suffix="+">0</span></strong><span>实验场景识别</span></div>
+          <div class="metric"><strong><span data-count="30" data-suffix="+">0</span></strong><span>体验反馈迭代</span></div>
+          <div class="metric"><strong><span data-count="15" data-suffix="+ → 20+">0</span></strong><span>场景拓展</span></div>
+        </div>
+
+        <h4 class="modal-block">Overview · 全局浮窗 AI 助手 + 实验数据闭环建设</h4>
+        <p>独立负责「龙虾实验助手」的产品交互优化与数据闭环建设：将 AI 助手升级为实验全程随时可调用的全局浮窗，并打通真实实验数据回传链路，实现「一句话进实验 → 自动配置 → 结果实时回传」的完整闭环。</p>
+
+        <h4 class="modal-block">Challenge</h4>
+        <p>将助手由独立页面升级为全局浮窗式 AI 助手，实验入口操作由 4~5 步缩减至 1~2 步，降低平台使用门槛、提升实验交互效率与产品易用性。</p>
+
+        <h4 class="modal-block">My Role</h4>
+        <p>实验组成员，独立承担龙虾的接入与功能改进，负责产品交互、数据闭环与 Prompt 迭代。</p>
+
+        <h4 class="modal-block">Workflow</h4>
+        <p>一句话进实验 → 自动配置 → 结果实时回传。自然语言识别出 20+ 类通信实验场景，一键跳转进入对应实验。</p>
+
+        <h4 class="modal-block">Experiment Recognition</h4>
+        <p>拓展实验场景由 15+ 种提升至 20+ 类通信实验的自然语言识别，实现一句话快速进入对应实验。</p>
+
+        <h4 class="modal-block">Data Loop</h4>
+        <p>与第三方厂商协同打通实验箱数据回传链路，推动 IQ 参数等真实实验数据实时回传平台。</p>
+
+        <h4 class="modal-block">Prompt Design</h4>
+        <p>自主撰写平台使用手册，联系专业内 5 个实验组试用并收集 30+ 条体验反馈；围绕回答边界与交互流程多轮优化 Prompt，提升 AI 回答与实验运行结果的一致性。</p>
+
+        <div class="modal-figures">
+          <figure class="project-figure">
+            <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
+            <figcaption><strong>图注：</strong>全局浮窗式 AI 助手 —— 固定右侧面板嵌入实验平台，实验全过程随时调用、随时提问</figcaption>
+          </figure>
+          <figure class="project-figure">
+            <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
+            <figcaption><strong>图注：</strong>自然语言 → 实验意图 —— 提问「2FSK 解调方式」，助手按知识库作答并自动配置实验、提供虚实平台跳转入口</figcaption>
+          </figure>
+          <figure class="project-figure">
+            <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
+            <figcaption><strong>图注：</strong>一句话进入实验 —— 自然语言识别出 20+ 类通信实验场景，一键跳转进入</figcaption>
+          </figure>
+          <figure class="project-figure">
+            <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
+            <figcaption><strong>图注：</strong>虚实结合实验配置 —— QPSK 256K 仿真参数自动预填，一键下发实验箱 / 启动仿真引擎</figcaption>
+          </figure>
+          <figure class="project-figure">
+            <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
+            <figcaption><strong>图注：</strong>实验数据实时回传 —— 星座图 / 眼图 / BER 曲线与实测 BER（2.000e-3）直接回传平台</figcaption>
+          </figure>
+          <figure class="project-figure">
+            <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
+            <figcaption><strong>图注：</strong>智能实验助手对话页 —— 支持模型选择与通信原理问答引导的独立对话形态</figcaption>
+          </figure>
+        </div>
+
+        <ul class="modal-points">
+          <li><strong>交互优化</strong>将助手由独立页面升级为全局浮窗式 AI 助手，实验入口操作由 4~5 步缩减至 1~2 步，降低平台使用门槛、提升实验交互效率与产品易用性。</li>
+          <li><strong>数据闭环</strong>与第三方厂商协同打通实验箱数据回传链路，推动 IQ 参数等真实实验数据实时回传平台；拓展实验场景由 15+ 种提升至 20+ 类通信实验的自然语言识别，实现一句话快速进入对应实验。</li>
+          <li><strong>手册与迭代</strong>自主撰写平台使用手册，联系专业内 5 个实验组试用并收集 30+ 条体验反馈；围绕回答边界与交互流程多轮优化 Prompt，提升 AI 回答与实验运行结果的一致性。</li>
+        </ul>
+
+        <div class="tag-list">
+          <span class="tag">FastAPI</span><span class="tag">OpenClaw</span><span class="tag">Prompt Engineering</span><span class="tag">Python</span><span class="tag">Figma</span><span class="tag">数据闭环</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-p2" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close aria-label="关闭">&times;</button>
+      <div class="modal-body">
+        <p class="modal-tag">AI 算法 · 项目负责人</p>
+        <h3 class="modal-title">基于深度学习的人机对战模型</h3>
+        <p class="modal-meta">五子棋 AI 对战系统 · 项目负责人&ensp;|&ensp;方案设计 + 工程实现</p>
+
+        <div class="modal-metrics">
+          <div class="metric"><strong>3 阶段</strong><span>混合决策策略</span></div>
+          <div class="metric"><strong>Self-Play</strong><span>持续生成棋局</span></div>
+          <div class="metric"><strong>DeepSeek</strong><span>高质量棋谱辅助</span></div>
+          <div class="metric"><strong>PyTorch</strong><span>深度网络训练</span></div>
+        </div>
+
+        <h4 class="modal-block">Overview · Rule Engine + Neural Network + DeepSeek 三阶段混合决策</h4>
+        <p>基于 PyTorch 实现深度神经网络训练，结合 Self-Play 持续生成棋局数据，用三阶段混合决策策略解决传统自博弈训练初期数据质量不足、策略单一的问题。</p>
+
+        <h4 class="modal-block">Challenge</h4>
+        <p>传统自博弈训练初期数据质量不足、策略单一。需要一种框架在不依赖海量人工棋谱的前提下，快速生成高质量训练样本。</p>
+
+        <h4 class="modal-block">Architecture</h4>
+        <p>三阶段混合决策：规则引擎快速过滤必胜、必防局面；深度网络完成棋局价值评估；DeepSeek 在复杂局面下提供策略建议与高质量棋谱，生成更高质量的训练样本。</p>
+
+        <h4 class="modal-block">Training Pipeline</h4>
+        <p>基于新增高质量棋局持续更新训练集，实现模型棋局判断能力与攻防策略的持续优化。</p>
+
+        <h4 class="modal-block">Self Play &amp; Decision Workflow</h4>
+        <p>自主调研 AlphaZero、Leela Zero 等自博弈思路及主流棋类 AI 产品，设计三阶段混合决策策略，将规则、网络与大模型协同为统一的决策流程。</p>
+
+        <h4 class="modal-block">Prompt Design</h4>
+        <p>设计面向棋局分析场景的 Prompt，约束模型输出标准化落子建议及策略解释，提升大模型生成训练数据的一致性和可用性。</p>
+
+        <div class="modal-figures">
+          <figure class="project-figure">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system,%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines,%20deep%20blue%20and%20cyan%20color%20palette,%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策流程示意" loading="lazy" />
+            <figcaption><strong>图注：</strong>三阶段混合决策示意 —— 规则引擎 + 深度网络 + DeepSeek 协同生成高质量训练样本</figcaption>
+          </figure>
+        </div>
+
+        <ul class="modal-points">
+          <li><strong>混合决策框架</strong>自主调研 AlphaZero、Leela Zero 等自博弈思路及主流棋类 AI 产品，设计三阶段混合决策策略：规则引擎快速过滤必胜、必防局面，深度网络完成棋局价值评估，DeepSeek 在复杂局面下提供策略建议与高质量棋谱，生成更高质量的训练样本。</li>
+          <li><strong>持续训练</strong>基于新增高质量棋局持续更新训练集，实现模型棋局判断能力与攻防策略的持续优化。</li>
+          <li><strong>Prompt 设计</strong>设计面向棋局分析场景的 Prompt，约束模型输出标准化落子建议及策略解释，提升大模型生成训练数据的一致性和可用性。</li>
+        </ul>
+
+        <div class="tag-list">
+          <span class="tag">PyTorch</span><span class="tag">Self-Play</span><span class="tag">DeepSeek</span><span class="tag">Prompt Engineering</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modal-p3" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-panel">
+      <button class="modal-close" data-close aria-label="关闭">&times;</button>
+      <div class="modal-body">
+        <p class="modal-tag">活动运营 · 组织管理</p>
+        <h3 class="modal-title">校辩论赛事策划与运营</h3>
+        <p class="modal-meta">2025.09 — 至今 · 校辩论队赛事负责人</p>
+
+        <div class="modal-metrics">
+          <div class="metric"><strong><span data-count="10" data-suffix="+">0</span></strong><span>组织校内赛事</span></div>
+          <div class="metric"><strong><span data-count="100" data-suffix="+">0</span></strong><span>参与成员</span></div>
+          <div class="metric"><strong><span data-count="1000" data-suffix="+">0</span></strong><span>观众人次</span></div>
+          <div class="metric"><strong><span data-count="10" data-suffix="+">0</span></strong><span>人执行小组</span></div>
+        </div>
+
+        <h4 class="modal-block">Overview · 从 0 到 1 组织十余人团队运营全校赛事</h4>
+        <p>累计负责组织校内赛事十余场，参与成员超百人、观众总计超千人。全程负责赛事策划、赛程安排、团队分工与现场执行。</p>
+
+        <h4 class="modal-block">Workflow</h4>
+        <p>设计赛事流程与规则，建立可复用的执行清单；统筹 10+ 人工作小组，保障多场赛事顺利落地；通过宣传与运营将单场观众规模提升至百人级。</p>
+
+        <div class="modal-figures">
+          <figure class="project-figure">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20a%20university%20debate%20competition%20on%20stage,%20speaker%20podium%20with%20microphone,%20warm%20amber%20and%20orange%20color%20palette,%20clean%20minimal%20style%20with%20audience%20silhouettes&image_size=landscape_4_3" alt="辩论赛事组织流程示意" loading="lazy" />
+            <figcaption><strong>图注：</strong>赛事组织流程示意 —— 统筹 10+ 人工作小组，服务百名选手与超千名观众</figcaption>
+          </figure>
+        </div>
+
+        <ul class="modal-points">
+          <li><strong>流程设计</strong>设计赛事流程与规则，建立可复用的执行清单。</li>
+          <li><strong>团队统筹</strong>统筹 10+ 人工作小组，保障多场赛事顺利落地。</li>
+          <li><strong>宣传运营</strong>通过宣传与运营将单场观众规模提升至百人级。</li>
+        </ul>
+
+        <div class="tag-list">
+          <span class="tag">活动策划</span><span class="tag">团队协作</span><span class="tag">项目管理</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== 图片灯箱 ===== -->
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="lightbox-close" id="lightboxClose" aria-label="关闭">&times;</button>
     <figure>
       <img id="lightboxImg" src="" alt="项目截图大图" />
       <figcaption id="lightboxCap"></figcaption>
     </figure>
-    <p class="lightbox-hint">点击任意位置或按 Esc 关闭</p>
+    <p class="lightbox-hint">点击背景、图片或按 Esc 关闭</p>
   </div>
 
-  <script src="js/main.js"></script>
+  <!-- ===== 第三方动画库（CDN，加载失败自动降级） ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>
