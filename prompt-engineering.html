@@ -11,7 +11,10 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎯</text></svg>" />
   <style>
-    /* ===== 本页专属排版：Interactive Brainstorming Case Study ===== */
+    /* ============================================================
+       本页专属排版：Interactive Brainstorming Case Study
+       连续纵向滚动 Storytelling：Question → Thinking → Insight
+       ============================================================ */
 
     /* 轻微入场动画（reduced-motion 下自动关闭） */
     @keyframes peFade {
@@ -40,10 +43,11 @@
       .pe-anim, .pe-tag { opacity: 1; animation: none; }
     }
 
-    /* ---- Statement 区（紧凑，不占 Hero 大部分空间） ---- */
+    /* ---- Statement 区（设计理念声明，不占 Hero） ---- */
     .pe-statement {
       position: relative;            /* 容纳右上角 Brain Storming 标签 */
-      padding: clamp(110px, 12vw, 170px) 0 clamp(40px, 5vw, 70px);
+      padding: clamp(110px, 12vw, 170px) 0 clamp(50px, 6vw, 84px);
+      border-bottom: 1px solid var(--line);
     }
 
     .pe-kicker {
@@ -97,49 +101,71 @@
       }
     }
 
-    /* ---- 主体：左 Question / 右 My Thinking ---- */
-    .pe-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: clamp(3rem, 7vw, 8rem);
-      padding: clamp(80px, 9vw, 130px) 0 clamp(120px, 12vw, 190px);
+    /* ============================================================
+       连续叙事区：6 个思考模块
+       ============================================================ */
+    .pe-story {
+      padding: clamp(20px, 3vw, 40px) 0 clamp(120px, 12vw, 190px);
     }
 
-    .pe-col-tag {
+    .pe-module {
+      padding: clamp(64px, 8vw, 110px) 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pe-module:last-child { border-bottom: 0; }
+
+    .pe-mod-head {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .pe-mod-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .pe-mod-title {
+      font-size: .72rem;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--ink-3);
+    }
+
+    /* 模块内：左 Question / 右 My Thinking */
+    .pe-mod-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 6vw, 6rem);
+      align-items: start;
+    }
+
+    .pe-q-label,
+    .pe-t-label {
       display: flex;
       align-items: center;
       gap: .9rem;
-      font-size: .78rem;
+      font-size: .72rem;
       letter-spacing: .3em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 2.4rem;
+      margin-bottom: 1.4rem;
     }
 
-    .pe-col-tag::before {
+    .pe-q-label::before,
+    .pe-t-label::before {
       content: "";
-      width: 2.4rem;
+      width: 2.2rem;
       height: 1px;
       background: var(--accent);
       flex: none;
     }
 
-    .pe-col-tag small {
-      font-size: .7rem;
-      letter-spacing: .2em;
-      color: var(--ink-3);
-    }
-
-    .pe-col-body {
-      min-height: 42vh;             /* 留白：具体问题内容稍后填充 */
-    }
-
-    @media (max-width: 760px) {
-      .pe-cols { grid-template-columns: 1fr; }
-      .pe-col-body { min-height: 30vh; }
-    }
-
-    /* ===== 动态叙事：Question 便签 / 打字机 / Insight ===== */
+    /* ---- Question 便签 ---- */
     .pe-q-note {
       display: inline-block;
       position: relative;
@@ -185,11 +211,12 @@
       transform: translateX(0) rotate(-2.2deg);
     }
 
+    /* ---- My Thinking 打字机 ---- */
     .pe-think {
       font-size: clamp(1rem, 1.7vw, 1.16rem);
       line-height: 2;
       color: var(--ink-2);
-      min-height: 4.6em;
+      min-height: 3.2em;
       white-space: pre-wrap;
     }
 
@@ -208,6 +235,7 @@
 
     @keyframes caretBlink { to { visibility: hidden; } }
 
+    /* ---- Insight 总结卡 ---- */
     .pe-insight {
       margin-top: 2.8rem;
       border: 1px solid var(--line);
@@ -240,32 +268,128 @@
       color: var(--ink);
     }
 
-    .pe-control {
-      margin-top: 2.6rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
+    /* ============================================================
+       模块特色卡：Prompt 示例 / Role 分工 / Workflow / Reference
+       ============================================================ */
+    .pe-extra {
       opacity: 0;
-      transition: opacity .5s var(--ease);
+      transform: translateY(14px);
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
     }
 
-    .pe-control.show { opacity: 1; }
+    .pe-extra.in { opacity: 1; transform: none; }
 
-    .pe-progress {
+    /* Prompt 示例卡片 */
+    .pe-prompt {
+      margin-top: 2.6rem;
+      background: var(--bg-2);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1.3rem 1.5rem;
+      font-family: ui-monospace, "SF Mono", Consolas, Menlo, monospace;
+      font-size: .8rem;
+      line-height: 1.9;
+      color: var(--ink-2);
+    }
+
+    .pe-prompt-label {
+      display: block;
+      font-family: var(--sans);
+      font-size: .64rem;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .8rem;
+    }
+
+    .pe-prompt .em { color: var(--ink); font-weight: 600; }
+
+    /* Role 分工卡片 */
+    .pe-roles {
+      margin-top: 2.6rem;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+
+    .pe-role {
+      border-top: 2px solid var(--ink);
+      padding-top: .9rem;
+    }
+
+    .pe-role h5 {
+      font-size: .92rem;
+      font-weight: 600;
+      letter-spacing: .02em;
+      margin-bottom: .4rem;
+    }
+
+    .pe-role p {
       font-size: .78rem;
-      letter-spacing: .24em;
+      line-height: 1.7;
       color: var(--ink-3);
-      font-variant-numeric: tabular-nums;
+    }
+
+    /* Workflow 图 */
+    .pe-flow {
+      margin-top: 2.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .7rem;
+    }
+
+    .pe-flow-step {
+      border: 1px solid var(--line-2);
+      border-radius: 999px;
+      padding: .55rem 1.1rem;
+      font-size: .78rem;
+      letter-spacing: .06em;
+      color: var(--ink);
+      transition: background .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
+    }
+
+    .pe-flow-step.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--bg);
+    }
+
+    .pe-flow-arrow { color: var(--accent); font-size: .95rem; }
+
+    /* Reference 图片区域 */
+    .pe-ref {
+      margin-top: 2.6rem;
+    }
+
+    .pe-ref img {
+      width: 100%;
+      border-radius: 14px;
+      background: var(--bg-2);
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
+    .pe-ref figcaption {
+      margin-top: .7rem;
+      font-size: .74rem;
+      letter-spacing: .08em;
+      color: var(--ink-3);
+    }
+
+    @media (max-width: 760px) {
+      .pe-mod-grid { grid-template-columns: 1fr; }
+      .pe-roles { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .pe-q-note, .pe-insight, .pe-control {
+      .pe-q-note, .pe-insight, .pe-extra {
         opacity: 1;
         transform: none;
         transition: none;
       }
       .pe-think::after { animation: none; }
+      .pe-flow-step { transition: none; }
     }
   </style>
 </head>
@@ -291,30 +415,167 @@
       <div class="pe-tag" aria-hidden="true">Brain Storming</div>
     </section>
 
-    <!-- 主体：Question / My Thinking -->
-    <section class="pe-body">
-      <div class="container pe-cols">
-        <div class="pe-col pe-q">
-          <p class="pe-col-tag pe-anim" style="animation-delay:.2s">Question <small>01</small></p>
-          <div class="pe-col-body">
-            <div class="pe-q-note" aria-live="polite"></div>
+    <!-- ===== 连续叙事：6 个思考模块 ===== -->
+    <section class="pe-story">
+
+      <article class="pe-module" data-idx="0">
+        <div class="pe-mod-head">
+          <span class="pe-mod-num">01</span>
+          <span class="pe-mod-title">The Redesign</span>
+        </div>
+        <div class="pe-mod-grid">
+          <div class="pe-q">
+            <p class="pe-q-label">Question</p>
+            <div class="pe-q-note">Why did I redesign my portfolio?</div>
+          </div>
+          <div class="pe-t">
+            <p class="pe-t-label">My Thinking</p>
+            <div class="pe-think" aria-live="polite"></div>
+            <figure class="pe-ref pe-extra">
+              <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal+editorial+moodboard%2C+beige+and+sage+green+palette%2C+magazine+spread+sketches+with+typography+specimens+and+wireframe+thumbnails%2C+soft+studio+light%2C+high-end+case+study+reference&image_size=landscape_16_9" alt="Editorial 设计参考 moodboard" loading="lazy" />
+              <figcaption>REFERENCE — 从「经历清单」到「思考过程」的呈现方式研究</figcaption>
+            </figure>
+            <div class="pe-insight" aria-hidden="true">
+              <span class="pe-insight-label">Insight</span>
+              <p class="pe-insight-text">A portfolio should show how I think, not only what I built.</p>
+            </div>
           </div>
         </div>
-        <div class="pe-col pe-t">
-          <p class="pe-col-tag pe-anim" style="animation-delay:.26s">My Thinking <small>02</small></p>
-          <div class="pe-col-body">
+      </article>
+
+      <article class="pe-module" data-idx="1">
+        <div class="pe-mod-head">
+          <span class="pe-mod-num">02</span>
+          <span class="pe-mod-title">The Product</span>
+        </div>
+        <div class="pe-mod-grid">
+          <div class="pe-q">
+            <p class="pe-q-label">Question</p>
+            <div class="pe-q-note">What problem am I solving?</div>
+          </div>
+          <div class="pe-t">
+            <p class="pe-t-label">My Thinking</p>
             <div class="pe-think" aria-live="polite"></div>
             <div class="pe-insight" aria-hidden="true">
               <span class="pe-insight-label">Insight</span>
-              <p class="pe-insight-text"></p>
-            </div>
-            <div class="pe-control">
-              <span class="pe-progress">01 / 07</span>
-              <button class="pe-next btn btn-ghost" type="button">Next Question</button>
+              <p class="pe-insight-text">A portfolio can become an interactive product experience.</p>
             </div>
           </div>
         </div>
-      </div>
+      </article>
+
+      <article class="pe-module" data-idx="2">
+        <div class="pe-mod-head">
+          <span class="pe-mod-num">03</span>
+          <span class="pe-mod-title">The Context</span>
+        </div>
+        <div class="pe-mod-grid">
+          <div class="pe-q">
+            <p class="pe-q-label">Question</p>
+            <div class="pe-q-note">How can AI understand my design taste?</div>
+          </div>
+          <div class="pe-t">
+            <p class="pe-t-label">My Thinking</p>
+            <div class="pe-think" aria-live="polite"></div>
+            <div class="pe-prompt pe-extra">
+              <span class="pe-prompt-label">Prompt — 设计约束（我给 AI 的上下文）</span>
+              风格：<span class="em">Editorial 杂志感，大留白</span><br />
+              标题：<span class="em">Instrument Serif</span>；正文：<span class="em">Inter</span><br />
+              底色：<span class="em">#ECEFE7</span>；强调：<span class="em">#4A6E58</span><br />
+              原则：每屏一个焦点，动画克制<br />
+              限制：不改变现有信息架构
+            </div>
+            <div class="pe-insight" aria-hidden="true">
+              <span class="pe-insight-label">Insight</span>
+              <p class="pe-insight-text">Better context creates better collaboration.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pe-module" data-idx="3">
+        <div class="pe-mod-head">
+          <span class="pe-mod-num">04</span>
+          <span class="pe-mod-title">The Collaboration</span>
+        </div>
+        <div class="pe-mod-grid">
+          <div class="pe-q">
+            <p class="pe-q-label">Question</p>
+            <div class="pe-q-note">How do I collaborate with AI?</div>
+          </div>
+          <div class="pe-t">
+            <p class="pe-t-label">My Thinking</p>
+            <div class="pe-think" aria-live="polite"></div>
+            <div class="pe-roles pe-extra">
+              <div class="pe-role">
+                <h5>Product Designer</h5>
+                <p>定信息架构、叙事节奏与视觉方向</p>
+              </div>
+              <div class="pe-role">
+                <h5>Frontend Engineer</h5>
+                <p>把方案落成可运行的页面与交互</p>
+              </div>
+              <div class="pe-role">
+                <h5>UX Reviewer</h5>
+                <p>滚动审查体验细节，指出问题并迭代</p>
+              </div>
+            </div>
+            <div class="pe-insight" aria-hidden="true">
+              <span class="pe-insight-label">Insight</span>
+              <p class="pe-insight-text">AI becomes a design partner, not only a generation tool.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pe-module" data-idx="4">
+        <div class="pe-mod-head">
+          <span class="pe-mod-num">05</span>
+          <span class="pe-mod-title">The Iteration</span>
+        </div>
+        <div class="pe-mod-grid">
+          <div class="pe-q">
+            <p class="pe-q-label">Question</p>
+            <div class="pe-q-note">How do I improve AI output?</div>
+          </div>
+          <div class="pe-t">
+            <p class="pe-t-label">My Thinking</p>
+            <div class="pe-think" aria-live="polite"></div>
+            <div class="pe-flow pe-extra" aria-label="迭代工作流">
+              <span class="pe-flow-step">Generate</span><span class="pe-flow-arrow">→</span>
+              <span class="pe-flow-step">Evaluate</span><span class="pe-flow-arrow">→</span>
+              <span class="pe-flow-step">Improve Prompt</span><span class="pe-flow-arrow">→</span>
+              <span class="pe-flow-step">Generate Again</span>
+            </div>
+            <div class="pe-insight" aria-hidden="true">
+              <span class="pe-insight-label">Insight</span>
+              <p class="pe-insight-text">Prompt Engineering is an iterative process.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="pe-module" data-idx="5">
+        <div class="pe-mod-head">
+          <span class="pe-mod-num">06</span>
+          <span class="pe-mod-title">The Shift</span>
+        </div>
+        <div class="pe-mod-grid">
+          <div class="pe-q">
+            <p class="pe-q-label">Question</p>
+            <div class="pe-q-note">What changed after iterations?</div>
+          </div>
+          <div class="pe-t">
+            <p class="pe-t-label">My Thinking</p>
+            <div class="pe-think" aria-live="polite"></div>
+            <div class="pe-insight" aria-hidden="true">
+              <span class="pe-insight-label">Insight</span>
+              <p class="pe-insight-text">Human judgment + AI generation creates better products.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
     </section>
 
   </main>
@@ -325,166 +586,117 @@
 
     var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    /* Brain Storming 内容：Question → Thinking（逐字）→ Insight（产品判断） */
-    var steps = [
-      {
-        q: 'Why did I redesign my portfolio?',
-        thinking: [
-          '传统 PDF Portfolio 可以展示我的经历，',
-          '但是无法完整表达：我如何思考、如何设计、如何解决问题。',
-          '我希望作品集不仅展示结果，也展示过程。'
-        ],
-        insight: 'A portfolio should show how I think, not only what I built.'
-      },
-      {
-        q: 'What should this website actually solve?',
-        thinking: [
-          '如果只是做一个漂亮网页，',
-          '它仍然只是一个展示页面。',
-          '我希望它成为一个产品：展示我的项目经历、设计审美、产品思维，以及 AI 协作方式。'
-        ],
-        insight: 'A portfolio can become an interactive product experience.'
-      },
-      {
-        q: 'How can AI understand my design taste?',
-        thinking: [
-          'AI 不知道什么叫高级设计。',
-          '所以我不能只告诉 AI："Create a beautiful website"。',
-          '我需要提供：参考案例、设计原则、目标、限制条件。'
-        ],
-        insight: 'Better context creates better collaboration.'
-      },
-      {
-        q: 'How do I collaborate with AI?',
-        thinking: [
-          '我没有把 AI 当作代码生成工具。',
-          '而是在不同阶段赋予 AI 不同角色：',
-          'Product Designer',
-          'Frontend Engineer',
-          'UX Reviewer'
-        ],
-        insight: 'AI becomes a design partner, not only a generation tool.'
-      },
-      {
-        q: 'Why does the first AI output often feel wrong?',
-        thinking: [
-          '第一次生成只是起点。',
-          'AI 输出需要人工评估。',
-          '找到：哪里不像我的目标？为什么不符合预期？',
-          '然后重新优化 Prompt。'
-        ],
-        insight: 'Prompt Engineering is an iterative process.'
-      },
-      {
-        q: 'How do I know whether my prompt works?',
-        thinking: [
-          '我的方法：每次修改功能前，先生成一个样本。',
-          '通过样本判断：Prompt 是否准确表达需求。'
-        ],
-        insight: 'Evaluate before you optimize.'
-      },
-      {
-        q: 'What changed after iterations?',
-        thinking: [
-          '最大的变化不是网页变漂亮。',
-          '而是：AI 从一个生成工具，变成我的设计协作者。'
-        ],
-        insight: 'Human judgment + AI generation creates better products.'
-      }
+    /* 每个模块的 Thinking 文本（打字机数据，与模块 data-idx 对应） */
+    var story = [
+      [
+        '传统 PDF Portfolio 可以展示我的经历，',
+        '但是无法完整表达：我的思考方式、设计判断、解决问题的方法。',
+        '我希望作品集不仅展示结果，也展示过程。'
+      ],
+      [
+        '如果只是做一个漂亮网页，它仍然只是一个展示页面。',
+        '我希望它成为一个产品：',
+        '展示我的项目经历、设计审美、产品思维，以及 AI 协作方式。'
+      ],
+      [
+        'AI 不知道什么叫高级设计。',
+        '所以我不能只告诉 AI："Create a beautiful website"。',
+        '我需要提供：参考案例、设计原则、目标、限制条件。'
+      ],
+      [
+        '我没有把 AI 当作代码生成工具。',
+        '而是在不同阶段赋予 AI 不同角色：',
+        'Product Designer、Frontend Engineer、UX Reviewer。'
+      ],
+      [
+        '第一次生成只是起点。',
+        'AI 输出需要人工评估：哪里不像我的目标？为什么不符合预期？',
+        '然后重新优化 Prompt，再次生成。',
+        '我的方法：每次修改功能前，先让 AI 生成一个样本，',
+        '通过样本判断 Prompt 是否准确表达需求。'
+      ],
+      [
+        '最大的变化不是网页变漂亮。',
+        '而是：AI 从一个生成工具，变成我的设计协作者。'
+      ]
     ];
 
-    var note = document.querySelector('.pe-q-note');
-    var think = document.querySelector('.pe-think');
-    var insight = document.querySelector('.pe-insight');
-    var insightText = document.querySelector('.pe-insight-text');
-    var progress = document.querySelector('.pe-progress');
-    var control = document.querySelector('.pe-control');
-    var nextBtn = document.querySelector('.pe-next');
-
-    var idx = 0;
-    var busy = false;
-
-    function pad(n) { return (n < 10 ? '0' : '') + n; }
-
-    function showInsight(text) {
-      insightText.textContent = text;
-      insight.setAttribute('aria-hidden', 'false');
-      insight.classList.add('show');
-    }
-
     /* 打字机：逐字显示多行思考，句间自然停顿 */
-    function typeLines(lines, done) {
-      think.textContent = '';
-      think.classList.remove('done');
+    function typeLines(el, lines, done) {
+      el.textContent = '';
+      el.classList.remove('done');
       var li = 0, ci = 0;
       function tick() {
         if (li >= lines.length) {
-          think.classList.add('done');
+          el.classList.add('done');
           done();
           return;
         }
         var line = lines[li];
         if (ci < line.length) {
           ci++;
-          think.textContent = lines.slice(0, li).join('') + line.slice(0, ci);
+          el.textContent = lines.slice(0, li).join('') + line.slice(0, ci);
           setTimeout(tick, prefersReduced ? 0 : 42);
         } else {
           li++;
           ci = 0;
-          think.textContent = lines.slice(0, li).join('');
+          el.textContent = lines.slice(0, li).join('');
           setTimeout(tick, prefersReduced ? 0 : 480);
         }
       }
       tick();
     }
 
-    function render() {
-      var step = steps[idx];
-      busy = true;
+    function playModule(m) {
+      var idx = parseInt(m.dataset.idx, 10);
+      if (isNaN(idx) || !story[idx]) return;
 
-      progress.textContent = pad(idx + 1) + ' / ' + pad(steps.length);
+      var note = m.querySelector('.pe-q-note');
+      var think = m.querySelector('.pe-think');
+      var insight = m.querySelector('.pe-insight');
+      var extras = m.querySelectorAll('.pe-extra');
 
-      /* Step 1：Question 便签从左侧滑入 */
-      note.textContent = step.q;
-      note.classList.remove('in');
-      void note.offsetWidth;
+      /* 1. Question 便签从左侧滑入 */
       note.classList.add('in');
 
-      /* 重置右侧 */
-      think.textContent = '';
-      think.classList.remove('done');
-      insight.classList.remove('show');
-      insight.setAttribute('aria-hidden', 'true');
-      control.classList.remove('show');
+      /* 特色卡同步淡入 */
+      extras.forEach(function (e) { e.classList.add('in'); });
 
-      nextBtn.textContent = (idx + 1 < steps.length) ? 'Next Question' : 'That\u2019s the process';
-      nextBtn.classList.toggle('is-last', idx + 1 >= steps.length);
-
-      /* Step 2：停留片刻 → Step 3：逐字思考 → Step 4：Insight 出现 */
+      /* 2. 停留片刻 → 3. 打字机思考 → 4. Insight 出现 */
       setTimeout(function () {
-        typeLines(step.thinking, function () {
+        typeLines(think, story[idx], function () {
           setTimeout(function () {
-            showInsight(step.insight);
-            setTimeout(function () {
-              control.classList.add('show');
-              busy = false;
-            }, prefersReduced ? 40 : 520);
-          }, prefersReduced ? 40 : 260);
+            insight.classList.add('show');
+            insight.setAttribute('aria-hidden', 'false');
+            /* Workflow 图：依次点亮，体现迭代过程 */
+            var flowSteps = m.querySelectorAll('.pe-flow-step');
+            if (flowSteps.length && !prefersReduced) {
+              flowSteps.forEach(function (s, i) {
+                setTimeout(function () { s.classList.add('active'); }, 500 + i * 600);
+              });
+            } else {
+              flowSteps.forEach(function (s) { s.classList.add('active'); });
+            }
+          }, prefersReduced ? 40 : 320);
         });
-      }, prefersReduced ? 60 : 1150);
+      }, prefersReduced ? 80 : 550);
     }
 
-    nextBtn.addEventListener('click', function () {
-      if (busy) return;
-      if (idx + 1 < steps.length) {
-        idx++;
-        render();
-      } else {
-        window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
-      }
-    });
+    var modules = Array.prototype.slice.call(document.querySelectorAll('.pe-module'));
 
-    render();
+    if ('IntersectionObserver' in window && !prefersReduced) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting && !en.target.dataset.played) {
+            en.target.dataset.played = '1';
+            playModule(en.target);
+          }
+        });
+      }, { threshold: 0.32, rootMargin: '0px 0px -8% 0px' });
+      modules.forEach(function (m) { io.observe(m); });
+    } else {
+      modules.forEach(function (m) { m.dataset.played = '1'; playModule(m); });
+    }
   })();
   </script>
 
