@@ -918,7 +918,8 @@ em { font-style: italic; }
 
 .story-impact .story-metrics { margin-bottom: 1rem; }
 
-#story-p2 .story-right > .btn { margin-top: 1.6rem; }
+#story-p2 .story-right > .btn,
+#story-p3 .story-right > .btn { margin-top: 1.6rem; }
 
 /* ---- 底部固定区：Tech Stack + CTA ---- */
 .story-footer {
