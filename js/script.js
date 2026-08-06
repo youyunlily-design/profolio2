@@ -1,8 +1,8 @@
 /* ============================================================
-   卢沁园 · AI Product Builder — 交互脚本
-   功能：平滑滚动 / 粒子背景 / 鼠标光效 / 滚动动画 / 逐字 /
-        视差散开 / 计数动画 / 项目详情 Modal / 图片灯箱
-   所有 CDN 依赖均做了降级兜底，加载失败时页面仍完整可用。
+   卢沁园 · AI Product Builder — 编辑风交互脚本
+   功能：背景图像视差（30~50% 速度）/ 慢速渐入 / 图片遮罩揭示 /
+        平滑滚动 / 计数动画 / 项目详情 Modal / 图片灯箱
+   CDN 依赖仅 Lenis，加载失败自动降级为原生滚动。
    ============================================================ */
 
 (function () {
@@ -19,17 +19,51 @@
   /* ---------- 1. Lenis 平滑滚动（降级：原生滚动） ---------- */
   var lenis = null;
   if (!prefersReduced && window.Lenis) {
-    lenis = new Lenis({ lerp: 0.09, smoothWheel: true });
+    lenis = new Lenis({ lerp: 0.1, smoothWheel: true });
     function raf(t) { lenis.raf(t); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
   }
 
   function scrollToTarget(el) {
-    if (lenis) { lenis.scrollTo(el, { offset: 0, duration: 1.5 }); }
+    if (lenis) { lenis.scrollTo(el, { offset: 0, duration: 1.4 }); }
     else { el.scrollIntoView({ behavior: 'smooth' }); }
   }
 
-  /* ---------- 2. 导航：滚动态 / 汉堡菜单 / 锚点 ---------- */
+  /* ---------- 2. 全站背景图像视差 ----------
+     每个 Section 的背景层以正文 30%~50% 的速度缓慢移动。
+     p 为归一化进度（-1.5 ~ 1.5），位移 = p * vh * speed，
+     配合 CSS height:125% 保证任何视口下背景不露底。 */
+  var bgEls = $$('.section-bg');
+  var vh = window.innerHeight;
+  var ticking = false;
+
+  function updateParallax() {
+    ticking = false;
+    var i, el, rect, p, speed;
+    for (i = 0; i < bgEls.length; i++) {
+      el = bgEls[i];
+      rect = el.parentElement.getBoundingClientRect();
+      if (rect.bottom < -vh || rect.top > vh * 2) continue;
+      speed = parseFloat(el.dataset.parallax) || 0.35;
+      p = (rect.top - vh) / (vh + rect.height);
+      p = Math.max(-1.5, Math.min(1.5, p));
+      el.style.transform = 'translate3d(0,' + (p * vh * speed).toFixed(1) + 'px,0)';
+    }
+  }
+
+  window.addEventListener('resize', function () {
+    vh = window.innerHeight;
+    if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+  }, { passive: true });
+
+  window.addEventListener('scroll', function () {
+    if (prefersReduced) return;
+    if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
+  }, { passive: true });
+
+  updateParallax();
+
+  /* ---------- 3. 导航：滚动态 / 汉堡菜单 / 锚点 / 进度条 ---------- */
   var nav = $('#nav');
   var navLinks = $('#navLinks');
   var navToggle = $('#navToggle');
@@ -62,225 +96,51 @@
     });
   });
 
-  /* ---------- 3. 鼠标跟随光效 ---------- */
-  var glow = $('#cursor-glow');
-  if (glow && !prefersReduced) {
-    var mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    var gx = mx, gy = my;
-    window.addEventListener('pointermove', function (e) {
-      mx = e.clientX; my = e.clientY;
-    }, { passive: true });
-    (function glowLoop() {
-      gx += (mx - gx) * 0.12;
-      gy += (my - gy) * 0.12;
-      glow.style.transform = 'translate3d(' + (gx - 160) + 'px,' + (gy - 160) + 'px,0)';
-      requestAnimationFrame(glowLoop);
-    })();
-  }
-
-  /* ---------- 4. 滚动出现动画（IntersectionObserver） ---------- */
-  var revealEls = $$('.reveal');
-  var revealIO = null;
+  /* ---------- 4. 慢速渐入 / 图片遮罩揭示（IntersectionObserver） ---------- */
+  var revealEls = $$('.fe');
+  var maskEls = $$('.mask');
 
   function showVisibleInViewport() {
     revealEls.forEach(function (el) {
-      if (el.classList.contains('visible')) return;
+      if (el.classList.contains('in')) return;
       var r = el.getBoundingClientRect();
-      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('visible');
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
+    });
+    maskEls.forEach(function (el) {
+      if (el.classList.contains('in')) return;
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('in');
     });
   }
 
-  if ('IntersectionObserver' in window) {
-    revealIO = new IntersectionObserver(function (entries) {
+  if ('IntersectionObserver' in window && !prefersReduced) {
+    var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          revealIO.unobserve(entry.target);
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-    revealEls.forEach(function (el) { revealIO.observe(el); });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+
+    revealEls.forEach(function (el) { io.observe(el); });
+    maskEls.forEach(function (el) { io.observe(el); });
 
     window.addEventListener('load', function () {
-      setTimeout(showVisibleInViewport, 1400); // 兜底：避免个别浏览器 IO 异常导致内容隐藏
+      setTimeout(showVisibleInViewport, 1200); // 兜底：避免个别浏览器 IO 异常导致内容隐藏
     });
   } else {
-    revealEls.forEach(function (el) { el.classList.add('visible'); });
+    revealEls.forEach(function (el) { el.classList.add('in'); });
+    maskEls.forEach(function (el) { el.classList.add('in'); });
   }
 
-  /* ---------- 5. Hero 标题逐字出现 ---------- */
-  var heroTitle = $('#heroTitle');
-
-  function splitTitle(el) {
-    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null, false);
-    var textNodes = [];
-    while (walker.nextNode()) { if (walker.currentNode.textContent.trim()) textNodes.push(walker.currentNode); }
-    textNodes.forEach(function (node) {
-      var frag = document.createDocumentFragment();
-      var chars = node.textContent.split('');
-      chars.forEach(function (ch) {
-        var s = document.createElement('span');
-        s.className = 'char';
-        s.textContent = ch === ' ' ? '\u00A0' : ch;
-        frag.appendChild(s);
-      });
-      node.parentNode.replaceChild(frag, node);
-    });
-    // 随机散射参数（用于滚动散开）
-    $$('.char', el).forEach(function (c, i) {
-      c.style.setProperty('--d', (i * 0.022 + 0.05).toFixed(3) + 's');
-      c.__scatter = [(Math.random() - 0.5) * 140, Math.random() * 90 + 30, (Math.random() - 0.5) * 28];
-    });
-  }
-
-  var heroScatter = [];
-  if (heroTitle) {
-    splitTitle(heroTitle);
-    requestAnimationFrame(function () { heroTitle.classList.add('is-anim'); });
-    setTimeout(function () {
-      heroTitle.classList.add('ready'); // 移除字符过渡，交给滚动散射
-      heroScatter = $$('.char', heroTitle).map(function (c) { return c.__scatter; });
-    }, 1900);
-  }
-
-  /* ---------- 6. Hero 滚动视差：模糊 + 散开 + 上移 ---------- */
-  var hero = $('#hero');
-  var heroInner = $('#heroInner');
-  var heroKeywords = $('#heroKeywords');
-  var scrolling = false;
-
-  function heroScrollFx() {
-    scrolling = false;
-    if (!hero || prefersReduced) return;
-    var vh = window.innerHeight;
-    var y = window.scrollY || 0;
-    var p = Math.min(1, y / vh);
-
-    if (heroInner) heroInner.style.transform = 'translateY(' + (y * 0.3) + 'px)';
-
-    if (heroTitle && heroTitle.classList.contains('ready')) {
-      heroTitle.style.filter = 'blur(' + (p * 14) + 'px)';
-      heroTitle.style.opacity = String(1 - p * 0.9);
-      var chars = $$('.char', heroTitle);
-      for (var i = 0; i < chars.length; i++) {
-        var s = heroScatter[i] || [0, 0, 0];
-        chars[i].style.transform = 'translate(' + (s[0] * p).toFixed(1) + 'px,' + (s[1] * p).toFixed(1) + 'px) rotate(' + (s[2] * p).toFixed(1) + 'deg)';
-      }
-    }
-    if (heroKeywords) {
-      heroKeywords.style.transform = 'translateY(' + (y * 0.5) + 'px)';
-      heroKeywords.style.opacity = String(1 - p);
-    }
-  }
-
-  window.addEventListener('scroll', function () {
-    if (!scrolling) { scrolling = true; requestAnimationFrame(heroScrollFx); }
-  }, { passive: true });
-  heroScrollFx();
-
-  /* ---------- 7. Three.js 粒子背景（鼠标流体扰动） ---------- */
-  function initParticles() {
-    if (prefersReduced || !window.THREE) return;
-    var canvas = $('#particle-canvas');
-    if (!canvas) return;
-
-    var renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
-
-    var W = canvas.clientWidth, H = canvas.clientHeight;
-    renderer.setSize(W, H, false);
-
-    var isMobile = window.innerWidth < 768;
-    var COUNT = isMobile ? 300 : 900;
-    var scene = new THREE.Scene();
-    var camera = new THREE.OrthographicCamera(-W / 2, W / 2, H / 2, -H / 2, 0.1, 100);
-    camera.position.z = 10;
-
-    var positions = new Float32Array(COUNT * 3);
-    var base = [];
-    for (var i = 0; i < COUNT; i++) {
-      var x = (Math.random() - 0.5) * (W + 120);
-      var y = (Math.random() - 0.5) * (H + 120);
-      positions[i * 3] = x; positions[i * 3 + 1] = y; positions[i * 3 + 2] = 0;
-      base.push(x, y, 0);
-    }
-    var geo = new THREE.BufferGeometry();
-    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-    var mat = new THREE.PointsMaterial({
-      color: 0x4dd0ff,
-      size: isMobile ? 1.6 : 2,
-      transparent: true,
-      opacity: 0.55,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
-      sizeAttenuation: false
-    });
-    var points = new THREE.Points(geo, mat);
-    scene.add(points);
-
-    var mouse = new THREE.Vector2(99999, 99999);
-    window.addEventListener('pointermove', function (e) {
-      var r = canvas.getBoundingClientRect();
-      mouse.x = (e.clientX - r.left) - W / 2;
-      mouse.y = -(e.clientY - r.top) + H / 2;
-    }, { passive: true });
-
-    var posAttr = geo.attributes.position;
-    var clock = new THREE.Clock();
-    var t = 0;
-    var R = 130;
-
-    (function tick() {
-      requestAnimationFrame(tick);
-      var dt = Math.min(clock.getDelta(), 0.05);
-      t += dt;
-      var arr = posAttr.array;
-      for (var i = 0; i < COUNT; i++) {
-        var ix = i * 3;
-        var x = arr[ix], y = arr[ix + 1];
-        var dx = x - mouse.x, dy = y - mouse.y;
-        var d2 = dx * dx + dy * dy;
-        if (d2 < R * R && d2 > 0.001) {
-          var d = Math.sqrt(d2);
-          var f = (1 - d / R) * 90 * dt;
-          x += (dx / d) * f;
-          y += (dy / d) * f;
-        } else {
-          x += (base[ix] - x) * Math.min(1, dt * 2.2);
-          y += (base[ix + 1] - y) * Math.min(1, dt * 2.2);
-        }
-        arr[ix] = x;
-        arr[ix + 1] = y + Math.sin(t * 1.4 + i * 0.35) * 0.5;
-        arr[ix + 2] = Math.sin(t * 2 + i) * 1.2;
-      }
-      posAttr.needsUpdate = true;
-      points.rotation.z = Math.sin(t * 0.05) * 0.02;
-      renderer.render(scene, camera);
-    })();
-
-    window.addEventListener('resize', function () {
-      var w = canvas.clientWidth, h = canvas.clientHeight;
-      camera.left = -w / 2; camera.right = w / 2;
-      camera.top = h / 2; camera.bottom = -h / 2;
-      camera.updateProjectionMatrix();
-      renderer.setSize(w, h, false);
-    });
-  }
-  initParticles();
-
-  /* ---------- 8. 技能标签云：随机浮动节奏 ---------- */
-  $$('#tagCloud .cloud-tag').forEach(function (tag, i) {
-    tag.style.setProperty('--d', ((i % 7) * 0.9).toFixed(1) + 's');
-  });
-
-  /* ---------- 9. 数字计数动画 ---------- */
+  /* ---------- 5. 数字计数动画 ---------- */
   function animateCount(el) {
     if (el.dataset.done) return;
     el.dataset.done = '1';
     var target = parseFloat(el.dataset.count) || 0;
     var suffix = el.dataset.suffix || '';
-    var dur = 1400;
+    var dur = 1500;
     var start = performance.now();
     function tick(now) {
       var p = Math.min(1, (now - start) / dur);
@@ -306,29 +166,7 @@
     });
   }
 
-  /* ---------- 10. GSAP 增强（可选，失败自动跳过） ---------- */
-  try {
-    if (window.gsap && window.ScrollTrigger && !prefersReduced) {
-      gsap.registerPlugin(ScrollTrigger);
-      if (lenis) lenis.on('scroll', ScrollTrigger.update);
-      // 区块标题轻微视差（不影响 .reveal 元素本身）
-      $$('.section-title').forEach(function (el) {
-        gsap.fromTo(el, { y: 34, opacity: 0.7 }, {
-          y: 0, opacity: 1, duration: 1.1, ease: 'power2.out',
-          scrollTrigger: { trigger: el, start: 'top 88%' }
-        });
-      });
-      // 项目面板内容滚动时轻微位移（Apple 式呼吸感）
-      $$('.project-panel').forEach(function (panel) {
-        gsap.fromTo(panel.querySelector('.project-big'), { y: 60, opacity: 0 }, {
-          y: 0, opacity: 1, duration: 1.2, ease: 'power2.out',
-          scrollTrigger: { trigger: panel, start: 'top 70%' }
-        });
-      });
-    }
-  } catch (err) { /* CDN 缺失/异常时静默降级 */ }
-
-  /* ---------- 11. 全屏项目详情 Modal ---------- */
+  /* ---------- 6. 全屏项目详情 Modal ---------- */
   function openModal(id) {
     var m = $('#modal-' + id);
     if (!m) return;
@@ -363,7 +201,7 @@
     });
   });
 
-  /* ---------- 12. 图片灯箱（点击项目图全屏查看） ---------- */
+  /* ---------- 7. 图片灯箱（点击项目图全屏查看） ---------- */
   var lightbox = $('#lightbox');
   var lightboxImg = $('#lightboxImg');
   var lightboxCap = $('#lightboxCap');
@@ -383,7 +221,7 @@
     lightbox.setAttribute('aria-hidden', 'true');
   }
 
-  $$('.project-figure img').forEach(function (img) {
+  $$('.project-figure img, .g-fig img, .pb-img img, .about-figure img').forEach(function (img) {
     img.addEventListener('click', function () {
       var figure = img.closest('figure');
       var fig = figure ? figure.querySelector('figcaption') : null;
@@ -405,7 +243,7 @@
     }
   });
 
-  /* ---------- 13. 页脚年份 ---------- */
+  /* ---------- 8. 页脚年份 ---------- */
   var yearEl = $('#year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 })();
