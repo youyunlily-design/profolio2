@@ -404,38 +404,32 @@
         <!-- 叙事舞台 · 编辑双栏（图 60% / 文 40%），Task 2 将接入滚动聚焦 -->
         <div class="story-track">
 
-          <!-- 项目 1 -->
+          <!-- 项目 1 · 三栏滚动叙事：左图列 / 中正文 / 右 Reading Index -->
           <article class="story-project" id="story-p1" data-project="p1">
-            <div class="story-left">
-              <div class="story-figures">
-                <figure class="story-fig is-active">
-                  <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
-                  <figcaption>Fig. 01 — Homepage · 全局浮窗 AI 助手：实验全过程随时调用</figcaption>
-                </figure>
-                <figure class="story-fig">
-                  <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
-                  <figcaption>Fig. 02 — Workflow · 一句话进入实验：20+ 类场景一键跳转</figcaption>
-                </figure>
-                <figure class="story-fig">
-                  <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
-                  <figcaption>Fig. 03 — Architecture · 自然语言 → 实验意图，按知识库自动配置</figcaption>
-                </figure>
-                <figure class="story-fig">
-                  <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
-                  <figcaption>Fig. 04 — Result · 星座图 / 眼图 / BER 曲线实时回传平台</figcaption>
-                </figure>
-                <figure class="story-fig">
-                  <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
-                  <figcaption>Fig. 05 — Dashboard · QPSK 256K 仿真参数自动预填，一键下发</figcaption>
-                </figure>
-                <figure class="story-fig">
-                  <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
-                  <figcaption>Fig. 06 — Result · 独立对话形态：模型选择与通信原理问答引导</figcaption>
-                </figure>
-              </div>
+            <div class="story-figs">
+              <figure class="story-fig is-active">
+                <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
+                <figcaption>Fig. 01 — Homepage · 全局浮窗 AI 助手：实验全过程随时调用</figcaption>
+              </figure>
+              <figure class="story-fig">
+                <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
+                <figcaption>Fig. 02 — Workflow · 一句话进入实验：20+ 类场景一键跳转</figcaption>
+              </figure>
+              <figure class="story-fig">
+                <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
+                <figcaption>Fig. 03 — Architecture · 自然语言 → 实验意图，按知识库自动配置</figcaption>
+              </figure>
+              <figure class="story-fig">
+                <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
+                <figcaption>Fig. 04 — Result · 星座图 / 眼图 / BER 曲线实时回传平台</figcaption>
+              </figure>
+              <figure class="story-fig">
+                <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
+                <figcaption>Fig. 05 — Dashboard · QPSK 256K 仿真参数自动预填，一键下发</figcaption>
+              </figure>
             </div>
 
-            <div class="story-right">
+            <div class="story-col">
               <header class="story-header">
                 <p class="story-proj">Project 01 / 03</p>
                 <h3 class="story-title">途泊 · 龙虾实验助手</h3>
@@ -448,36 +442,27 @@
                 </dl>
               </header>
 
-              <div class="story-reading">
-                <div class="story-indicator" aria-hidden="true">
-                  <span class="si-item is-active" data-step="overview">Overview</span>
-                  <span class="si-item" data-step="challenge">Challenge</span>
-                  <span class="si-item" data-step="solution">Solution</span>
-                  <span class="si-item" data-step="impact">Impact</span>
-                  <span class="si-item" data-step="reflection">Reflection</span>
-                </div>
-                <div class="story-body">
-                  <section class="story-block" data-step="overview">
-                    <h4>Overview</h4>
-                    <p>全局浮窗 AI 助手 + 一句话进实验 + 实验数据实时回传，入口操作由 4~5 步缩减至 1~2 步。我独立负责产品交互、数据闭环与 Prompt 迭代。</p>
-                  </section>
-                  <section class="story-block" data-step="challenge">
-                    <h4>Challenge</h4>
-                    <p>原实验入口需 4~5 步、助手只能独立页面使用，实验过程中无法随时提问与配置。核心挑战是把「配置 → 提问 → 结果」的成本降到最低，并打通真实数据回传，让 AI 从「能回答问题」进化为「理解实验行为」。</p>
-                  </section>
-                  <section class="story-block" data-step="solution">
-                    <h4>Solution</h4>
-                    <p>将助手升级为实验全程可调用的全局浮窗，用一句话进实验替代 4~5 步配置，并打通「实验箱 → 平台」的数据实时回传链路，形成「请求 → 配置 → 结果」的完整闭环。</p>
-                  </section>
-                  <section class="story-block" data-step="impact">
-                    <h4>Impact</h4>
-                    <p>实验入口步骤由 4~5 步缩减至 1~2 步，场景识别由 15+ 拓展至 20+；5 个实验组试用、30+ 条反馈驱动多轮 Prompt 与交互迭代，真实数据回传形成平台闭环。</p>
-                  </section>
-                  <section class="story-block" data-step="reflection">
-                    <h4>Reflection</h4>
-                    <p>交互优化的本质是缩短用户到达目标的路径；数据闭环让 AI「越用越准」。Prompt 优化应围绕「回答边界 + 交互流程」设计——好产品，就是让复杂消失。</p>
-                  </section>
-                </div>
+              <div class="story-body">
+                <section class="story-block" data-step="overview">
+                  <h4>Overview</h4>
+                  <p>全局浮窗 AI 助手 + 一句话进实验 + 实验数据实时回传，入口操作由 4~5 步缩减至 1~2 步。我独立负责产品交互、数据闭环与 Prompt 迭代。</p>
+                </section>
+                <section class="story-block" data-step="challenge">
+                  <h4>Challenge</h4>
+                  <p>原实验入口需 4~5 步、助手只能独立页面使用，实验过程中无法随时提问与配置。核心挑战是把「配置 → 提问 → 结果」的成本降到最低，并打通真实数据回传，让 AI 从「能回答问题」进化为「理解实验行为」。</p>
+                </section>
+                <section class="story-block" data-step="solution">
+                  <h4>Solution</h4>
+                  <p>将助手升级为实验全程可调用的全局浮窗，用一句话进实验替代 4~5 步配置，并打通「实验箱 → 平台」的数据实时回传链路，形成「请求 → 配置 → 结果」的完整闭环。</p>
+                </section>
+                <section class="story-block" data-step="impact">
+                  <h4>Impact</h4>
+                  <p>实验入口步骤由 4~5 步缩减至 1~2 步，场景识别由 15+ 拓展至 20+；5 个实验组试用、30+ 条反馈驱动多轮 Prompt 与交互迭代，真实数据回传形成平台闭环。</p>
+                </section>
+                <section class="story-block" data-step="reflection">
+                  <h4>Reflection</h4>
+                  <p>交互优化的本质是缩短用户到达目标的路径；数据闭环让 AI「越用越准」。Prompt 优化应围绕「回答边界 + 交互流程」设计——好产品，就是让复杂消失。</p>
+                </section>
               </div>
 
               <footer class="story-footer">
@@ -489,6 +474,15 @@
                 </div>
                 <button class="btn btn-ghost js-project-open" data-project="p1">查看完整项目详情 →</button>
               </footer>
+            </div>
+
+            <div class="story-index" aria-hidden="true">
+              <span class="si-line"></span>
+              <span class="si-item is-active" data-step="overview">Overview</span>
+              <span class="si-item" data-step="challenge">Challenge</span>
+              <span class="si-item" data-step="solution">Solution</span>
+              <span class="si-item" data-step="impact">Impact</span>
+              <span class="si-item" data-step="reflection">Reflection</span>
             </div>
           </article>
 

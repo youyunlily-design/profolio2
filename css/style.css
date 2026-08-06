@@ -738,11 +738,106 @@ em { font-style: italic; }
   line-height: 1.85;
 }
 
-/* ---- Project 01 阅读聚焦（仅强调，不动布局） ---- */
-#story-p1 .story-figures { width: 85%; margin: 0 auto 2.6rem; }
+/* ============================================================
+   ③-P1 Project 01 · 三栏滚动叙事（左图列 / 中正文 / 右 Reading Index）
+   ============================================================ */
+#story-p1 {
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.2fr) minmax(0, .42fr);
+  align-items: start;
+  gap: clamp(1.5rem, 3.5vw, 3.5rem);
+}
 
-@media (min-width: 901px) {
-  #story-p1 { grid-template-columns: 11fr 9fr; } /* 55% / 45% */
+/* ---- 左 · 图片列：5 张图纵向均匀排列，各对应一个正文小节 ---- */
+#story-p1 .story-figs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+}
+
+#story-p1 .story-fig {
+  position: static;
+  inset: auto;
+  margin: 0;
+  opacity: .65;
+  transform: scale(1);
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity .5s var(--ease), transform .5s var(--ease);
+}
+
+#story-p1 .story-fig.is-active { opacity: 1; transform: scale(1.03); }
+
+#story-p1 .story-fig img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+#story-p1 .story-fig figcaption {
+  position: static;
+  top: auto;
+  margin-top: .6rem;
+}
+
+/* ---- 中 · 正文列 ---- */
+#story-p1 .story-col {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---- 右 · Reading Index：节点与正文标题顶部对齐，竖线随正文高度自动延伸 ---- */
+#story-p1 .story-index {
+  position: relative;
+  min-width: 0;
+  font-size: .64rem;
+}
+
+#story-p1 .si-line {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  height: 0;
+  width: 1px;
+  background: var(--line-2);
+}
+
+#story-p1 .si-item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  transition: color .5s var(--ease), font-size .5s var(--ease), font-weight .5s var(--ease);
+}
+
+#story-p1 .si-item::before {
+  content: "";
+  width: 7px; height: 7px;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  flex: none;
+  transition: width .5s var(--ease), height .5s var(--ease),
+              background .5s var(--ease), border-color .5s var(--ease);
+}
+
+#story-p1 .si-item.is-active {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: .78rem;
+}
+
+#story-p1 .si-item.is-active::before {
+  width: 11px; height: 11px;
+  background: var(--accent);
+  border-color: var(--accent);
 }
 
 #story-p1 .story-block {
@@ -828,9 +923,13 @@ em { font-style: italic; }
   .story-fig.is-out,
   #story-p1 .story-block,
   #story-p1 .story-block h4,
-  #story-p1 .story-block p { transition: none; }
+  #story-p1 .story-block p,
+  #story-p1 .story-fig,
+  #story-p1 .si-item,
+  #story-p1 .si-item::before { transition: none; }
   .story-fig.is-active { transform: none; }
   #story-p1 .story-block.is-active { transform: none; }
+  #story-p1 .story-fig.is-active { transform: none; }
 }
 
 /* ============================================================
@@ -1515,6 +1614,8 @@ em { font-style: italic; }
   .hero-figure img { min-height: 340px; max-height: 420px; }
   .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
   .focus-grid, .about-layout, .story-project, .contact-row { grid-template-columns: 1fr; }
+  #story-p1 { grid-template-columns: 1fr; }
+  #story-p1 .story-index { display: none; }
   .story-project { padding: 2.5rem 0; }
   .story-figures { margin-bottom: 2.4rem; }
   .about-intro { padding-top: 0; }

@@ -185,15 +185,19 @@
     else document.addEventListener('DOMContentLoaded', runHeroIntro);
   }
 
-  /* ---------- 4.7 Project 01 · 滚动阅读步进（6 步：概述→挑战→方案→影响→反思→收尾） ----------
-     只在 #story-p1 生效；左图交叉淡化，右栏仅改变强调、永不移动内容。
-     阅读线取视口 52% 高度：小节标题越过该线即激活对应步；
-     最后一个小节整体越过阅读线后进入第 6 步（收尾：无激活项，展示最后一张图）。 */
+  /* ---------- 4.7 Project 01 · 三栏滚动叙事（左图列 / 中正文 / 右 Reading Index） ----------
+     只在 #story-p1 生效。滚动时同步切换三处高亮（图片 / 正文 / Index 节点），
+     内容始终完整展示，只改变视觉焦点。
+     步进：阅读线取视口 52% 高度，小节标题越过该线即激活对应步；
+     最后一个小节整体越过阅读线后进入收尾步（无高亮）。
+     Reading Index 节点顶部与对应正文标题顶部对齐，竖线随正文高度自动延伸。 */
   var storyP1 = $('#story-p1');
   if (storyP1) {
     var p1Blocks = $$('.story-block', storyP1);
     var p1Figs = $$('.story-fig', storyP1);
     var p1Items = $$('.si-item', storyP1);
+    var p1Col = $('.story-col', storyP1);
+    var p1IndexLine = $('.si-line', storyP1);
     var p1Step = -2; // -2 未初始化 / -1 收尾步 / 0~4 对应 5 个小节
     var p1Ticking = false;
 
@@ -203,18 +207,8 @@
       var i;
       for (i = 0; i < p1Blocks.length; i++) p1Blocks[i].classList.toggle('is-active', i === step);
       for (i = 0; i < p1Items.length; i++) p1Items[i].classList.toggle('is-active', i === step);
-      var figIdx = step < 0 ? p1Figs.length - 1 : step; // 收尾步展示最后一张图
       p1Figs.forEach(function (fig, idx) {
-        if (idx === figIdx) {
-          fig.classList.add('is-active');
-          fig.classList.remove('is-out');
-        } else if (fig.classList.contains('is-active')) {
-          fig.classList.add('is-out');
-          fig.classList.remove('is-active');
-          setTimeout(function () { fig.classList.remove('is-out'); }, 560);
-        } else {
-          fig.classList.remove('is-out');
-        }
+        fig.classList.toggle('is-active', idx === step);
       });
     }
 
@@ -235,13 +229,44 @@
       setP1Step(active);
     }
 
+    // Reading Index 对齐：节点顶部 = 对应正文 h4 顶部；竖线连接首尾节点圆心
+    function syncP1Index() {
+      if (!p1Col || !p1IndexLine) return;
+      var colRect = p1Col.getBoundingClientRect();
+      var firstTop = null;
+      var lastTop = null;
+      p1Blocks.forEach(function (block, i) {
+        var h4 = block.querySelector('h4');
+        var item = p1Items[i];
+        if (!h4 || !item) return;
+        var top = h4.getBoundingClientRect().top - colRect.top;
+        item.style.top = top + 'px';
+        if (i === 0) firstTop = top;
+        if (i === p1Blocks.length - 1) lastTop = top;
+      });
+      if (firstTop !== null && lastTop !== null) {
+        p1IndexLine.style.top = (firstTop + 3.5) + 'px';
+        p1IndexLine.style.height = Math.max(0, lastTop - firstTop) + 'px';
+      }
+    }
+
     function requestP1Step() {
       if (!p1Ticking) { p1Ticking = true; requestAnimationFrame(updateP1Step); }
     }
 
     window.addEventListener('scroll', requestP1Step, { passive: true });
-    window.addEventListener('resize', requestP1Step, { passive: true });
+    window.addEventListener('resize', function () {
+      requestP1Step();
+      syncP1Index();
+    }, { passive: true });
+    window.addEventListener('load', syncP1Index);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncP1Index);
+    if ('ResizeObserver' in window) {
+      var p1Body = $('.story-body', storyP1);
+      if (p1Body) new ResizeObserver(syncP1Index).observe(p1Body);
+    }
     requestP1Step();
+    syncP1Index();
   }
 
   /* ---------- 5. 数字计数动画 ---------- */
