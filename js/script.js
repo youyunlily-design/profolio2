@@ -188,6 +188,14 @@
     }
   }
 
+  /* 兜底：阻止 Lenis 在 document 级拦截 wheel，保证 Modal 内滚轮/触控板可直接滚动
+     （配合 HTML 中的 data-lenis-prevent，双保险兼容 Mac / Windows） */
+  $$('.modal-panel').forEach(function (panel) {
+    panel.addEventListener('wheel', function (e) {
+      e.stopPropagation();
+    }, { passive: true });
+  });
+
   $$('.js-project-open').forEach(function (btn) {
     btn.addEventListener('click', function () { openModal(btn.dataset.project); });
   });

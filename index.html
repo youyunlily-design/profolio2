@@ -7,7 +7,7 @@
   <title>卢沁园 · AI Product Builder</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🎯</text></svg>" />
   <script>document.documentElement.classList.add('js');</script>
@@ -47,14 +47,40 @@
       </div>
     </section>
 
-    <!-- ===== ② Reflection · 大引用 + 小文字 ===== -->
+    <!-- ===== ② Reflection · 大引用 + 方法论 ===== -->
     <section class="section statement" id="why">
       <div class="section-bg" data-parallax="0.35" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20warm%20cream%20paper%20texture%20with%20soft%20grain%20and%20gentle%20shadow%20gradients%2C%20empty%20editorial%20background%2C%20quiet%20art%20direction%2C%20beige%20tones&image_size=landscape_16_9')"></div>
       <div class="container statement-inner">
-        <p class="statement-num fe" aria-hidden="true">01</p>
-        <p class="statement-quote fe">Technology should disappear.<br /><em>Experience should remain.</em></p>
-        <p class="statement-sub fe" style="--d:.2s">我喜欢把复杂的问题，变成简单自然的交互体验。</p>
+        <div class="statement-grid">
+          <div class="statement-left">
+            <p class="statement-num fe" aria-hidden="true">01</p>
+            <p class="statement-quote fe">Technology should disappear.<br /><em>Experience should remain.</em></p>
+          </div>
+          <div class="statement-right">
+            <p class="statement-sub fe">我喜欢把复杂的问题，变成简单自然的交互体验。</p>
+            <ul class="statement-points">
+              <li class="fe">
+                <span class="sp-idx" aria-hidden="true">01</span>
+                <div><strong>需求 → 方案 → 实现</strong><p>从需求分析、方案设计到工程实现的完整思维链路</p></div>
+              </li>
+              <li class="fe" style="--d:.1s">
+                <span class="sp-idx" aria-hidden="true">02</span>
+                <div><strong>多视角思考</strong><p>辩论经历沉淀的沟通表达与团队协作能力，习惯站在不同角度想问题</p></div>
+              </li>
+              <li class="fe" style="--d:.2s">
+                <span class="sp-idx" aria-hidden="true">03</span>
+                <div><strong>快速落地迭代</strong><p>从 AI Agent、Prompt Engineering 到产品设计，乐于将想法快速落地、持续优化</p></div>
+              </li>
+            </ul>
+            <div class="statement-tags fe" style="--d:.3s">
+              <span class="tag">AI Agent</span>
+              <span class="tag">Product Thinking</span>
+              <span class="tag">Creative Problem Solving</span>
+              <span class="tag">Prompt Engineering</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -89,15 +115,30 @@
           </div>
         </div>
 
-        <!-- 教育背景（保留原内容） -->
+        <!-- 教育背景（保留原内容，3 列信息组织） -->
         <div class="edu-block fe">
           <div class="edu-left">
             <p class="edu-label">EDUCATION</p>
             <h3 class="edu-school">北京邮电大学 <span class="edu-major">通信工程 · 本科</span></h3>
             <p class="edu-time">2024.09 — 2028.06</p>
-            <p class="edu-desc">专业综合排名 <strong>105/560</strong>，英语六级 <strong>611</strong> 分。</p>
+            <p class="edu-desc">系统学习通信与计算机交叉基础，主动补足产品岗位所需技能。</p>
+          </div>
+          <div class="edu-stats">
+            <div class="edu-stat">
+              <strong><span data-count="105" data-suffix="/560">0</span></strong>
+              <span>专业综合排名</span>
+            </div>
+            <div class="edu-stat">
+              <strong><span data-count="611">0</span></strong>
+              <span>英语六级 CET-6</span>
+            </div>
+            <div class="edu-stat">
+              <strong><span data-count="10" data-suffix="+">0</span></strong>
+              <span>组织策划赛事</span>
+            </div>
           </div>
           <div class="edu-right">
+            <p class="edu-label">CORE COURSES</p>
             <div class="tag-list">
               <span class="tag">电子电路基础</span>
               <span class="tag">数据结构与算法</span>
@@ -107,16 +148,10 @@
             </div>
           </div>
         </div>
-
-        <div class="about-stats">
-          <div class="stat fe"><strong><span data-count="105" data-suffix="/560">0</span></strong><span>专业综合排名</span></div>
-          <div class="stat fe" style="--d:.1s"><strong><span data-count="611">0</span></strong><span>英语六级 CET-6</span></div>
-          <div class="stat fe" style="--d:.2s"><strong><span data-count="10" data-suffix="+">0</span></strong><span>组织策划赛事</span></div>
-        </div>
       </div>
     </section>
 
-    <!-- ===== ④ Projects · 图片跨栏 / 文字错位 / Gallery ===== -->
+    <!-- ===== ④ Projects · 跨栏 / 错位 / Gallery ===== -->
     <section class="section projects" id="projects">
       <div class="section-bg" data-parallax="0.45" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Abstract%20soft%20beige%20gradient%20with%20subtle%20geometric%20shadows%20and%20light%20streaks%2C%20warm%20minimal%20editorial%20background%20art&image_size=landscape_16_9')"></div>
@@ -128,13 +163,38 @@
           <p class="section-sub fe" style="--d:.2s">从产品交互、数据闭环到 AI 算法落地，每个项目都完整展示我的思考与执行过程。</p>
         </div>
 
+        <!-- 项目总览索引 -->
+        <div class="projects-index">
+          <a class="pi-item fe" href="#p1" data-scroll>
+            <p class="pi-num">P.01</p>
+            <p class="pi-name">途泊 · 龙虾实验助手</p>
+            <p class="pi-tags">AI 产品 / 数据闭环 / 交互优化</p>
+          </a>
+          <a class="pi-item fe" style="--d:.1s" href="#p2" data-scroll>
+            <p class="pi-num">P.02</p>
+            <p class="pi-name">基于深度学习的人机对战模型</p>
+            <p class="pi-tags">AI 算法 / Self-Play / Prompt</p>
+          </a>
+          <a class="pi-item fe" style="--d:.2s" href="#p3" data-scroll>
+            <p class="pi-num">P.03</p>
+            <p class="pi-name">校辩论赛事策划与运营</p>
+            <p class="pi-tags">活动运营 / 项目管理 / 团队协作</p>
+          </a>
+        </div>
+
         <!-- 项目 1 · Featured 大图 + 画廊 -->
-        <article class="project-block featured">
+        <article class="project-block featured" id="p1">
           <div class="pb-meta">
             <p class="pb-num fe">P.01 / Featured</p>
             <p class="pb-cn fe">途泊 · 龙虾实验助手</p>
           </div>
           <h3 class="pb-title fe">Reimagining Human–Experiment<br />Interaction.</h3>
+          <div class="pb-capabilities fe">
+            <span class="cap">Product Design</span>
+            <span class="cap">Prompt Engineering</span>
+            <span class="cap">Data Loop</span>
+            <span class="cap">全局浮窗交互</span>
+          </div>
 
           <div class="pb-layout">
             <div class="pb-copy">
@@ -185,12 +245,18 @@
         </article>
 
         <!-- 项目 2 · 超宽图跨栏 + 文字错位 -->
-        <article class="project-block wide">
+        <article class="project-block wide" id="p2">
           <div class="pb-meta">
             <p class="pb-num fe">P.02</p>
             <p class="pb-cn fe">基于深度学习的人机对战模型</p>
           </div>
           <h3 class="pb-title fe">Hybrid Decision<br />Intelligence.</h3>
+          <div class="pb-capabilities fe">
+            <span class="cap">AI Algorithm</span>
+            <span class="cap">Self-Play</span>
+            <span class="cap">DeepSeek</span>
+            <span class="cap">PyTorch</span>
+          </div>
           <figure class="pb-img pb-img--full mask fe">
             <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system%2C%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines%2C%20deep%20blue%20and%20cyan%20color%20palette%2C%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策流程示意" loading="lazy" />
             <figcaption>Fig. 08 — 三阶段混合决策示意：规则引擎 + 深度网络 + DeepSeek 协同生成高质量训练样本</figcaption>
@@ -219,12 +285,18 @@
         </article>
 
         <!-- 项目 3 · 右图左文（竖图） -->
-        <article class="project-block side">
+        <article class="project-block side" id="p3">
           <div class="pb-meta">
             <p class="pb-num fe">P.03</p>
             <p class="pb-cn fe">校辩论赛事策划与运营</p>
           </div>
           <h3 class="pb-title fe">From Zero to<br />1000+ Audience.</h3>
+          <div class="pb-capabilities fe">
+            <span class="cap">活动运营</span>
+            <span class="cap">项目管理</span>
+            <span class="cap">团队协作</span>
+            <span class="cap">宣传增长</span>
+          </div>
           <div class="pb-layout">
             <div class="pb-copy">
               <p class="pb-role fe">2025.09 — 至今 · 校辩论队赛事负责人&ensp;|&ensp;活动运营 / 组织管理</p>
@@ -411,10 +483,10 @@
     </div>
   </footer>
 
-  <!-- ===== 项目详情 Modal ===== -->
+  <!-- ===== 项目详情 Modal（Case Study 结构） ===== -->
   <div class="modal" id="modal-p1" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel">
+    <div class="modal-panel" data-lenis-prevent>
       <button class="modal-close" data-close aria-label="关闭">&times;</button>
       <div class="modal-body">
         <p class="modal-tag">★ 重点项目 · AI 产品</p>
@@ -428,59 +500,102 @@
           <div class="metric"><strong><span data-count="15" data-suffix="+ → 20+">0</span></strong><span>场景拓展</span></div>
         </div>
 
-        <h4 class="modal-block">Overview · 全局浮窗 AI 助手 + 实验数据闭环建设</h4>
-        <p>独立负责「龙虾实验助手」的产品交互优化与数据闭环建设：将 AI 助手升级为实验全程随时可调用的全局浮窗，并打通真实实验数据回传链路，实现「一句话进实验 → 自动配置 → 结果实时回传」的完整闭环。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">01 · Overview</h4>
+          <p>把「龙虾实验助手」从独立页面升级为实验全程可随时调用的全局浮窗 AI 助手，并打通真实实验数据回传链路，实现「一句话进实验 → 自动配置 → 结果实时回传」的完整闭环。</p>
+          <p class="modal-note">我的角色：实验组成员，独立承担龙虾的接入与功能改进，负责产品交互、数据闭环与 Prompt 迭代。</p>
+        </section>
 
-        <h4 class="modal-block">Challenge</h4>
-        <p>将助手由独立页面升级为全局浮窗式 AI 助手，实验入口操作由 4~5 步缩减至 1~2 步，降低平台使用门槛、提升实验交互效率与产品易用性。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">02 · Problem</h4>
+          <ul class="modal-points">
+            <li><strong>入口繁琐：</strong>原实验入口操作需 4~5 步，平台使用门槛高、上手成本大。</li>
+            <li><strong>调用不便：</strong>助手为独立页面，实验过程中无法随时提问、配置与跳转。</li>
+            <li><strong>数据断流：</strong>实验结果分散在实验箱，难以回传平台，无法沉淀形成数据闭环。</li>
+          </ul>
+        </section>
 
-        <h4 class="modal-block">My Role</h4>
-        <p>实验组成员，独立承担龙虾的接入与功能改进，负责产品交互、数据闭环与 Prompt 迭代。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">03 · Research</h4>
+          <p>梳理平台全部实验流程，将自然语言场景归纳为 20+ 类通信实验；联系专业内 5 个实验组试用并收集 30+ 条体验反馈，定位高频操作路径与使用卡点。</p>
+          <div class="modal-stats-row">
+            <span><b>20+</b>实验场景归纳</span>
+            <span><b>5</b>个实验组试用</span>
+            <span><b>30+</b>条体验反馈</span>
+          </div>
+        </section>
 
-        <h4 class="modal-block">Workflow</h4>
-        <p>一句话进实验 → 自动配置 → 结果实时回传。自然语言识别出 20+ 类通信实验场景，一键跳转进入对应实验。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">04 · Thinking</h4>
+          <ul class="modal-points">
+            <li><strong>为什么是全局浮窗？</strong>实验是连续过程，助理应随时在侧，而不是打断流程跳转独立页面。</li>
+            <li><strong>为什么用自然语言入口？</strong>一次表达能替代 4~5 步配置，把交互成本降到最低。</li>
+            <li><strong>为什么打通数据回传？</strong>只有真实数据沉淀，AI 才能从「能回答问题」进化为「理解实验行为」。</li>
+          </ul>
+        </section>
 
-        <h4 class="modal-block">Experiment Recognition</h4>
-        <p>拓展实验场景由 15+ 种提升至 20+ 类通信实验的自然语言识别，实现一句话快速进入对应实验。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">05 · Solution</h4>
+          <p>全局浮窗 AI 助手 + 一句话进实验 + 实验数据实时回传 + 围绕回答边界的多轮 Prompt 优化。</p>
+          <div class="modal-figures">
+            <figure class="project-figure">
+              <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
+              <figcaption><strong>图注：</strong>全局浮窗式 AI 助手 —— 固定右侧面板嵌入实验平台，实验全过程随时调用、随时提问</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
+              <figcaption><strong>图注：</strong>自然语言 → 实验意图 —— 提问「2FSK 解调方式」，助手按知识库作答并自动配置实验、提供虚实平台跳转入口</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
+              <figcaption><strong>图注：</strong>一句话进入实验 —— 自然语言识别出 20+ 类通信实验场景，一键跳转进入</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
+              <figcaption><strong>图注：</strong>虚实结合实验配置 —— QPSK 256K 仿真参数自动预填，一键下发实验箱 / 启动仿真引擎</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
+              <figcaption><strong>图注：</strong>实验数据实时回传 —— 星座图 / 眼图 / BER 曲线与实测 BER（2.000e-3）直接回传平台</figcaption>
+            </figure>
+            <figure class="project-figure">
+              <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
+              <figcaption><strong>图注：</strong>智能实验助手对话页 —— 支持模型选择与通信原理问答引导的独立对话形态</figcaption>
+            </figure>
+          </div>
+        </section>
 
-        <h4 class="modal-block">Data Loop</h4>
-        <p>与第三方厂商协同打通实验箱数据回传链路，推动 IQ 参数等真实实验数据实时回传平台。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">06 · Architecture</h4>
+          <div class="flow">
+            <span class="flow-step">一句话指令</span><span class="flow-arrow">→</span>
+            <span class="flow-step">意图识别<br>20+ 场景</span><span class="flow-arrow">→</span>
+            <span class="flow-step">自动配置</span><span class="flow-arrow">→</span>
+            <span class="flow-step">下发实验箱 / 仿真</span><span class="flow-arrow">→</span>
+            <span class="flow-step">数据实时回传</span><span class="flow-arrow">→</span>
+            <span class="flow-step">平台沉淀</span>
+          </div>
+          <p>技术栈：FastAPI / OpenClaw / Prompt Engineering / Python，产品原型使用 Figma 完成。</p>
+        </section>
 
-        <h4 class="modal-block">Prompt Design</h4>
-        <p>自主撰写平台使用手册，联系专业内 5 个实验组试用并收集 30+ 条体验反馈；围绕回答边界与交互流程多轮优化 Prompt，提升 AI 回答与实验运行结果的一致性。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">07 · Workflow</h4>
+          <p>一句话进实验 → 自动配置 → 结果实时回传。自然语言识别出 20+ 类通信实验场景，一键跳转进入对应实验；与第三方厂商协同打通实验箱数据回传链路，推动 IQ 参数等真实实验数据实时回传平台。</p>
+        </section>
 
-        <div class="modal-figures">
-          <figure class="project-figure">
-            <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
-            <figcaption><strong>图注：</strong>全局浮窗式 AI 助手 —— 固定右侧面板嵌入实验平台，实验全过程随时调用、随时提问</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
-            <figcaption><strong>图注：</strong>自然语言 → 实验意图 —— 提问「2FSK 解调方式」，助手按知识库作答并自动配置实验、提供虚实平台跳转入口</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
-            <figcaption><strong>图注：</strong>一句话进入实验 —— 自然语言识别出 20+ 类通信实验场景，一键跳转进入</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
-            <figcaption><strong>图注：</strong>虚实结合实验配置 —— QPSK 256K 仿真参数自动预填，一键下发实验箱 / 启动仿真引擎</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
-            <figcaption><strong>图注：</strong>实验数据实时回传 —— 星座图 / 眼图 / BER 曲线与实测 BER（2.000e-3）直接回传平台</figcaption>
-          </figure>
-          <figure class="project-figure">
-            <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
-            <figcaption><strong>图注：</strong>智能实验助手对话页 —— 支持模型选择与通信原理问答引导的独立对话形态</figcaption>
-          </figure>
-        </div>
+        <section class="cs-block">
+          <h4 class="modal-block">08 · Result</h4>
+          <ul class="modal-points">
+            <li><strong>交互优化：</strong>实验入口操作由 4~5 步缩减至 1~2 步，使用门槛显著降低。</li>
+            <li><strong>数据闭环：</strong>IQ 参数等真实实验数据实时回传平台；实验场景识别由 15+ 拓展至 20+。</li>
+            <li><strong>手册与迭代：</strong>自主撰写平台使用手册，5 个实验组试用、30+ 条反馈驱动多轮 Prompt 与交互迭代。</li>
+          </ul>
+        </section>
 
-        <ul class="modal-points">
-          <li><strong>交互优化</strong>将助手由独立页面升级为全局浮窗式 AI 助手，实验入口操作由 4~5 步缩减至 1~2 步，降低平台使用门槛、提升实验交互效率与产品易用性。</li>
-          <li><strong>数据闭环</strong>与第三方厂商协同打通实验箱数据回传链路，推动 IQ 参数等真实实验数据实时回传平台；拓展实验场景由 15+ 种提升至 20+ 类通信实验的自然语言识别，实现一句话快速进入对应实验。</li>
-          <li><strong>手册与迭代</strong>自主撰写平台使用手册，联系专业内 5 个实验组试用并收集 30+ 条体验反馈；围绕回答边界与交互流程多轮优化 Prompt，提升 AI 回答与实验运行结果的一致性。</li>
-        </ul>
+        <section class="cs-block">
+          <h4 class="modal-block">09 · Reflection</h4>
+          <p>交互优化的本质是缩短用户到达目标的路径；数据闭环让 AI「越用越准」；Prompt 优化应围绕「回答边界 + 交互流程」设计，而不是堆叠指令。这次经历让我更笃信：好产品，就是让复杂消失。</p>
+        </section>
 
         <div class="tag-list">
           <span class="tag">FastAPI</span><span class="tag">OpenClaw</span><span class="tag">Prompt Engineering</span><span class="tag">Python</span><span class="tag">Figma</span><span class="tag">数据闭环</span>
@@ -491,7 +606,7 @@
 
   <div class="modal" id="modal-p2" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel">
+    <div class="modal-panel" data-lenis-prevent>
       <button class="modal-close" data-close aria-label="关闭">&times;</button>
       <div class="modal-body">
         <p class="modal-tag">AI 算法 · 项目负责人</p>
@@ -505,36 +620,80 @@
           <div class="metric"><strong>PyTorch</strong><span>深度网络训练</span></div>
         </div>
 
-        <h4 class="modal-block">Overview · Rule Engine + Neural Network + DeepSeek 三阶段混合决策</h4>
-        <p>基于 PyTorch 实现深度神经网络训练，结合 Self-Play 持续生成棋局数据，用三阶段混合决策策略解决传统自博弈训练初期数据质量不足、策略单一的问题。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">01 · Overview</h4>
+          <p>用「规则引擎 + 深度网络 + DeepSeek」三阶段混合决策框架，把规则、网络与大模型协同为统一决策流程，解决自博弈训练的冷启动问题。</p>
+          <p class="modal-note">我的角色：项目负责人，负责方案设计 + 工程实现，全程独立推进。</p>
+        </section>
 
-        <h4 class="modal-block">Challenge</h4>
-        <p>传统自博弈训练初期数据质量不足、策略单一。需要一种框架在不依赖海量人工棋谱的前提下，快速生成高质量训练样本。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">02 · Problem</h4>
+          <ul class="modal-points">
+            <li><strong>冷启动慢：</strong>纯自博弈训练初期棋局数据质量不足、策略单一，模型难以收敛。</li>
+            <li><strong>数据成本高：</strong>不依赖海量人工棋谱的前提下，需要快速生成高质量训练样本。</li>
+          </ul>
+        </section>
 
-        <h4 class="modal-block">Architecture</h4>
-        <p>三阶段混合决策：规则引擎快速过滤必胜、必防局面；深度网络完成棋局价值评估；DeepSeek 在复杂局面下提供策略建议与高质量棋谱，生成更高质量的训练样本。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">03 · Research</h4>
+          <p>自主调研 AlphaZero、Leela Zero 等自博弈思路及主流棋类 AI 产品，分析冷启动阶段的数据瓶颈，确定「规则兜底 + 网络评估 + 大模型增强」的混合思路。</p>
+          <div class="modal-stats-row">
+            <span><b>AlphaZero / Leela Zero</b>自博弈思路调研</span>
+            <span><b>主流棋类 AI</b>产品分析</span>
+          </div>
+        </section>
 
-        <h4 class="modal-block">Training Pipeline</h4>
-        <p>基于新增高质量棋局持续更新训练集，实现模型棋局判断能力与攻防策略的持续优化。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">04 · Thinking</h4>
+          <ul class="modal-points">
+            <li><strong>规则引擎：</strong>擅长必胜、必防等确定局面，但天花板低。</li>
+            <li><strong>深度网络：</strong>能泛化复杂局面，但需要高质量训练数据。</li>
+            <li><strong>DeepSeek：</strong>能生成高质量棋谱，但不适合实时决策。</li>
+            <li><strong>结论：</strong>三者按局面复杂度分工，比任何单一方案收敛更快、样本质量更高。</li>
+          </ul>
+        </section>
 
-        <h4 class="modal-block">Self Play &amp; Decision Workflow</h4>
-        <p>自主调研 AlphaZero、Leela Zero 等自博弈思路及主流棋类 AI 产品，设计三阶段混合决策策略，将规则、网络与大模型协同为统一的决策流程。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">05 · Solution</h4>
+          <p>三阶段混合决策：规则引擎快速过滤必胜、必防局面 → 深度网络完成棋局价值评估 → DeepSeek 在复杂局面提供策略建议与高质量棋谱，生成更高质量的训练样本。</p>
+          <div class="modal-figures">
+            <figure class="project-figure">
+              <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system%2C%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines%2C%20deep%20blue%20and%20cyan%20color%20palette%2C%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策流程示意" loading="lazy" />
+              <figcaption><strong>图注：</strong>三阶段混合决策示意 —— 规则引擎 + 深度网络 + DeepSeek 协同生成高质量训练样本</figcaption>
+            </figure>
+          </div>
+        </section>
 
-        <h4 class="modal-block">Prompt Design</h4>
-        <p>设计面向棋局分析场景的 Prompt，约束模型输出标准化落子建议及策略解释，提升大模型生成训练数据的一致性和可用性。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">06 · Architecture</h4>
+          <div class="flow">
+            <span class="flow-step">棋局输入</span><span class="flow-arrow">→</span>
+            <span class="flow-step">规则引擎<br>必胜 / 必防过滤</span><span class="flow-arrow">→</span>
+            <span class="flow-step">深度网络<br>价值评估</span><span class="flow-arrow">→</span>
+            <span class="flow-step">DeepSeek<br>复杂局面建议</span><span class="flow-arrow">→</span>
+            <span class="flow-step">标准落子</span>
+          </div>
+          <p>PyTorch 深度网络训练管线，基于新增高质量棋局持续更新训练集。</p>
+        </section>
 
-        <div class="modal-figures">
-          <figure class="project-figure">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system%2C%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines%2C%20deep%20blue%20and%20cyan%20color%20palette%2C%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策流程示意" loading="lazy" />
-            <figcaption><strong>图注：</strong>三阶段混合决策示意 —— 规则引擎 + 深度网络 + DeepSeek 协同生成高质量训练样本</figcaption>
-          </figure>
-        </div>
+        <section class="cs-block">
+          <h4 class="modal-block">07 · Workflow</h4>
+          <p>持续训练管线：高质量棋局 → 更新训练集 → 模型棋局判断能力与攻防策略持续优化；面向棋局分析场景设计 Prompt，约束模型输出标准化落子建议及策略解释，提升生成训练数据的一致性和可用性。</p>
+        </section>
 
-        <ul class="modal-points">
-          <li><strong>混合决策框架</strong>自主调研 AlphaZero、Leela Zero 等自博弈思路及主流棋类 AI 产品，设计三阶段混合决策策略：规则引擎快速过滤必胜、必防局面，深度网络完成棋局价值评估，DeepSeek 在复杂局面下提供策略建议与高质量棋谱，生成更高质量的训练样本。</li>
-          <li><strong>持续训练</strong>基于新增高质量棋局持续更新训练集，实现模型棋局判断能力与攻防策略的持续优化。</li>
-          <li><strong>Prompt 设计</strong>设计面向棋局分析场景的 Prompt，约束模型输出标准化落子建议及策略解释，提升大模型生成训练数据的一致性和可用性。</li>
-        </ul>
+        <section class="cs-block">
+          <h4 class="modal-block">08 · Result</h4>
+          <ul class="modal-points">
+            <li><strong>三阶段框架落地：</strong>规则、网络与大模型协同为统一决策流程。</li>
+            <li><strong>高质量训练样本：</strong>Self-Play + DeepSeek 棋谱持续供给，训练集质量显著提升。</li>
+            <li><strong>持续优化：</strong>模型棋局判断能力与攻防策略随训练集更新不断进化。</li>
+          </ul>
+        </section>
+
+        <section class="cs-block">
+          <h4 class="modal-block">09 · Reflection</h4>
+          <p>把算法问题当作产品问题拆解：先用「最可靠」的规则兜底，再用「最聪明」的大模型增强；大模型的工程价值不在于生成，而在于可控约束下稳定供给高质量数据。</p>
+        </section>
 
         <div class="tag-list">
           <span class="tag">PyTorch</span><span class="tag">Self-Play</span><span class="tag">DeepSeek</span><span class="tag">Prompt Engineering</span>
@@ -545,7 +704,7 @@
 
   <div class="modal" id="modal-p3" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
-    <div class="modal-panel">
+    <div class="modal-panel" data-lenis-prevent>
       <button class="modal-close" data-close aria-label="关闭">&times;</button>
       <div class="modal-body">
         <p class="modal-tag">活动运营 · 组织管理</p>
@@ -559,24 +718,80 @@
           <div class="metric"><strong><span data-count="10" data-suffix="+">0</span></strong><span>人执行小组</span></div>
         </div>
 
-        <h4 class="modal-block">Overview · 从 0 到 1 组织十余人团队运营全校赛事</h4>
-        <p>累计负责组织校内赛事十余场，参与成员超百人、观众总计超千人。全程负责赛事策划、赛程安排、团队分工与现场执行。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">01 · Overview</h4>
+          <p>从 0 到 1 负责校内辩论赛事的全流程策划与运营，统筹 10+ 人工作小组，服务百名选手与超千名观众。</p>
+          <p class="modal-note">我的角色：赛事负责人，全程负责赛事策划、赛程安排、团队分工与现场执行。</p>
+        </section>
 
-        <h4 class="modal-block">Workflow</h4>
-        <p>设计赛事流程与规则，建立可复用的执行清单；统筹 10+ 人工作小组，保障多场赛事顺利落地；通过宣传与运营将单场观众规模提升至百人级。</p>
+        <section class="cs-block">
+          <h4 class="modal-block">02 · Problem</h4>
+          <ul class="modal-points">
+            <li><strong>从无到有：</strong>赛制、赛程、裁判、宣传、现场执行环环相扣，流程复杂度高。</li>
+            <li><strong>多场次滚动：</strong>十余场赛事连续举办，需要可复用的组织方法，避免重复踩坑。</li>
+          </ul>
+        </section>
 
-        <div class="modal-figures">
-          <figure class="project-figure">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20a%20university%20debate%20competition%20on%20stage%2C%20speaker%20podium%20with%20microphone%2C%20warm%20amber%20and%20orange%20color%20palette%2C%20clean%20minimal%20style%20with%20audience%20silhouettes&image_size=landscape_4_3" alt="辩论赛事组织流程示意" loading="lazy" />
-            <figcaption><strong>图注：</strong>赛事组织流程示意 —— 统筹 10+ 人工作小组，服务百名选手与超千名观众</figcaption>
-          </figure>
-        </div>
+        <section class="cs-block">
+          <h4 class="modal-block">03 · Research</h4>
+          <p>梳理赛事全流程节点，复盘每场赛事的卡点，将经验沉淀为可复用的执行清单与分工模板。</p>
+          <div class="modal-stats-row">
+            <span><b>10+</b>场赛事复盘</span>
+            <span><b>全流程</b>节点梳理</span>
+          </div>
+        </section>
 
-        <ul class="modal-points">
-          <li><strong>流程设计</strong>设计赛事流程与规则，建立可复用的执行清单。</li>
-          <li><strong>团队统筹</strong>统筹 10+ 人工作小组，保障多场赛事顺利落地。</li>
-          <li><strong>宣传运营</strong>通过宣传与运营将单场观众规模提升至百人级。</li>
-        </ul>
+        <section class="cs-block">
+          <h4 class="modal-block">04 · Thinking</h4>
+          <ul class="modal-points">
+            <li><strong>为什么流程化 + 清单化？</strong>降低多场次执行成本，把经验固化下来。</li>
+            <li><strong>为什么小组分工？</strong>职责明确才能保证现场零混乱。</li>
+            <li><strong>为什么重视宣传运营？</strong>赛事影响力的提升，源于持续的内容与节奏运营。</li>
+          </ul>
+        </section>
+
+        <section class="cs-block">
+          <h4 class="modal-block">05 · Solution</h4>
+          <p>设计赛事流程与规则 + 建立可复用执行清单 + 统筹 10+ 人工作小组 + 宣传与运营扩大赛事影响力。</p>
+          <div class="modal-figures">
+            <figure class="project-figure">
+              <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20a%20university%20debate%20competition%20on%20stage%2C%20speaker%20podium%20with%20microphone%2C%20warm%20amber%20and%20orange%20color%20palette%2C%20clean%20minimal%20style%20with%20audience%20silhouettes&image_size=landscape_4_3" alt="辩论赛事组织流程示意" loading="lazy" />
+              <figcaption><strong>图注：</strong>赛事组织流程示意 —— 统筹 10+ 人工作小组，服务百名选手与超千名观众</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="cs-block">
+          <h4 class="modal-block">06 · Architecture</h4>
+          <div class="flow">
+            <span class="flow-step">赛事策划</span><span class="flow-arrow">→</span>
+            <span class="flow-step">规则与赛程</span><span class="flow-arrow">→</span>
+            <span class="flow-step">团队分工</span><span class="flow-arrow">→</span>
+            <span class="flow-step">宣传运营</span><span class="flow-arrow">→</span>
+            <span class="flow-step">现场执行</span><span class="flow-arrow">→</span>
+            <span class="flow-step">复盘沉淀</span>
+          </div>
+          <p>可复用的执行清单贯穿全程，保障十余场赛事稳定落地。</p>
+        </section>
+
+        <section class="cs-block">
+          <h4 class="modal-block">07 · Workflow</h4>
+          <p>赛前：赛事策划 + 规则赛程 + 团队分工；赛时：现场执行与调度；赛后：复盘沉淀可复用执行清单。</p>
+        </section>
+
+        <section class="cs-block">
+          <h4 class="modal-block">08 · Result</h4>
+          <ul class="modal-points">
+            <li><strong>规模：</strong>累计组织校内赛事 10+ 场，参与成员 100+、观众人次 1000+。</li>
+            <li><strong>影响力：</strong>通过宣传与运营，单场观众规模提升至百人级。</li>
+            <li><strong>方法沉淀：</strong>建立可复用执行清单，多场赛事零重大失误落地。</li>
+          </ul>
+        </section>
+
+        <section class="cs-block">
+          <h4 class="modal-block">09 · Reflection</h4>
+          <p>赛事运营的本质是项目管理：用流程把不确定性降到最低，用分工把复杂度摊开，用复盘把经验固化。这些方法与产品项目的推进逻辑完全相通。</p>
+        </section>
 
         <div class="tag-list">
           <span class="tag">活动策划</span><span class="tag">团队协作</span><span class="tag">项目管理</span>
