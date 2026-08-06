@@ -229,7 +229,7 @@
     lightbox.setAttribute('aria-hidden', 'true');
   }
 
-  $$('.project-figure img, .g-fig img, .pb-img img, .about-figure img').forEach(function (img) {
+  $$('.project-figure img, .g-fig img, .pb-img img, .about-figure img, .feat-media img, .gallery-item img, .ach-img img, .hero-figure img').forEach(function (img) {
     img.addEventListener('click', function () {
       var figure = img.closest('figure');
       var fig = figure ? figure.querySelector('figcaption') : null;

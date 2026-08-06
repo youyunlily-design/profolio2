@@ -19,11 +19,11 @@
     <div class="container nav-inner">
       <a href="#hero" class="nav-logo" data-scroll>卢沁园<span class="nav-logo-dot">.</span></a>
       <nav class="nav-links" id="navLinks">
-        <a href="#why" data-scroll>Why AI</a>
-        <a href="#about" data-scroll>About</a>
+        <a href="#focus" data-scroll>Focus</a>
         <a href="#projects" data-scroll>Projects</a>
+        <a href="#about" data-scroll>About</a>
         <a href="#skills" data-scroll>Skills</a>
-        <a href="#experience" data-scroll>Experience</a>
+        <a href="#experience" data-scroll>Path</a>
         <a href="#contact" data-scroll>Contact</a>
         <a href="2028届-北京邮电大学卢沁园.pdf" download="卢沁园_产品实习生简历.pdf" class="nav-cta">下载简历</a>
       </nav>
@@ -34,78 +34,223 @@
 
   <main id="top">
 
-    <!-- ===== ① Hero · 全屏图片 + 一句核心标题 ===== -->
-    <section class="hero" id="hero">
+    <!-- ===== ① Hero · 左对齐介绍 + 右侧装饰图 ===== -->
+    <section class="hero hero-edit" id="hero">
       <div class="section-bg" data-parallax="0.3" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Soft%20warm%20beige%20minimal%20editorial%20photography%2C%20sheer%20linen%20curtain%20with%20gentle%20diffused%20sunlight%2C%20subtle%20paper%20texture%2C%20calm%20gallery%20atmosphere%2C%20high%20key%20light%20airy%20fine%20art&image_size=landscape_16_9')"></div>
       <div class="hero-vignette" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <p class="hero-eyebrow fe">卢沁园 · AI Product Builder</p>
-        <h1 class="hero-title fe" style="--d:.12s">Building AI Experiences<br /><em>That Feel Natural.</em></h1>
-        <p class="hero-keywords fe" style="--d:.26s">AI Agent&ensp;·&ensp;Product Design&ensp;·&ensp;Prompt Engineering</p>
-        <div class="hero-scroll fe" style="--d:.4s" aria-hidden="true"><span>SCROLL</span><i></i></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="hero-eyebrow fe">卢沁园 · AI Product Builder</p>
+          <h1 class="hero-title fe" style="--d:.12s">Building AI Experiences<br /><em>That Feel Natural.</em></h1>
+          <p class="hero-desc fe" style="--d:.24s">北京邮电大学 · 通信工程（2024—2028）。我喜欢把复杂的问题，变成简单自然的交互体验——从 AI Agent、产品设计到 Prompt Engineering。</p>
+          <div class="hero-cta fe" style="--d:.36s">
+            <a href="#projects" class="btn btn-primary" data-scroll>查看精选项目</a>
+            <a href="#contact" class="btn btn-ghost" data-scroll>联系我</a>
+          </div>
+          <div class="hero-scroll fe" style="--d:.5s" aria-hidden="true"><span>SCROLL</span><i></i></div>
+        </div>
+        <figure class="hero-figure mask fe" style="--d:.2s">
+          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20editorial%20still%20life%2C%20white%20ceramic%20cup%20on%20warm%20beige%20linen%20table%20with%20soft%20morning%20shadow%2C%20fine%20art%20magazine%20aesthetic%2C%20muted%20warm%20tones&image_size=portrait_4_3" alt="编辑摄影风格装饰图" />
+          <figcaption>Fig. 01 — About · 安静、克制、专注</figcaption>
+        </figure>
       </div>
     </section>
 
-    <!-- ===== ② Reflection · 大引用 + 方法论 ===== -->
-    <section class="section statement" id="why">
+    <!-- ===== ② Current Focus · 双栏 ===== -->
+    <section class="section focus" id="focus">
       <div class="section-bg" data-parallax="0.35" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20warm%20cream%20paper%20texture%20with%20soft%20grain%20and%20gentle%20shadow%20gradients%2C%20empty%20editorial%20background%2C%20quiet%20art%20direction%2C%20beige%20tones&image_size=landscape_16_9')"></div>
-      <div class="container statement-inner">
-        <div class="statement-grid">
-          <div class="statement-left">
-            <p class="statement-num fe" aria-hidden="true">01</p>
-            <p class="statement-quote fe">Technology should disappear.<br /><em>Experience should remain.</em></p>
-          </div>
-          <div class="statement-right">
-            <p class="statement-sub fe">我喜欢把复杂的问题，变成简单自然的交互体验。</p>
-            <ul class="statement-points">
-              <li class="fe">
-                <span class="sp-idx" aria-hidden="true">01</span>
-                <div><strong>需求 → 方案 → 实现</strong><p>从需求分析、方案设计到工程实现的完整思维链路</p></div>
-              </li>
-              <li class="fe" style="--d:.1s">
-                <span class="sp-idx" aria-hidden="true">02</span>
-                <div><strong>多视角思考</strong><p>辩论经历沉淀的沟通表达与团队协作能力，习惯站在不同角度想问题</p></div>
-              </li>
-              <li class="fe" style="--d:.2s">
-                <span class="sp-idx" aria-hidden="true">03</span>
-                <div><strong>快速落地迭代</strong><p>从 AI Agent、Prompt Engineering 到产品设计，乐于将想法快速落地、持续优化</p></div>
-              </li>
-            </ul>
-            <div class="statement-tags fe" style="--d:.3s">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-num fe" aria-hidden="true">01</p>
+          <p class="section-tag fe">CURRENT FOCUS — 当前专注</p>
+          <h2 class="section-title fe" style="--d:.1s">What I'm working on<br /><em>right now.</em></h2>
+        </div>
+
+        <div class="focus-grid">
+          <div class="focus-intro fe">
+            <p>我不只是做项目，而是在持续打磨一条从「问题洞察」到「AI 落地」的能力链路：想清楚为什么做，再用最小的成本把它做出来、跑起来。</p>
+            <p class="focus-sub">2026 年，我把时间投入在下面三件事上。</p>
+            <div class="focus-tags">
               <span class="tag">AI Agent</span>
               <span class="tag">Product Thinking</span>
               <span class="tag">Creative Problem Solving</span>
               <span class="tag">Prompt Engineering</span>
             </div>
           </div>
+
+          <div class="focus-cards">
+            <article class="focus-card fe">
+              <p class="focus-label"><span>01</span>Building — 正在构建</p>
+              <h3>途泊 · 龙虾实验助手</h3>
+              <p>独立承担 AI 助手的接入与功能改进：全局浮窗 + 一句话进实验 + 实验数据实时回传，打通「请求 → 配置 → 结果」的完整数据闭环。</p>
+            </article>
+            <article class="focus-card fe" style="--d:.12s">
+              <p class="focus-label"><span>02</span>Researching — 正在研究</p>
+              <h3>三阶段混合决策 &amp; Self-Play</h3>
+              <p>把规则引擎、深度网络与 DeepSeek 协同为统一决策流程，解决自博弈训练的冷启动问题；同时深入 MCP 与 Agent Workflow。</p>
+            </article>
+            <article class="focus-card fe" style="--d:.24s">
+              <p class="focus-label"><span>03</span>Learning — 正在学习</p>
+              <h3>Figma · Prompt · SQL</h3>
+              <p>2026 年自学 Figma 完成 10+ 个原型实战；持续打磨 Prompt Engineering；掌握 SQL 并在 Sqliteviz 平台多次实操。</p>
+            </article>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== ③ About · 左图右文 ===== -->
+    <!-- ===== ③ Featured Projects · 大编辑卡片，左右交替 ===== -->
+    <section class="section projects" id="projects">
+      <div class="section-bg" data-parallax="0.45" aria-hidden="true"
+        style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Abstract%20soft%20beige%20gradient%20with%20subtle%20geometric%20shadows%20and%20light%20streaks%2C%20warm%20minimal%20editorial%20background%20art&image_size=landscape_16_9')"></div>
+      <div class="container">
+        <div class="section-head">
+          <p class="section-num fe" aria-hidden="true">02</p>
+          <p class="section-tag fe">SELECTED WORK — 项目案例</p>
+          <h2 class="section-title fe" style="--d:.1s">Featured Projects</h2>
+          <p class="section-sub fe" style="--d:.2s">从产品交互、数据闭环到 AI 算法落地——三个项目，三段完整的思考与执行过程。</p>
+        </div>
+
+        <!-- 项目 1 · 图左 -->
+        <article class="feat-card" id="p1">
+          <figure class="feat-media mask fe">
+            <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
+            <figcaption>Fig. 02 — 全局浮窗式 AI 助手：实验全过程随时调用</figcaption>
+          </figure>
+          <div class="feat-copy fe">
+            <p class="feat-meta">
+              <span class="feat-num">P.01</span>
+              <span class="feat-cat">AI 产品 / 数据闭环</span>
+              <span class="feat-year">2026.03 — 至今</span>
+            </p>
+            <h3 class="feat-title">途泊 · 龙虾实验助手</h3>
+            <p class="feat-desc">独立承担「龙虾实验助手」的接入与功能改进：把 AI 助手升级为实验全程随时可调的全局浮窗，并打通实验数据实时回传链路。</p>
+            <div class="feat-tags">
+              <span class="tag">Product Design</span>
+              <span class="tag">Prompt Engineering</span>
+              <span class="tag">Data Loop</span>
+              <span class="tag">FastAPI</span>
+              <span class="tag">OpenClaw</span>
+            </div>
+            <div class="feat-metrics">
+              <div class="metric fe"><strong><span data-count="20" data-suffix="+">0</span></strong><span>实验识别</span></div>
+              <div class="metric fe"><strong><span data-count="30" data-suffix="+">0</span></strong><span>用户反馈</span></div>
+              <div class="metric fe"><strong><span data-count="5">0</span></strong><span>实验组测试</span></div>
+              <div class="metric fe"><strong>4~5 → 1~2</strong><span>入口步骤</span></div>
+            </div>
+            <button class="btn btn-ghost js-project-open" data-project="p1">查看完整项目详情 →</button>
+          </div>
+        </article>
+
+        <!-- 项目 2 · 图右 -->
+        <article class="feat-card flip" id="p2">
+          <figure class="feat-media mask fe">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system%2C%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines%2C%20deep%20blue%20and%20cyan%20color%20palette%2C%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策流程示意" loading="lazy" />
+            <figcaption>Fig. 03 — 三阶段混合决策：规则引擎 + 深度网络 + DeepSeek</figcaption>
+          </figure>
+          <div class="feat-copy fe">
+            <p class="feat-meta">
+              <span class="feat-num">P.02</span>
+              <span class="feat-cat">AI 算法 / Self-Play</span>
+              <span class="feat-year">2026</span>
+            </p>
+            <h3 class="feat-title">基于深度学习的人机对战模型</h3>
+            <p class="feat-desc">基于 PyTorch 实现深度神经网络训练，结合 Self-Play 持续生成棋局数据，用三阶段混合决策策略解决自博弈训练初期数据质量不足的问题。</p>
+            <div class="feat-tags">
+              <span class="tag">AI Algorithm</span>
+              <span class="tag">Self-Play</span>
+              <span class="tag">DeepSeek</span>
+              <span class="tag">PyTorch</span>
+            </div>
+            <div class="feat-metrics">
+              <div class="metric fe"><strong>3 阶段</strong><span>混合决策</span></div>
+              <div class="metric fe"><strong>Self-Play</strong><span>持续生成棋局</span></div>
+              <div class="metric fe"><strong>DeepSeek</strong><span>高质量棋谱</span></div>
+              <div class="metric fe"><strong>PyTorch</strong><span>深度网络训练</span></div>
+            </div>
+            <button class="btn btn-ghost js-project-open" data-project="p2">查看完整项目详情 →</button>
+          </div>
+        </article>
+
+        <!-- 项目 3 · 图左 -->
+        <article class="feat-card" id="p3">
+          <figure class="feat-media mask fe">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20a%20university%20debate%20competition%20on%20stage%2C%20speaker%20podium%20with%20microphone%2C%20warm%20amber%20and%20orange%20color%20palette%2C%20clean%20minimal%20style%20with%20audience%20silhouettes&image_size=landscape_4_3" alt="辩论赛事组织流程示意" loading="lazy" />
+            <figcaption>Fig. 04 — 赛事组织流程：统筹 10+ 人工作小组，服务超千名观众</figcaption>
+          </figure>
+          <div class="feat-copy fe">
+            <p class="feat-meta">
+              <span class="feat-num">P.03</span>
+              <span class="feat-cat">活动运营 / 项目管理</span>
+              <span class="feat-year">2025.09 — 至今</span>
+            </p>
+            <h3 class="feat-title">校辩论赛事策划与运营</h3>
+            <p class="feat-desc">从 0 到 1 负责校内辩论赛事全流程策划与运营，统筹 10+ 人工作小组，把多场次赛事的复杂度摊开、把经验沉淀为可复用清单。</p>
+            <div class="feat-tags">
+              <span class="tag">活动运营</span>
+              <span class="tag">项目管理</span>
+              <span class="tag">团队协作</span>
+              <span class="tag">宣传增长</span>
+            </div>
+            <div class="feat-metrics">
+              <div class="metric fe"><strong><span data-count="10" data-suffix="+">0</span></strong><span>组织赛事</span></div>
+              <div class="metric fe"><strong><span data-count="100" data-suffix="+">0</span></strong><span>参与成员</span></div>
+              <div class="metric fe"><strong><span data-count="1000" data-suffix="+">0</span></strong><span>观众人次</span></div>
+              <div class="metric fe"><strong><span data-count="10" data-suffix="+">0</span></strong><span>人执行小组</span></div>
+            </div>
+            <button class="btn btn-ghost js-project-open" data-project="p3">查看完整项目详情 →</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== ④ About · 五个可读块 ===== -->
     <section class="section about" id="about">
       <div class="section-bg" data-parallax="0.4" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Abstract%20soft%20beige%20gradient%20with%20subtle%20geometric%20shadows%20and%20light%20streaks%2C%20warm%20minimal%20editorial%20background%20art&image_size=landscape_16_9')"></div>
       <div class="container">
         <div class="section-head">
-          <p class="section-num fe" aria-hidden="true">02</p>
-          <p class="section-tag fe">ABOUT — 关于我 · 我的思考方式</p>
+          <p class="section-num fe" aria-hidden="true">03</p>
+          <p class="section-tag fe">ABOUT — 关于我</p>
           <h2 class="section-title fe" style="--d:.1s">Technology is a means.<br /><em>People are the end.</em></h2>
         </div>
 
-        <div class="about-grid">
-          <figure class="about-figure mask fe">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20editorial%20still%20life%2C%20white%20ceramic%20cup%20on%20warm%20beige%20linen%20table%20with%20soft%20morning%20shadow%2C%20fine%20art%20magazine%20aesthetic%2C%20muted%20warm%20tones&image_size=portrait_4_3" alt="关于我的编辑摄影风格配图" loading="lazy" />
-            <figcaption>Fig. 01 — About</figcaption>
-          </figure>
+        <div class="about-layout">
+          <div class="about-blocks">
+            <article class="about-block fe">
+              <p class="about-block-idx" aria-hidden="true">01</p>
+              <h3>Who I am</h3>
+              <p>卢沁园，北京邮电大学通信工程专业本科生（2024—2028）。一名在 AI 与产品交叉领域探索的创造者，喜欢把复杂的问题变成简单、好用的解决方案。</p>
+            </article>
+            <article class="about-block fe" style="--d:.08s">
+              <p class="about-block-idx" aria-hidden="true">02</p>
+              <h3>What I enjoy building</h3>
+              <p>AI Agent、产品原型与数据闭环。从需求分析、方案设计到工程实现，我享受把一个想法快速落地、持续迭代的过程。</p>
+            </article>
+            <article class="about-block fe" style="--d:.16s">
+              <p class="about-block-idx" aria-hidden="true">03</p>
+              <h3>How I solve problems</h3>
+              <p>需求 → 方案 → 实现的完整思维链路；多视角思考；快速落地、持续优化。辩论经历让我习惯站在不同角度想问题。</p>
+            </article>
+            <article class="about-block fe" style="--d:.24s">
+              <p class="about-block-idx" aria-hidden="true">04</p>
+              <h3>What makes me different</h3>
+              <p>技术 + 产品 + 表达的复合视角：懂一点工程（Python / 深度学习）、懂一点设计（Figma 原型）、也懂怎么把复杂的事说清楚。</p>
+            </article>
+            <article class="about-block fe" style="--d:.32s">
+              <p class="about-block-idx" aria-hidden="true">05</p>
+              <h3>Current goals</h3>
+              <p>在 AI 与产品交叉领域持续探索，打造真正有价值、有温度的智能产品——让技术消失，让体验留下。</p>
+            </article>
+          </div>
 
-          <div class="about-copy">
-            <p class="about-p fe">我喜欢探索新技术，也喜欢把复杂的问题变成简单、好用的解决方案。</p>
-            <p class="about-p fe" style="--d:.12s">从 AI Agent、Prompt Engineering 到产品设计，我始终保持着对技术的好奇心，并乐于将想法快速落地，在实践中不断迭代优化。我的辩论经历让我拥有良好的沟通表达与团队协作能力，也让我习惯站在不同视角思考问题；项目经历则让我逐渐形成了从需求分析、方案设计到工程实现的完整思维。</p>
-            <p class="about-p fe" style="--d:.24s">希望未来能够继续在 AI 与产品交叉领域持续探索，打造真正有价值、有温度的智能产品。</p>
-
+          <div class="about-side">
+            <figure class="about-figure mask fe">
+              <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20editorial%20still%20life%2C%20white%20ceramic%20cup%20on%20warm%20beige%20linen%20table%20with%20soft%20morning%20shadow%2C%20fine%20art%20magazine%20aesthetic%2C%20muted%20warm%20tones&image_size=portrait_4_3" alt="关于我的编辑摄影风格配图" loading="lazy" />
+              <figcaption>Fig. 05 — About</figcaption>
+            </figure>
             <div class="about-keywords">
               <span class="kw fe">AI Agent</span>
               <span class="kw fe" style="--d:.08s">Product Thinking</span>
@@ -114,358 +259,354 @@
             </div>
           </div>
         </div>
-
-        <!-- 教育背景（保留原内容，3 列信息组织） -->
-        <div class="edu-block fe">
-          <div class="edu-left">
-            <p class="edu-label">EDUCATION</p>
-            <h3 class="edu-school">北京邮电大学 <span class="edu-major">通信工程 · 本科</span></h3>
-            <p class="edu-time">2024.09 — 2028.06</p>
-            <p class="edu-desc">系统学习通信与计算机交叉基础，主动补足产品岗位所需技能。</p>
-          </div>
-          <div class="edu-stats">
-            <div class="edu-stat">
-              <strong><span data-count="105" data-suffix="/560">0</span></strong>
-              <span>专业综合排名</span>
-            </div>
-            <div class="edu-stat">
-              <strong><span data-count="611">0</span></strong>
-              <span>英语六级 CET-6</span>
-            </div>
-            <div class="edu-stat">
-              <strong><span data-count="10" data-suffix="+">0</span></strong>
-              <span>组织策划赛事</span>
-            </div>
-          </div>
-          <div class="edu-right">
-            <p class="edu-label">CORE COURSES</p>
-            <div class="tag-list">
-              <span class="tag">电子电路基础</span>
-              <span class="tag">数据结构与算法</span>
-              <span class="tag">通信原理</span>
-              <span class="tag">人工智能进阶</span>
-              <span class="tag">微处理器与系统</span>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
 
-    <!-- ===== ④ Projects · 跨栏 / 错位 / Gallery ===== -->
-    <section class="section projects" id="projects">
-      <div class="section-bg" data-parallax="0.45" aria-hidden="true"
-        style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Abstract%20soft%20beige%20gradient%20with%20subtle%20geometric%20shadows%20and%20light%20streaks%2C%20warm%20minimal%20editorial%20background%20art&image_size=landscape_16_9')"></div>
-      <div class="container">
-        <div class="section-head">
-          <p class="section-num fe" aria-hidden="true">03</p>
-          <p class="section-tag fe">PROJECTS — 项目案例</p>
-          <h2 class="section-title fe" style="--d:.1s">Selected Works</h2>
-          <p class="section-sub fe" style="--d:.2s">从产品交互、数据闭环到 AI 算法落地，每个项目都完整展示我的思考与执行过程。</p>
-        </div>
-
-        <!-- 项目总览索引 -->
-        <div class="projects-index">
-          <a class="pi-item fe" href="#p1" data-scroll>
-            <p class="pi-num">P.01</p>
-            <p class="pi-name">途泊 · 龙虾实验助手</p>
-            <p class="pi-tags">AI 产品 / 数据闭环 / 交互优化</p>
-          </a>
-          <a class="pi-item fe" style="--d:.1s" href="#p2" data-scroll>
-            <p class="pi-num">P.02</p>
-            <p class="pi-name">基于深度学习的人机对战模型</p>
-            <p class="pi-tags">AI 算法 / Self-Play / Prompt</p>
-          </a>
-          <a class="pi-item fe" style="--d:.2s" href="#p3" data-scroll>
-            <p class="pi-num">P.03</p>
-            <p class="pi-name">校辩论赛事策划与运营</p>
-            <p class="pi-tags">活动运营 / 项目管理 / 团队协作</p>
-          </a>
-        </div>
-
-        <!-- 项目 1 · Featured 大图 + 画廊 -->
-        <article class="project-block featured" id="p1">
-          <div class="pb-meta">
-            <p class="pb-num fe">P.01 / Featured</p>
-            <p class="pb-cn fe">途泊 · 龙虾实验助手</p>
-          </div>
-          <h3 class="pb-title fe">Reimagining Human–Experiment<br />Interaction.</h3>
-          <div class="pb-capabilities fe">
-            <span class="cap">Product Design</span>
-            <span class="cap">Prompt Engineering</span>
-            <span class="cap">Data Loop</span>
-            <span class="cap">全局浮窗交互</span>
-          </div>
-
-          <div class="pb-layout">
-            <div class="pb-copy">
-              <p class="pb-role fe">2026.03 — 至今 · 实验组成员&ensp;|&ensp;独立承担龙虾的接入 &amp; 功能改进&ensp;|&ensp;AI 产品 / 数据闭环</p>
-              <p class="pb-desc fe">独立负责「龙虾实验助手」的产品交互优化与数据闭环建设：将 AI 助手升级为实验全程随时可调用的全局浮窗，并打通真实实验数据回传链路，实现「一句话进实验 → 自动配置 → 结果实时回传」的完整闭环。</p>
-              <div class="pb-chips">
-                <span class="chip fe">Challenge&ensp;·&ensp;4~5 步 → 1~2 步</span>
-                <span class="chip fe" style="--d:.08s">Prompt&ensp;·&ensp;多轮优化回答边界</span>
-                <span class="chip fe" style="--d:.16s">Data Loop&ensp;·&ensp;实验数据实时回传</span>
-                <span class="chip fe" style="--d:.24s">Recognition&ensp;·&ensp;20+ 场景识别</span>
-              </div>
-              <div class="pb-metrics">
-                <div class="metric fe"><strong><span data-count="20" data-suffix="+">0</span></strong><span>实验识别</span></div>
-                <div class="metric fe" style="--d:.1s"><strong><span data-count="30" data-suffix="+">0</span></strong><span>用户反馈</span></div>
-                <div class="metric fe" style="--d:.2s"><strong><span data-count="5">0</span></strong><span>实验组测试</span></div>
-                <div class="metric fe" style="--d:.3s"><strong>4~5 → 1~2</strong><span>入口步骤</span></div>
-              </div>
-              <button class="btn btn-ghost fe js-project-open" data-project="p1">查看完整项目详情 →</button>
-            </div>
-            <figure class="pb-img mask fe">
-              <img src="assets/p1_img3.png" alt="自然语言 → 实验意图" loading="lazy" />
-              <figcaption>Fig. 02 — 自然语言 → 实验意图，助手按知识库作答并自动配置实验</figcaption>
-            </figure>
-          </div>
-
-          <div class="project-gallery">
-            <figure class="g-fig mask fe g-w7">
-              <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
-              <figcaption>Fig. 03 — 全局浮窗式 AI 助手：固定右侧面板嵌入实验平台，实验全过程随时调用、随时提问</figcaption>
-            </figure>
-            <figure class="g-fig mask fe g-w5">
-              <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
-              <figcaption>Fig. 04 — 一句话进入实验：自然语言识别出 20+ 类通信实验场景，一键跳转进入</figcaption>
-            </figure>
-            <figure class="g-fig mask fe g-w4">
-              <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
-              <figcaption>Fig. 05 — 虚实结合实验配置：QPSK 256K 仿真参数自动预填，一键下发实验箱 / 启动仿真引擎</figcaption>
-            </figure>
-            <figure class="g-fig mask fe g-w4 g-o2">
-              <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
-              <figcaption>Fig. 06 — 实验数据实时回传：星座图 / 眼图 / BER 曲线与实测 BER（2.000e-3）直接回传平台</figcaption>
-            </figure>
-            <figure class="g-fig mask fe g-w4">
-              <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
-              <figcaption>Fig. 07 — 智能实验助手对话页：支持模型选择与通信原理问答引导的独立对话形态</figcaption>
-            </figure>
-          </div>
-        </article>
-
-        <!-- 项目 2 · 超宽图跨栏 + 文字错位 -->
-        <article class="project-block wide" id="p2">
-          <div class="pb-meta">
-            <p class="pb-num fe">P.02</p>
-            <p class="pb-cn fe">基于深度学习的人机对战模型</p>
-          </div>
-          <h3 class="pb-title fe">Hybrid Decision<br />Intelligence.</h3>
-          <div class="pb-capabilities fe">
-            <span class="cap">AI Algorithm</span>
-            <span class="cap">Self-Play</span>
-            <span class="cap">DeepSeek</span>
-            <span class="cap">PyTorch</span>
-          </div>
-          <figure class="pb-img pb-img--full mask fe">
-            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system%2C%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines%2C%20deep%20blue%20and%20cyan%20color%20palette%2C%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策流程示意" loading="lazy" />
-            <figcaption>Fig. 08 — 三阶段混合决策示意：规则引擎 + 深度网络 + DeepSeek 协同生成高质量训练样本</figcaption>
-          </figure>
-          <div class="pb-split">
-            <div class="pb-split-main">
-              <p class="pb-role fe">五子棋 AI 对战系统 · 项目负责人&ensp;|&ensp;方案设计 + 工程实现&ensp;|&ensp;AI 算法</p>
-              <p class="pb-desc fe">基于 PyTorch 实现深度神经网络训练，结合 Self-Play 持续生成棋局数据，用三阶段混合决策策略解决传统自博弈训练初期数据质量不足、策略单一的问题。</p>
-              <button class="btn btn-ghost fe js-project-open" data-project="p2">查看完整项目详情 →</button>
-            </div>
-            <div class="pb-split-side">
-              <div class="pb-metrics">
-                <div class="metric fe"><strong>3 阶段</strong><span>混合决策</span></div>
-                <div class="metric fe" style="--d:.1s"><strong>Self-Play</strong><span>持续生成棋局</span></div>
-                <div class="metric fe" style="--d:.2s"><strong>DeepSeek</strong><span>高质量棋谱</span></div>
-                <div class="metric fe" style="--d:.3s"><strong>PyTorch</strong><span>深度网络训练</span></div>
-              </div>
-              <div class="pb-chips">
-                <span class="chip fe">Rule Engine</span>
-                <span class="chip fe" style="--d:.08s">Neural Network</span>
-                <span class="chip fe" style="--d:.16s">DeepSeek</span>
-                <span class="chip fe" style="--d:.24s">Self-Play</span>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- 项目 3 · 右图左文（竖图） -->
-        <article class="project-block side" id="p3">
-          <div class="pb-meta">
-            <p class="pb-num fe">P.03</p>
-            <p class="pb-cn fe">校辩论赛事策划与运营</p>
-          </div>
-          <h3 class="pb-title fe">From Zero to<br />1000+ Audience.</h3>
-          <div class="pb-capabilities fe">
-            <span class="cap">活动运营</span>
-            <span class="cap">项目管理</span>
-            <span class="cap">团队协作</span>
-            <span class="cap">宣传增长</span>
-          </div>
-          <div class="pb-layout">
-            <div class="pb-copy">
-              <p class="pb-role fe">2025.09 — 至今 · 校辩论队赛事负责人&ensp;|&ensp;活动运营 / 组织管理</p>
-              <p class="pb-desc fe">累计负责组织校内赛事十余场，参与成员超百人、观众总计超千人。全程负责赛事策划、赛程安排、团队分工与现场执行。</p>
-              <div class="pb-chips">
-                <span class="chip fe">10+ 场赛事</span>
-                <span class="chip fe" style="--d:.08s">100+ 参与成员</span>
-                <span class="chip fe" style="--d:.16s">1000+ 观众人次</span>
-                <span class="chip fe" style="--d:.24s">10+ 人执行小组</span>
-              </div>
-              <div class="pb-metrics">
-                <div class="metric fe"><strong><span data-count="10" data-suffix="+">0</span></strong><span>组织校内赛事</span></div>
-                <div class="metric fe" style="--d:.1s"><strong><span data-count="100" data-suffix="+">0</span></strong><span>参与成员</span></div>
-                <div class="metric fe" style="--d:.2s"><strong><span data-count="1000" data-suffix="+">0</span></strong><span>观众人次</span></div>
-                <div class="metric fe" style="--d:.3s"><strong><span data-count="10" data-suffix="+">0</span></strong><span>人执行小组</span></div>
-              </div>
-              <button class="btn btn-ghost fe js-project-open" data-project="p3">查看完整项目详情 →</button>
-            </div>
-            <figure class="pb-img pb-img--portrait mask fe">
-              <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20a%20university%20debate%20competition%20on%20stage%2C%20speaker%20podium%20with%20microphone%2C%20warm%20amber%20and%20orange%20color%20palette%2C%20clean%20minimal%20style%20with%20audience%20silhouettes&image_size=landscape_4_3" alt="辩论赛事组织流程示意" loading="lazy" />
-              <figcaption>Fig. 09 — 赛事组织流程示意：统筹 10+ 人工作小组，服务百名选手与超千名观众</figcaption>
-            </figure>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ===== ⑤ Skills · 左标题右清单 ===== -->
+    <!-- ===== ⑤ Skills · 横向滚动胶囊 ===== -->
     <section class="section skills" id="skills">
       <div class="section-bg" data-parallax="0.35" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20warm%20cream%20paper%20texture%20with%20soft%20grain%20and%20gentle%20shadow%20gradients%2C%20empty%20editorial%20background%2C%20quiet%20art%20direction%2C%20beige%20tones&image_size=landscape_16_9')"></div>
-      <div class="container skills-layout">
-        <div class="skills-side">
+      <div class="container">
+        <div class="section-head">
           <p class="section-num fe" aria-hidden="true">04</p>
           <p class="section-tag fe">SKILLS — 技能清单</p>
           <h2 class="section-title fe" style="--d:.1s">Capabilities</h2>
-          <p class="section-sub fe" style="--d:.2s">产品、数据与技术的交叉能力，在实践中持续打磨。</p>
-          <div class="tag-cloud" id="tagCloud">
-            <span class="cloud-tag fe">Python</span>
-            <span class="cloud-tag fe">FastAPI</span>
-            <span class="cloud-tag fe">OpenClaw</span>
-            <span class="cloud-tag fe">Prompt Engineering</span>
-            <span class="cloud-tag fe">Figma</span>
-            <span class="cloud-tag fe">Workflow Design</span>
-            <span class="cloud-tag fe">LLM</span>
-            <span class="cloud-tag fe">Agent</span>
-            <span class="cloud-tag fe">SQL</span>
-            <span class="cloud-tag fe">Git</span>
-            <span class="cloud-tag fe">C++</span>
-            <span class="cloud-tag fe">VSCode</span>
-            <span class="cloud-tag fe">MCP</span>
-          </div>
+          <p class="section-sub fe" style="--d:.2s">产品、数据与技术的交叉能力，在实践中持续打磨。← 左右滑动查看 →</p>
         </div>
 
-        <div class="skill-rows">
-          <div class="skill-row fe">
-            <p class="skill-idx" aria-hidden="true">a</p>
-            <div class="skill-body">
-              <h4>产品基础能力</h4>
-              <p>熟悉 Figma，自主进行项目实战 10+ 次</p>
-              <p>熟悉 Office、飞书、Notion 等协作工具</p>
-              <div class="tag-list"><span class="tag">Figma</span><span class="tag">原型设计</span><span class="tag">交互流程</span></div>
+        <div class="skills-hscroll">
+          <div class="skill-group fe">
+            <p class="skill-group-label">AI</p>
+            <p class="skill-group-desc">有 Prompt Engineering 实战经验；了解 MCP 与 Agent Workflow</p>
+            <div class="pill-row">
+              <span class="pill">AI Agent</span>
+              <span class="pill">Prompt Engineering</span>
+              <span class="pill">MCP</span>
+              <span class="pill">Agent</span>
+              <span class="pill">LLM</span>
+              <span class="pill">Workflow Design</span>
+              <span class="pill">DeepSeek</span>
             </div>
           </div>
-          <div class="skill-row fe" style="--d:.1s">
-            <p class="skill-idx" aria-hidden="true">b</p>
-            <div class="skill-body">
-              <h4>数据分析</h4>
-              <p>熟悉 SQL，掌握数据查询与可视化</p>
-              <p>在 Sqliteviz 平台多次实操</p>
-              <div class="tag-list"><span class="tag">SQL</span><span class="tag">Sqliteviz</span><span class="tag">数据分析</span></div>
+
+          <div class="skill-group fe" style="--d:.08s">
+            <p class="skill-group-label">Data Analysis</p>
+            <p class="skill-group-desc">熟悉 SQL，掌握数据查询与可视化，在 Sqliteviz 平台多次实操</p>
+            <div class="pill-row">
+              <span class="pill">SQL</span>
+              <span class="pill">Sqliteviz</span>
+              <span class="pill">数据分析</span>
+              <span class="pill">数据可视化</span>
             </div>
           </div>
-          <div class="skill-row fe" style="--d:.2s">
-            <p class="skill-idx" aria-hidden="true">c</p>
-            <div class="skill-body">
-              <h4>技术基础</h4>
-              <p class="strong-line">有 Prompt Engineering 实战经验</p>
-              <p>可独立完成基础算法实现与工程调试</p>
-              <p>了解 MCP 与 Agent Workflow</p>
-              <div class="tag-list"><span class="tag">Python</span><span class="tag">C++</span><span class="tag">VSCode</span><span class="tag">MCP / Agent</span></div>
+
+          <div class="skill-group fe" style="--d:.16s">
+            <p class="skill-group-label">Frontend</p>
+            <p class="skill-group-desc">熟悉 Figma，自主进行项目实战 10+ 次，输出完整原型与交互流程</p>
+            <div class="pill-row">
+              <span class="pill">Figma</span>
+              <span class="pill">原型设计</span>
+              <span class="pill">交互流程</span>
+              <span class="pill">VSCode</span>
+            </div>
+          </div>
+
+          <div class="skill-group fe" style="--d:.24s">
+            <p class="skill-group-label">Backend</p>
+            <p class="skill-group-desc">可独立完成基础算法实现与工程调试（Python / C++）</p>
+            <div class="pill-row">
+              <span class="pill">Python</span>
+              <span class="pill">FastAPI</span>
+              <span class="pill">OpenClaw</span>
+              <span class="pill">C++</span>
+              <span class="pill">Git</span>
+            </div>
+          </div>
+
+          <div class="skill-group fe" style="--d:.32s">
+            <p class="skill-group-label">Research</p>
+            <p class="skill-group-desc">从需求分析、方案设计到工程实现的完整思维链路</p>
+            <div class="pill-row">
+              <span class="pill">需求分析</span>
+              <span class="pill">方案设计</span>
+              <span class="pill">多视角思考</span>
+              <span class="pill">快速落地迭代</span>
+              <span class="pill">数据结构与算法</span>
+            </div>
+          </div>
+
+          <div class="skill-group fe" style="--d:.4s">
+            <p class="skill-group-label">Tools</p>
+            <p class="skill-group-desc">熟悉 Office、飞书、Notion 等协作工具，习惯用工具把流程标准化</p>
+            <div class="pill-row">
+              <span class="pill">Office</span>
+              <span class="pill">飞书</span>
+              <span class="pill">Notion</span>
+              <span class="pill">Figma</span>
+              <span class="pill">Git</span>
+              <span class="pill">VSCode</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== ⑥ Experience · 时间线索引 ===== -->
+    <!-- ===== ⑥ Timeline · Apple 风竖版时间线 ===== -->
     <section class="section experience" id="experience">
       <div class="section-bg" data-parallax="0.4" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Warm%20terracotta%20and%20cream%20minimal%20abstract%20composition%2C%20soft%20blurred%20organic%20shapes%2C%20editorial%20magazine%20background%2C%20muted%20tones&image_size=landscape_16_9')"></div>
       <div class="container">
         <div class="section-head">
           <p class="section-num fe" aria-hidden="true">05</p>
-          <p class="section-tag fe">EXPERIENCE — 我的经历</p>
+          <p class="section-tag fe">TIMELINE — 我的路径</p>
           <h2 class="section-title fe" style="--d:.1s">Path</h2>
-          <p class="section-sub fe" style="--d:.2s">教育、实践与成长的关键节点。</p>
+          <p class="section-sub fe" style="--d:.2s">教育、研究、项目与实习的关键节点。</p>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-item fe">
-            <p class="timeline-time">2024.09 — 2028.06</p>
-            <div class="timeline-body">
+        <div class="timeline-edit">
+          <div class="tl-item fe">
+            <p class="tl-cat">EDUCATION</p>
+            <p class="tl-time">2024.09 — 2028.06</p>
+            <div class="tl-body">
               <h4>北京邮电大学 · 通信工程（本科）</h4>
-              <p>专业综合排名 105/560，六级 611。完成电子电路、数据结构、通信原理、人工智能等核心课程。</p>
+              <p>专业综合排名 105/560，英语六级 611。系统学习通信与计算机交叉基础，主动补足产品岗位所需技能。</p>
+              <div class="tag-list">
+                <span class="tag">电子电路基础</span>
+                <span class="tag">数据结构与算法</span>
+                <span class="tag">通信原理</span>
+                <span class="tag">人工智能进阶</span>
+                <span class="tag">微处理器与系统</span>
+              </div>
             </div>
           </div>
-          <div class="timeline-item fe" style="--d:.08s">
-            <p class="timeline-time">2025 — 2026 年</p>
-            <div class="timeline-body">
-              <h4>学习 MCP 与 Agent Workflow</h4>
+
+          <div class="tl-item fe">
+            <p class="tl-cat">RESEARCH</p>
+            <p class="tl-time">2025 — 2026 年</p>
+            <div class="tl-body">
+              <h4>MCP 与 Agent Workflow 学习</h4>
               <p>在课程设计中自主编写 Skills；基本掌握 SQL 语法，并在 Sqliteviz 平台多次实操。</p>
             </div>
           </div>
-          <div class="timeline-item fe" style="--d:.16s">
-            <p class="timeline-time">2025.09 — 至今</p>
-            <div class="timeline-body">
+
+          <div class="tl-item fe">
+            <p class="tl-cat">PROJECT</p>
+            <p class="tl-time">2025.09 — 至今</p>
+            <div class="tl-body">
               <h4>校辩论队成员 · 赛事组织</h4>
               <p>累计负责组织校内赛事十余场，参与成员超百人、观众超千人，锻炼了统筹与表达能力。</p>
             </div>
           </div>
-          <div class="timeline-item fe" style="--d:.24s">
-            <p class="timeline-time">2026 年</p>
-            <div class="timeline-body">
+
+          <div class="tl-item fe">
+            <p class="tl-cat">EDUCATION</p>
+            <p class="tl-time">2026 年</p>
+            <div class="tl-body">
               <h4>自学 Figma · 完成平台原型设计</h4>
-              <p>2026 年自学 Figma，通过 10+ 个项目进行实战练习，完成平台产品原型设计与交互流程制作，形成从需求到原型的完整输出能力。</p>
+              <p>通过 10+ 个项目进行实战练习，完成平台产品原型设计与交互流程制作，形成从需求到原型的完整输出能力。</p>
             </div>
           </div>
-          <div class="timeline-item fe" style="--d:.32s">
-            <p class="timeline-time">2026.03 — 至今</p>
-            <div class="timeline-body">
+
+          <div class="tl-item fe">
+            <p class="tl-cat">PROJECT</p>
+            <p class="tl-time">2026 年</p>
+            <div class="tl-body">
+              <h4>五子棋 AI · 三阶段混合决策</h4>
+              <p>基于 PyTorch 实现深度网络训练，结合 Self-Play 与 DeepSeek 持续生成高质量棋局数据。</p>
+            </div>
+          </div>
+
+          <div class="tl-item fe">
+            <p class="tl-cat">INTERNSHIP</p>
+            <p class="tl-time">2026.03 — 至今</p>
+            <div class="tl-body">
               <h4>途泊项目 · 龙虾实验助手（实验组成员）</h4>
               <p>独立负责产品交互优化与数据闭环建设：升级全局浮窗 AI 助手、打通实验数据回传链路、拓展 20+ 类通信实验场景自然语言识别。</p>
+            </div>
+          </div>
+
+          <div class="tl-item fe">
+            <p class="tl-cat">ACHIEVEMENT</p>
+            <p class="tl-time">2024 — 至今</p>
+            <div class="tl-body">
+              <h4>高排名 · 高分 · 规模落地</h4>
+              <p>专业综合排名 105/560、英语六级 611；组织赛事 10+ 场、服务观众 1000+ 人次；主导项目实现 20+ 场景识别。</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ===== ⑦ Contact · 极简留白 ===== -->
+    <!-- ===== ⑦ Selected Achievements · 非对称卡片 ===== -->
+    <section class="section achievements" id="achievements">
+      <div class="section-bg" data-parallax="0.35" aria-hidden="true"
+        style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Abstract%20soft%20beige%20gradient%20with%20subtle%20geometric%20shadows%20and%20light%20streaks%2C%20warm%20minimal%20editorial%20background%20art&image_size=landscape_16_9')"></div>
+      <div class="container">
+        <div class="section-head">
+          <p class="section-num fe" aria-hidden="true">06</p>
+          <p class="section-tag fe">SELECTED ACHIEVEMENTS — 关键成果</p>
+          <h2 class="section-title fe" style="--d:.1s">Numbers &amp; Moments</h2>
+        </div>
+
+        <div class="ach-grid">
+          <div class="ach-card ach-num fe">
+            <span class="ach-label">ACADEMIC RANKING</span>
+            <p class="ach-big"><span data-count="105" data-suffix="/560">0</span></p>
+            <p class="ach-desc">专业综合排名，前 1/5</p>
+          </div>
+
+          <div class="ach-card ach-num fe" style="--d:.08s">
+            <span class="ach-label">CET-6</span>
+            <p class="ach-big"><span data-count="611">0</span></p>
+            <p class="ach-desc">英语六级，远超通过线</p>
+          </div>
+
+          <div class="ach-card ach-quote fe" style="--d:.16s">
+            <p class="ach-quote-text">Technology should disappear.<br /><em>Experience should remain.</em></p>
+            <p class="ach-desc">— 我的设计信条</p>
+          </div>
+
+          <div class="ach-card ach-num fe" style="--d:.08s">
+            <span class="ach-label">EXPERIMENT RECOGNITION</span>
+            <p class="ach-big"><span data-count="20" data-suffix="+">0</span></p>
+            <p class="ach-desc">通信实验场景自然语言识别</p>
+          </div>
+
+          <div class="ach-card ach-highlight fe" style="--d:.16s">
+            <span class="ach-label">FLOW REDESIGN</span>
+            <p class="ach-big ach-inline">4~5 → <em>1~2</em></p>
+            <p class="ach-desc">实验入口操作步骤，使用门槛显著降低</p>
+          </div>
+
+          <figure class="ach-card ach-img fe" style="--d:.24s">
+            <img src="assets/p1_img3.png" alt="自然语言 → 实验意图" loading="lazy" />
+            <figcaption>一句话进实验</figcaption>
+          </figure>
+
+          <div class="ach-card ach-num fe">
+            <span class="ach-label">EVENT SCALE</span>
+            <p class="ach-big"><span data-count="10" data-suffix="+">0</span> · <span data-count="1000" data-suffix="+">0</span></p>
+            <p class="ach-desc">组织赛事 10+ 场，观众人次 1000+</p>
+          </div>
+
+          <div class="ach-card ach-highlight fe" style="--d:.1s">
+            <span class="ach-label">OWNERSHIP</span>
+            <p class="ach-desc ach-desc-big">独立负责「龙虾实验助手」接入与功能改进，从 0 到 1 打通实验数据回传链路；自主撰写平台使用手册，5 个实验组试用、30+ 条反馈驱动多轮迭代。</p>
+          </div>
+
+          <div class="ach-card ach-num fe" style="--d:.18s">
+            <span class="ach-label">SCENARIO GROWTH</span>
+            <p class="ach-big"><span data-count="15" data-suffix="+ → 20+">0</span></p>
+            <p class="ach-desc">实验场景识别持续拓展</p>
+          </div>
+
+          <figure class="ach-card ach-img fe" style="--d:.26s">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20an%20AI%20game%20system%2C%20gomoku%20black%20and%20white%20stones%20on%20a%20goban%20board%20connected%20by%20neural%20network%20nodes%20and%20glowing%20data%20lines%2C%20deep%20blue%20and%20cyan%20color%20palette%2C%20minimal%20tech%20illustration%20style&image_size=landscape_4_3" alt="三阶段混合决策示意" loading="lazy" />
+            <figcaption>三阶段混合决策</figcaption>
+          </figure>
+
+          <div class="ach-card ach-highlight fe">
+            <span class="ach-label">DEBATE &amp; EXPRESSION</span>
+            <p class="ach-desc ach-desc-big">辩论经历沉淀的沟通表达与团队协作能力——习惯站在不同角度想问题，在需求、研发与用户之间翻译。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ⑧ Project Gallery · 瀑布流 ===== -->
+    <section class="section gallery" id="gallery">
+      <div class="section-bg" data-parallax="0.45" aria-hidden="true"
+        style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Warm%20terracotta%20and%20cream%20minimal%20abstract%20composition%2C%20soft%20blurred%20organic%20shapes%2C%20editorial%20magazine%20background%2C%20muted%20tones&image_size=landscape_16_9')"></div>
+      <div class="container">
+        <div class="section-head">
+          <p class="section-num fe" aria-hidden="true">07</p>
+          <p class="section-tag fe">PROJECT GALLERY — 项目图集</p>
+          <h2 class="section-title fe" style="--d:.1s">Gallery</h2>
+          <p class="section-sub fe" style="--d:.2s">项目中的关键画面。悬停查看说明，点击查看大图。</p>
+        </div>
+
+        <div class="gallery-masonry">
+          <figure class="gallery-item gi-feature mask fe">
+            <img src="assets/p2_img2.png" alt="全局浮窗式 AI 助手界面" loading="lazy" />
+            <figcaption>全局浮窗式 AI 助手 —— 实验全过程随时调用、随时提问</figcaption>
+          </figure>
+          <figure class="gallery-item mask fe" style="--d:.08s">
+            <img src="assets/p1_img2.png" alt="一句话进入实验" loading="lazy" />
+            <figcaption>一句话进入实验 —— 20+ 类通信实验场景一键跳转</figcaption>
+          </figure>
+          <figure class="gallery-item mask fe" style="--d:.16s">
+            <img src="assets/p1_img3.png" alt="自然语言问答与实验配置" loading="lazy" />
+            <figcaption>自然语言 → 实验意图 —— 助手按知识库作答并自动配置</figcaption>
+          </figure>
+          <figure class="gallery-item mask fe" style="--d:.24s">
+            <img src="assets/p2_img3.png" alt="虚实结合实验配置" loading="lazy" />
+            <figcaption>虚实结合实验配置 —— QPSK 256K 仿真参数自动预填</figcaption>
+          </figure>
+          <figure class="gallery-item mask fe" style="--d:.1s">
+            <img src="assets/p3_img1.png" alt="实验数据实时回传" loading="lazy" />
+            <figcaption>实验数据实时回传 —— 星座图 / 眼图 / BER 曲线直接回传</figcaption>
+          </figure>
+          <figure class="gallery-item mask fe" style="--d:.18s">
+            <img src="assets/p1_img1.png" alt="智能实验助手对话页" loading="lazy" />
+            <figcaption>智能实验助手对话页 —— 模型选择与通信原理问答引导</figcaption>
+          </figure>
+          <figure class="gallery-item mask fe" style="--d:.26s">
+            <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Modern%20flat%20illustration%20of%20a%20university%20debate%20competition%20on%20stage%2C%20speaker%20podium%20with%20microphone%2C%20warm%20amber%20and%20orange%20color%20palette%2C%20clean%20minimal%20style%20with%20audience%20silhouettes&image_size=landscape_4_3" alt="辩论赛事组织流程示意" loading="lazy" />
+            <figcaption>赛事组织流程 —— 统筹 10+ 人工作小组</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ⑨ Contact · 大字体 + 极简表单 ===== -->
     <section class="section contact" id="contact">
       <div class="section-bg" data-parallax="0.3" aria-hidden="true"
-        style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Warm%20terracotta%20and%20cream%20minimal%20abstract%20composition%2C%20soft%20blurred%20organic%20shapes%2C%20editorial%20magazine%20background%2C%20muted%20tones&image_size=landscape_16_9')"></div>
+        style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20warm%20cream%20paper%20texture%20with%20soft%20grain%20and%20gentle%20shadow%20gradients%2C%20empty%20editorial%20background%2C%20quiet%20art%20direction%2C%20beige%20tones&image_size=landscape_16_9')"></div>
       <div class="container contact-inner">
-        <p class="section-num fe" aria-hidden="true">06</p>
+        <p class="section-num fe" aria-hidden="true">08</p>
         <p class="contact-statement fe">Let's Build Something<br /><em>Meaningful.</em></p>
         <p class="contact-sub fe" style="--d:.15s">如果你对我的项目感兴趣，或者想交流产品想法，欢迎随时联系。</p>
 
-        <div class="contact-grid">
-          <a class="contact-card fe" href="https://mail.qq.com/" target="_blank" rel="noopener">
-            <p class="contact-label">邮箱 Email</p>
-            <p class="contact-value">you_yunlily@qq.com</p>
-            <span class="contact-hint">点击跳转 QQ 邮箱，直接发送文件 →</span>
-          </a>
-          <div class="contact-card fe" style="--d:.1s">
-            <p class="contact-label">电话 Phone</p>
-            <p class="contact-value">18710175002</p>
-            <span class="contact-hint">工作日 9:00 — 21:00 可接听</span>
+        <div class="contact-row">
+          <div class="contact-grid">
+            <a class="contact-card fe" href="https://mail.qq.com/" target="_blank" rel="noopener">
+              <p class="contact-label">邮箱 Email</p>
+              <p class="contact-value">you_yunlily@qq.com</p>
+              <span class="contact-hint">点击跳转 QQ 邮箱，直接发送文件 →</span>
+            </a>
+            <div class="contact-card fe" style="--d:.1s">
+              <p class="contact-label">电话 Phone</p>
+              <p class="contact-value">18710175002</p>
+              <span class="contact-hint">工作日 9:00 — 21:00 可接听</span>
+            </div>
+            <div class="contact-card fe" style="--d:.2s">
+              <p class="contact-label">微信 WeChat</p>
+              <p class="contact-value">lily67388</p>
+              <span class="contact-hint">添加时请备注「产品实习」</span>
+            </div>
+            <a class="contact-card fe" style="--d:.3s" href="https://github.com/youyunlily-design" target="_blank" rel="noopener">
+              <p class="contact-label">GitHub</p>
+              <p class="contact-value">youyunlily-design</p>
+              <span class="contact-hint">作品代码与部署仓库 →</span>
+            </a>
           </div>
-          <div class="contact-card fe" style="--d:.2s">
-            <p class="contact-label">微信 WeChat</p>
-            <p class="contact-value">lily67388</p>
-            <span class="contact-hint">添加时请备注「产品实习」</span>
-          </div>
-          <a class="contact-card fe" style="--d:.3s" href="https://github.com/youyunlily-design" target="_blank" rel="noopener">
-            <p class="contact-label">GitHub</p>
-            <p class="contact-value">youyunlily-design</p>
-            <span class="contact-hint">作品代码与部署仓库 →</span>
-          </a>
+
+          <form class="contact-form fe" action="mailto:you_yunlily@qq.com" method="post" enctype="text/plain">
+            <div class="form-field">
+              <label for="cf-name">你的名字</label>
+              <input id="cf-name" type="text" name="name" placeholder="怎么称呼你？" required />
+            </div>
+            <div class="form-field">
+              <label for="cf-mail">你的邮箱</label>
+              <input id="cf-mail" type="email" name="email" placeholder="name@example.com" required />
+            </div>
+            <div class="form-field">
+              <label for="cf-msg">想说的话</label>
+              <textarea id="cf-msg" name="message" rows="4" placeholder="介绍你自己，或直接告诉我你的想法…" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">发送消息 →</button>
+            <p class="form-hint">提交后将唤起你的邮箱客户端，发送至 you_yunlily@qq.com</p>
+          </form>
         </div>
 
         <div class="contact-download fe">

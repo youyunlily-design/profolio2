@@ -1,7 +1,9 @@
 /* ============================================================
-   卢沁园 · AI Product Builder — 浅色杂志编辑风（Editorial Design）
-   风格：Warm Sage 低饱和纸感底色 / 中文阅读优先 / 编辑杂志排版
+   卢沁园 · AI Product Builder — Editorial Layout
+   风格：Warm Sage 低饱和纸感底色 / 中文阅读优先 / 杂志编辑排版
    技术：全站背景图像视差 / 图片遮罩揭示 / 慢速渐入 / 平滑滚动
+   布局：9 段编辑式结构（Hero / Focus / Projects / About /
+         Skills / Timeline / Achievements / Gallery / Contact）
    ============================================================ */
 
 :root {
@@ -38,12 +40,15 @@ img { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { font-family: inherit; cursor: pointer; }
+input, textarea { font-family: inherit; }
 
 ::selection { background: var(--accent); color: #fff; }
 
 body.lock { overflow: hidden; }
 
-.container { width: min(1180px, 90%); margin: 0 auto; }
+/* 内容约束：最大 1200px，阅读宽 680px */
+.container { width: min(1200px, 90%); margin: 0 auto; }
+.read-w { max-width: 680px; }
 
 em { font-style: italic; }
 
@@ -68,9 +73,9 @@ em { font-style: italic; }
   pointer-events: none;
 }
 
-.hero .section-bg { opacity: 1; }
+.hero .section-bg { opacity: .9; }
 
-.section > .container, .hero .hero-inner { position: relative; z-index: 1; }
+.section > .container, .hero .hero-grid { position: relative; z-index: 1; }
 
 /* ---------- 动画：慢速渐入 / 图片遮罩揭示 ---------- */
 .fe {
@@ -188,10 +193,10 @@ em { font-style: italic; }
   background: var(--accent);
 }
 
-/* ---------- 通用区块标题 ---------- */
-.section { padding: clamp(80px, 11vw, 140px) 0; }
+/* ---------- 通用区块标题 & 大留白（120~200px） ---------- */
+.section { padding: clamp(120px, 11vw, 200px) 0; }
 
-.section-head { margin-bottom: clamp(2.5rem, 6vw, 4.5rem); }
+.section-head { margin-bottom: clamp(3rem, 7vw, 5.5rem); }
 
 .section-num {
   font-family: var(--serif);
@@ -218,7 +223,7 @@ em { font-style: italic; }
   color: var(--ink);
 }
 
-.section-title em, .hero-title em, .statement-quote em, .contact-statement em {
+.section-title em, .hero-title em, .contact-statement em, .ach-quote-text em {
   color: var(--accent);
   font-style: italic;
 }
@@ -257,12 +262,51 @@ em { font-style: italic; }
   transform: translateY(-2px);
 }
 
-/* ---------- ① Hero · 全屏图片 + 一句核心标题 ---------- */
+/* ---------- 标签 / 胶囊 / 度量 ---------- */
+.tag {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: .32rem .95rem;
+  font-size: .76rem;
+  color: var(--ink-2);
+  letter-spacing: .03em;
+  white-space: nowrap;
+}
+
+.tag-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; }
+
+.pill {
+  border: 1px solid var(--line-2);
+  border-radius: 999px;
+  padding: .7rem 1.5rem;
+  font-size: .9rem;
+  letter-spacing: .04em;
+  color: var(--ink);
+  background: transparent;
+  white-space: nowrap;
+  transition: background .35s, border-color .35s, color .35s, transform .35s var(--ease);
+}
+
+.pill:hover { background: var(--ink); border-color: var(--ink); color: var(--bg); transform: translateY(-2px); }
+
+.metric strong {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  line-height: 1.25;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric span { font-size: .74rem; letter-spacing: .1em; color: var(--ink-3); }
+
+/* ============================================================
+   ① Hero · 左对齐 + 右侧装饰图
+   ============================================================ */
 .hero {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .hero-vignette {
@@ -270,14 +314,19 @@ em { font-style: italic; }
   inset: 0;
   z-index: 0;
   background:
-    linear-gradient(to bottom, rgba(236, 239, 231, .18) 0%, rgba(236, 239, 231, .42) 55%, var(--bg) 100%);
+    linear-gradient(to bottom, rgba(236, 239, 231, .16) 0%, rgba(236, 239, 231, .38) 60%, var(--bg) 100%);
   pointer-events: none;
 }
 
-.hero-inner {
-  text-align: center;
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.08fr .92fr;
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
   padding: 140px 0 90px;
 }
+
+.hero-copy { max-width: 660px; }
 
 .hero-eyebrow {
   font-size: .78rem;
@@ -290,17 +339,45 @@ em { font-style: italic; }
 .hero-title {
   font-family: var(--serif);
   font-weight: 400;
-  font-size: clamp(2.9rem, 8.5vw, 7rem);
-  line-height: 1.04;
+  font-size: clamp(3rem, 7vw, 5.6rem);
+  line-height: 1.05;
   letter-spacing: -.01em;
   margin-bottom: 2rem;
 }
 
-.hero-keywords {
-  font-size: clamp(.85rem, 1.5vw, 1rem);
-  letter-spacing: .2em;
+.hero-desc {
   color: var(--ink-2);
-  margin-bottom: 3.6rem;
+  font-size: clamp(.95rem, 1.4vw, 1.05rem);
+  max-width: 34rem;
+  line-height: 1.9;
+  margin-bottom: 2.6rem;
+}
+
+.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 4rem; }
+
+.hero-figure {
+  position: relative;
+  align-self: stretch;
+}
+
+.hero-figure img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  max-height: 74vh;
+  object-fit: cover;
+}
+
+.hero-figure figcaption,
+.feat-media figcaption,
+.about-figure figcaption,
+.gallery-item figcaption,
+.ach-img figcaption {
+  margin-top: .8rem;
+  font-size: .76rem;
+  letter-spacing: .06em;
+  color: var(--ink-3);
+  font-style: normal;
 }
 
 .hero-scroll {
@@ -326,93 +403,185 @@ em { font-style: italic; }
   100% { transform: scaleY(1) translateY(20px); opacity: 0; }
 }
 
-/* ---------- ② Reflection · 大引用 + 方法论 ---------- */
-.statement {
-  display: flex;
-  align-items: center;
-}
-
-.statement-inner { padding: 40px 0; width: 100%; }
-
-.statement-grid {
+/* ============================================================
+   ② Current Focus · 双栏
+   ============================================================ */
+.focus-grid {
   display: grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap: clamp(2.5rem, 6vw, 6rem);
+  grid-template-columns: .9fr 1.1fr;
+  gap: clamp(3rem, 7vw, 7rem);
   align-items: start;
 }
 
-.statement-left { text-align: left; }
-
-.statement-num {
-  font-family: var(--serif);
-  font-size: clamp(4rem, 12vw, 9rem);
-  line-height: 1;
-  color: transparent;
-  -webkit-text-stroke: 1px var(--line-2);
-  margin-bottom: 1.2rem;
-  user-select: none;
-}
-
-.statement-quote {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.8rem, 4.4vw, 3.4rem);
-  line-height: 1.2;
-}
-
-.statement-right {
-  border-left: 1px solid var(--line);
-  padding-left: clamp(1.5rem, 4vw, 3rem);
-}
-
-.statement-sub {
+.focus-intro p {
   color: var(--ink-2);
-  font-size: clamp(.95rem, 1.5vw, 1.1rem);
-  margin-bottom: 1.8rem;
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  line-height: 1.9;
 }
 
-.statement-points { list-style: none; }
+.focus-sub { margin-top: 1.4rem; color: var(--ink-3); font-size: .95rem; }
 
-.statement-points li {
-  display: grid;
-  grid-template-columns: 2.4rem 1fr;
-  gap: .8rem;
-  padding: 1.15rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.statement-points li:last-child { border-bottom: none; }
-
-.sp-idx {
-  font-family: var(--serif);
-  color: var(--accent);
-  font-size: .95rem;
-  padding-top: .15rem;
-}
-
-.statement-points strong { font-weight: 600; display: block; margin-bottom: .25rem; }
-
-.statement-points p { font-size: .9rem; color: var(--ink-2); line-height: 1.75; }
-
-.statement-tags {
+.focus-tags {
   display: flex;
   flex-wrap: wrap;
   gap: .5rem;
-  margin-top: 1.5rem;
+  margin-top: 2.4rem;
 }
 
-/* ---------- ③ About · 左图右文 ---------- */
-.about { background: var(--bg); }
+.focus-cards { border-top: 1px solid var(--line-2); }
 
-.about-grid {
+.focus-card {
+  padding: 2.2rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.focus-card h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  margin-bottom: .6rem;
+}
+
+.focus-card p:last-child { color: var(--ink-2); font-size: .96rem; line-height: 1.85; }
+
+.focus-label {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  font-size: .72rem;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 1.2rem;
+}
+
+.focus-label span {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--accent);
+  letter-spacing: 0;
+}
+
+/* ============================================================
+   ③ Featured Projects · 大编辑卡片（左右交替）
+   ============================================================ */
+.feat-card {
   display: grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: clamp(2.5rem, 6vw, 6rem);
-  align-items: start;
-  margin-bottom: clamp(3rem, 7vw, 5.5rem);
+  grid-template-columns: 1.02fr .98fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+  padding: clamp(3rem, 7vw, 5.5rem) 0;
+  border-top: 1px solid var(--line-2);
 }
 
-.about-figure { margin-top: 2.4rem; }
+.feat-card:last-of-type { border-bottom: 1px solid var(--line); }
+
+.feat-card.flip .feat-media { order: 2; }
+.feat-card.flip .feat-copy { order: 1; }
+
+.feat-media { position: relative; }
+
+.feat-media img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 1s var(--ease);
+}
+
+.feat-media:hover img { transform: scale(1.02); }
+
+.feat-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .5rem 1.2rem;
+  margin-bottom: 1.4rem;
+}
+
+.feat-num {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--accent);
+}
+
+.feat-cat {
+  font-size: .72rem;
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.feat-year {
+  font-size: .8rem;
+  color: var(--ink-3);
+  letter-spacing: .05em;
+}
+
+.feat-title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+  line-height: 1.2;
+  letter-spacing: -.01em;
+  margin-bottom: 1.1rem;
+}
+
+.feat-desc {
+  color: var(--ink-2);
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 36rem;
+  margin-bottom: 1.6rem;
+}
+
+.feat-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2.2rem; }
+
+.feat-metrics {
+  display: flex;
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+  flex-wrap: wrap;
+  margin-bottom: 2.4rem;
+}
+
+/* ============================================================
+   ④ About · 五块 + 侧图
+   ============================================================ */
+.about-layout {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: start;
+}
+
+.about-blocks { border-top: 1px solid var(--line-2); }
+
+.about-block {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr;
+  gap: 1.2rem;
+  padding: 1.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.about-block-idx {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.15rem;
+  color: var(--accent);
+  padding-top: .15rem;
+}
+
+.about-block h3 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin-bottom: .5rem;
+}
+
+.about-block p:last-child { color: var(--ink-2); font-size: .95rem; line-height: 1.85; }
+
+.about-side { position: sticky; top: 100px; }
 
 .about-figure img {
   width: 100%;
@@ -420,32 +589,11 @@ em { font-style: italic; }
   object-fit: cover;
 }
 
-.about-figure figcaption,
-.pb-img figcaption,
-.g-fig figcaption {
-  margin-top: .8rem;
-  font-size: .76rem;
-  letter-spacing: .06em;
-  color: var(--ink-3);
-  font-style: normal;
-}
-
-.about-copy { padding-top: 1.2rem; }
-
-.about-p {
-  font-size: 1.02rem;
-  line-height: 1.9;
-  color: var(--ink-2);
-  margin-bottom: 1.5rem;
-}
-
-.about-copy .about-p:first-child { font-size: 1.2rem; color: var(--ink); font-weight: 500; }
-
 .about-keywords {
   display: flex;
   flex-wrap: wrap;
   gap: .7rem;
-  margin-top: 2.2rem;
+  margin-top: 2rem;
 }
 
 .kw {
@@ -460,360 +608,219 @@ em { font-style: italic; }
 
 .kw:hover { border-color: var(--ink); color: var(--ink); transform: translateY(-2px); }
 
-/* 教育背景 · 3 列信息组织 */
-.edu-block {
-  display: grid;
-  grid-template-columns: 1.15fr 1fr 1.05fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: center;
-  border-top: 1px solid var(--line-2);
-  border-bottom: 1px solid var(--line);
-  padding: clamp(2rem, 4vw, 3rem) 0;
+/* ============================================================
+   ⑤ Skills · 横向滚动胶囊
+   ============================================================ */
+.skills-hscroll {
+  display: flex;
+  gap: 1.6rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: .6rem 0 1.6rem;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
-.edu-label {
-  font-size: .7rem;
-  letter-spacing: .4em;
-  text-transform: uppercase;
-  color: var(--ink-3);
+.skills-hscroll::-webkit-scrollbar { display: none; }
+
+.skill-group {
+  flex: 0 0 min(340px, 82vw);
+  scroll-snap-align: start;
+  border-top: 1px solid var(--line-2);
+  padding: 1.6rem 1.4rem 2rem 0;
+}
+
+.skill-group-label {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.7rem;
+  color: var(--accent);
   margin-bottom: .8rem;
 }
 
-.edu-school {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
-  margin-bottom: .4rem;
-  line-height: 1.4;
+.skill-group-desc {
+  color: var(--ink-3);
+  font-size: .85rem;
+  line-height: 1.7;
+  margin-bottom: 1.3rem;
 }
 
-.edu-major { font-size: .95rem; color: var(--ink-3); font-weight: 400; }
-
-.edu-time { color: var(--accent); font-size: .85rem; letter-spacing: .05em; margin-bottom: .6rem; }
-
-.edu-desc { color: var(--ink-2); font-size: .92rem; line-height: 1.75; }
-
-.edu-stats {
+.pill-row {
   display: flex;
-  gap: clamp(1.2rem, 3vw, 2.2rem);
-  align-items: baseline;
   flex-wrap: wrap;
+  gap: .6rem;
 }
 
-.edu-stat {
-  border-top: 1px solid var(--line-2);
-  padding-top: .9rem;
-  flex: 1;
-  min-width: 6rem;
+/* ============================================================
+   ⑥ Timeline · Apple 风竖版时间线
+   ============================================================ */
+.timeline-edit {
+  position: relative;
+  padding-left: clamp(2rem, 5vw, 3.5rem);
 }
 
-.edu-stat strong {
-  display: block;
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
-  line-height: 1.1;
-  margin-bottom: .35rem;
-  font-variant-numeric: tabular-nums;
+.timeline-edit::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .5rem; bottom: .5rem;
+  width: 1px;
+  background: var(--line-2);
 }
 
-.edu-stat span { font-size: .76rem; letter-spacing: .08em; color: var(--ink-3); }
-
-/* ---------- ④ Projects · 跨栏 / 错位 / Gallery ---------- */
-.projects { padding-top: clamp(80px, 11vw, 140px); }
-
-/* 项目总览索引 */
-.projects-index {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--line);
-  border: 1px solid var(--line);
-  margin-bottom: clamp(2.5rem, 6vw, 4.5rem);
+.tl-item {
+  position: relative;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--line);
 }
 
-.pi-item {
+.tl-item:last-child { border-bottom: none; }
+
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * clamp(2rem, 5vw, 3.5rem) + 1px);
+  top: 2.3rem;
+  width: 11px; height: 11px;
+  border-radius: 50%;
   background: var(--bg);
-  padding: 1.5rem 1.6rem;
-  transition: background .35s;
+  border: 2px solid var(--accent);
+  transform: translateX(-50%);
 }
 
-.pi-item:hover { background: var(--bg-2); }
-
-.pi-num {
-  font-family: var(--serif);
+.tl-cat {
+  font-size: .68rem;
+  letter-spacing: .34em;
+  text-transform: uppercase;
   color: var(--accent);
-  font-size: .95rem;
   margin-bottom: .5rem;
 }
 
-.pi-name { font-weight: 600; font-size: 1.05rem; margin-bottom: .35rem; line-height: 1.5; }
-
-.pi-tags { font-size: .78rem; color: var(--ink-3); letter-spacing: .04em; }
-
-.project-block {
-  padding: clamp(2.5rem, 6vw, 4.5rem) 0;
-  border-top: 1px solid var(--line);
+.tl-time {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--ink-2);
+  margin-bottom: .6rem;
 }
 
-.project-block:last-of-type { border-bottom: 1px solid var(--line); }
+.tl-body h4 {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  margin-bottom: .5rem;
+}
 
-.pb-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
+.tl-body p { color: var(--ink-2); font-size: .95rem; line-height: 1.85; }
+
+/* ============================================================
+   ⑦ Selected Achievements · 非对称卡片
+   ============================================================ */
+.ach-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.4rem;
+}
+
+.ach-card {
+  border-top: 1px solid var(--line-2);
+  padding-top: 1.5rem;
+}
+
+.ach-num { grid-column: span 2; }
+.ach-quote { grid-column: span 3; }
+.ach-highlight { grid-column: span 2; }
+.ach-img { grid-column: span 3; }
+
+.ach-label {
+  font-size: .68rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.ach-big {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(2.6rem, 5.4vw, 4.2rem);
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: .8rem;
+}
+
+.ach-inline { font-size: clamp(2rem, 4vw, 3.2rem); }
+.ach-inline em { color: var(--accent); }
+
+.ach-desc { color: var(--ink-2); font-size: .9rem; line-height: 1.8; }
+
+.ach-desc-big { font-size: .98rem; }
+
+.ach-quote-text {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  line-height: 1.25;
   margin-bottom: 1.4rem;
 }
 
-.pb-num { font-size: .74rem; letter-spacing: .3em; text-transform: uppercase; color: var(--accent); }
-
-.pb-cn { font-size: .9rem; color: var(--ink-3); letter-spacing: .05em; }
-
-.pb-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.9rem, 4.6vw, 3.5rem);
-  line-height: 1.1;
-  letter-spacing: -.01em;
-  margin-bottom: 1rem;
-  max-width: 15em;
-}
-
-/* 能力标签行 */
-.pb-capabilities {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .4rem 1.4rem;
-  margin-bottom: clamp(1.8rem, 4vw, 2.8rem);
-}
-
-.cap {
-  font-size: .78rem;
-  letter-spacing: .08em;
-  color: var(--ink-3);
-  white-space: nowrap;
-}
-
-.cap::before {
-  content: "·";
-  color: var(--accent);
-  margin-right: .5rem;
-}
-
-.pb-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 4.5rem);
-  align-items: start;
-}
-
-/* Featured：文字上移错位，图片更大 */
-.featured .pb-layout { grid-template-columns: .92fr 1.08fr; }
-
-.featured .pb-copy { margin-top: -1.2rem; }
-
-.pb-role {
-  font-size: .86rem;
-  letter-spacing: .05em;
-  color: var(--ink-3);
-  margin-bottom: 1.2rem;
-}
-
-.pb-desc {
-  color: var(--ink-2);
-  font-size: 1rem;
-  line-height: 1.9;
-  margin-bottom: 1.8rem;
-}
-
-.pb-chips { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2rem; }
-
-.chip {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: .45rem 1.1rem;
-  font-size: .78rem;
-  letter-spacing: .04em;
-  color: var(--ink-2);
-  transition: border-color .3s, color .3s;
-}
-
-.chip:hover { border-color: var(--ink); color: var(--ink); }
-
-.pb-metrics {
-  display: flex;
-  gap: clamp(1.2rem, 3vw, 2.6rem);
-  flex-wrap: wrap;
-  margin-bottom: 2.4rem;
-}
-
-.metric strong {
-  display: block;
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  line-height: 1.25;
-  font-variant-numeric: tabular-nums;
-}
-
-.metric span { font-size: .74rem; letter-spacing: .1em; color: var(--ink-3); }
-
-.pb-img img {
+.ach-img img {
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  cursor: zoom-in;
+  transition: transform 1s var(--ease);
+}
+
+.ach-img:hover img { transform: scale(1.02); }
+
+/* ============================================================
+   ⑧ Gallery · 瀑布流（masonry）
+   ============================================================ */
+.gallery-masonry {
+  columns: 3;
+  column-gap: 1.6rem;
+}
+
+.gallery-item {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.6rem;
+  break-inside: avoid;
+  cursor: zoom-in;
+}
+
+.gallery-item img {
+  width: 100%;
   object-fit: cover;
   transition: transform 1s var(--ease);
 }
 
-.pb-img img:hover, .g-fig img:hover, .about-figure img:hover, .project-figure img:hover {
-  transform: scale(1.02);
-}
+.gallery-item:hover img { transform: scale(1.02); }
 
-/* Gallery 拼贴（12 列网格，非全部矩形） */
-.project-gallery {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: clamp(1.2rem, 3vw, 2.2rem);
-  margin-top: clamp(2.5rem, 6vw, 4.5rem);
-}
-
-.g-fig { position: relative; }
-
-.g-fig img {
+.gallery-item img {
   width: 100%;
-  aspect-ratio: 16 / 11;
+  aspect-ratio: 16 / 12;
   object-fit: cover;
   transition: transform 1s var(--ease);
 }
 
-.g-w7 { grid-column: span 7; }
-.g-w5 { grid-column: span 5; }
-.g-w4 { grid-column: span 4; }
-.g-o2 { margin-top: 2.5rem; }
+.gallery-item.gi-feature img { aspect-ratio: 16 / 11; }
 
-/* 项目 2 · 超宽图跨栏 */
-.wide .pb-img--full img { aspect-ratio: 16 / 8; }
-
-.wide .pb-img--full { margin-bottom: clamp(2.2rem, 5vw, 3.6rem); }
-
-.pb-split {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
-}
-
-.pb-split-main { padding-top: .5rem; }
-
-.pb-split-side { border-left: 1px solid var(--line); padding-left: clamp(1.5rem, 4vw, 3rem); }
-
-/* 项目 3 · 右图竖版 */
-.side .pb-layout { grid-template-columns: 1.05fr .95fr; }
-
-.side .pb-img--portrait { margin-top: 1rem; }
-
-.side .pb-img--portrait img { aspect-ratio: 4 / 5; }
-
-/* ---------- ⑤ Skills · 左标题右清单 ---------- */
-.skills-layout {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: clamp(2.5rem, 6vw, 6rem);
-  align-items: start;
-}
-
-.skill-rows { border-top: 1px solid var(--line-2); }
-
-.skill-row {
-  display: grid;
-  grid-template-columns: 3.2rem 1fr;
-  gap: 1rem;
-  padding: 1.8rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.skill-idx {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1.1rem;
-  color: var(--accent);
-}
-
-.skill-body h4 {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(1.3rem, 2.2vw, 1.6rem);
-  margin-bottom: .7rem;
-}
-
-.skill-body > p {
-  color: var(--ink-2);
-  font-size: .95rem;
-  margin-bottom: .3rem;
-}
-
-.skill-body .strong-line { font-weight: 600; color: var(--ink); }
-
-.tag-list { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .9rem; }
-
-.tag {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: .32rem .95rem;
-  font-size: .76rem;
-  color: var(--ink-2);
-  letter-spacing: .03em;
-}
-
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .55rem;
-  margin-top: 2.2rem;
-}
-
-.cloud-tag {
+.gallery-item figcaption {
+  margin-top: .7rem;
   font-size: .78rem;
   letter-spacing: .05em;
   color: var(--ink-3);
-  padding: .35rem .7rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  transition: color .3s, border-color .3s;
+  line-height: 1.7;
 }
 
-.cloud-tag:hover { color: var(--ink); border-color: var(--line); }
-
-/* ---------- ⑥ Experience · 时间线索引 ---------- */
-.timeline { border-top: 1px solid var(--line-2); }
-
-.timeline-item {
-  display: grid;
-  grid-template-columns: 15rem 1fr;
-  gap: 1.5rem;
-  padding: 1.9rem 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.timeline-time {
-  font-family: var(--serif);
-  font-size: 1.15rem;
-  color: var(--accent);
-  padding-top: .2rem;
-}
-
-.timeline-body h4 {
-  font-family: var(--sans);
-  font-weight: 600;
-  font-size: clamp(1.15rem, 2vw, 1.4rem);
-  margin-bottom: .5rem;
-}
-
-.timeline-body p { color: var(--ink-2); font-size: .95rem; line-height: 1.8; }
-
-/* ---------- ⑦ Contact · 极简留白 ---------- */
+/* ============================================================
+   ⑨ Contact · 大字体 + 极简表单
+   ============================================================ */
 .contact { text-align: center; }
+
+.contact-inner { max-width: 860px; }
 
 .contact-statement {
   font-family: var(--serif);
@@ -825,12 +832,19 @@ em { font-style: italic; }
 
 .contact-sub { color: var(--ink-2); margin-bottom: clamp(3rem, 7vw, 5rem); }
 
+.contact-row {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(2.5rem, 6vw, 5rem);
+  text-align: left;
+  align-items: start;
+  margin-bottom: clamp(3rem, 7vw, 5rem);
+}
+
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
-  text-align: left;
-  margin-bottom: clamp(3rem, 7vw, 5rem);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.8rem 1.5rem;
 }
 
 .contact-card {
@@ -859,6 +873,46 @@ em { font-style: italic; }
 }
 
 .contact-hint { font-size: .78rem; color: var(--ink-3); }
+
+.contact-form { border-top: 1px solid var(--line-2); padding-top: 1.8rem; }
+
+.form-field { margin-bottom: 1.3rem; }
+
+.form-field label {
+  display: block;
+  font-size: .72rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: .5rem;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line-2);
+  padding: .6rem .1rem;
+  font-size: .95rem;
+  color: var(--ink);
+  outline: none;
+  resize: vertical;
+  transition: border-color .3s;
+}
+
+.form-field input:focus,
+.form-field textarea:focus { border-color: var(--accent); }
+
+.form-field input::placeholder,
+.form-field textarea::placeholder { color: var(--ink-3); }
+
+.form-hint {
+  margin-top: 1.1rem;
+  font-size: .76rem;
+  color: var(--ink-3);
+  letter-spacing: .04em;
+}
 
 .contact-download { margin-top: 1rem; }
 
@@ -1039,6 +1093,8 @@ em { font-style: italic; }
   transition: transform .8s var(--ease);
 }
 
+.project-figure img:hover { transform: scale(1.02); }
+
 .project-figure figcaption {
   margin-top: .6rem;
   font-size: .78rem;
@@ -1122,7 +1178,24 @@ em { font-style: italic; }
 .lightbox-close:hover { border-color: var(--ink); transform: rotate(90deg); }
 
 /* ---------- 移动端 ---------- */
-@media (max-width: 860px) {
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 3rem; padding-top: 130px; }
+  .hero-figure img { min-height: 340px; max-height: 420px; }
+  .focus-grid, .about-layout, .feat-card, .contact-row { grid-template-columns: 1fr; }
+  .feat-card { padding: 2.5rem 0; }
+  .feat-card.flip .feat-media { order: 0; }
+  .feat-card.flip .feat-copy { order: 1; }
+  .about-side { position: static; }
+  .ach-grid { grid-template-columns: repeat(2, 1fr); }
+  .ach-num { grid-column: span 1; }
+  .ach-quote { grid-column: span 2; }
+  .ach-highlight { grid-column: span 1; }
+  .ach-img { grid-column: span 2; }
+  .gallery-masonry { columns: 2; }
+  .contact-grid { grid-template-columns: repeat(2, 1fr); }
+  .modal-metrics { grid-template-columns: repeat(2, 1fr); }
+  .modal-figures { grid-template-columns: 1fr; }
+
   .nav-links {
     position: fixed;
     top: 72px;
@@ -1137,53 +1210,15 @@ em { font-style: italic; }
   }
 
   .nav-links.open { display: flex; }
-
   .nav-links a { font-size: .95rem; padding: .5rem 0; }
-
   .nav-toggle { display: flex; }
-
-  .statement-grid, .about-grid, .pb-layout, .pb-split, .side .pb-layout, .skills-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .featured .pb-layout { grid-template-columns: 1fr; }
-
-  .statement-right { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.6rem; }
-
-  .about-figure { margin-top: 0; }
-
-  .about-figure img { aspect-ratio: 4 / 3; }
-
-  .featured .pb-copy { margin-top: 0; }
-
-  .edu-block { grid-template-columns: 1fr; gap: 1.6rem; }
-
-  .projects-index { grid-template-columns: 1fr; }
-
-  .project-gallery { grid-template-columns: repeat(2, 1fr); }
-
-  .g-w7, .g-w5, .g-w4 { grid-column: span 2; }
-
-  .g-o2 { margin-top: 0; }
-
-  .g-fig:last-child { grid-column: span 2; }
-
-  .pb-split-side { border-left: none; border-top: 1px solid var(--line); padding-left: 0; padding-top: 1.8rem; }
-
-  .timeline-item { grid-template-columns: 1fr; gap: .6rem; }
-
-  .contact-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
-
-  .modal-metrics { grid-template-columns: repeat(2, 1fr); }
-
-  .modal-figures { grid-template-columns: 1fr; }
-
-  .wide .pb-img--full img { aspect-ratio: 4 / 3; }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+  .ach-grid { grid-template-columns: 1fr; }
+  .ach-num, .ach-quote, .ach-highlight, .ach-img { grid-column: span 1; }
+  .gallery-masonry { columns: 1; }
   .contact-grid { grid-template-columns: 1fr; }
   .modal-metrics { grid-template-columns: 1fr; }
-  .project-gallery { grid-template-columns: 1fr; }
-  .g-w7, .g-w5, .g-w4, .g-fig:last-child { grid-column: span 1; }
+  .about-block { grid-template-columns: 1fr; gap: .4rem; }
 }
