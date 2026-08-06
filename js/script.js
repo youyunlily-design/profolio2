@@ -134,6 +134,57 @@
     maskEls.forEach(function (el) { el.classList.add('in'); });
   }
 
+  /* ---------- 4.5 Hero 入场：整体进入 → 逐字浮现 → 滚动提示 ---------- */
+  var heroFig = $('.hero-figure');
+  var heroCopy = $('.hero-copy');
+  var hiTitle = $('.hi-title');
+  var heroScroll = $('.hero-scroll');
+
+  function splitTitleChars() {
+    if (!hiTitle) return [];
+    var text = hiTitle.textContent;
+    hiTitle.textContent = '';
+    var frag = document.createDocumentFragment();
+    Array.prototype.forEach.call(text, function (ch) {
+      var s = document.createElement('span');
+      s.className = 'hc';
+      s.textContent = ch === ' ' ? '\u00A0' : ch;
+      frag.appendChild(s);
+    });
+    hiTitle.appendChild(frag);
+    return Array.prototype.slice.call(hiTitle.children);
+  }
+
+  function runHeroIntro() {
+    if (!hiTitle) return;
+    var chars = splitTitleChars();
+    if (prefersReduced) {
+      if (heroFig) heroFig.classList.add('hero-in');
+      if (heroCopy) heroCopy.classList.add('hero-in');
+      chars.forEach(function (c) { c.classList.add('on'); });
+      if (heroScroll) heroScroll.classList.add('show');
+      return;
+    }
+    if (heroFig) heroFig.classList.add('hero-in');
+    if (heroCopy) heroCopy.classList.add('hero-in');
+    // 图片进入完成后（800ms），标题逐字浮现（35ms 间隔）
+    setTimeout(function () {
+      chars.forEach(function (c, i) {
+        c.style.transitionDelay = (i * 35) + 'ms';
+        c.classList.add('on');
+      });
+      // 全部字符完成后，显示底部滚动提示
+      setTimeout(function () {
+        if (heroScroll) heroScroll.classList.add('show');
+      }, chars.length * 35 + 450 + 300);
+    }, 820);
+  }
+
+  if (hiTitle) {
+    if (document.readyState !== 'loading') runHeroIntro();
+    else document.addEventListener('DOMContentLoaded', runHeroIntro);
+  }
+
   /* ---------- 5. 数字计数动画 ---------- */
   function animateCount(el) {
     if (el.dataset.done) return;

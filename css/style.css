@@ -230,6 +230,14 @@ em { font-style: italic; }
 
 .section-sub { margin-top: 1.2rem; max-width: 34rem; color: var(--ink-2); font-size: 1rem; }
 
+.capacities-lead {
+  margin-top: 1.6rem;
+  max-width: 46rem;
+  color: var(--ink-2);
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  line-height: 1.95;
+}
+
 /* ---------- 按钮 ---------- */
 .btn {
   display: inline-block;
@@ -301,7 +309,7 @@ em { font-style: italic; }
 .metric span { font-size: .74rem; letter-spacing: .1em; color: var(--ink-3); }
 
 /* ============================================================
-   ① Hero · 左对齐 + 右侧装饰图
+   ① Hero · 介绍 + 编辑摄影图
    ============================================================ */
 .hero {
   min-height: 100vh;
@@ -323,41 +331,66 @@ em { font-style: italic; }
   grid-template-columns: 1.05fr .95fr;
   gap: clamp(3rem, 6vw, 6rem);
   align-items: center;
-  padding: 150px 0 90px;
+  padding: 150px 0 110px;
 }
 
 .hero-copy { min-width: 0; }
 
-.hero-eyebrow {
-  font-size: .78rem;
-  letter-spacing: .4em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  margin-bottom: 2rem;
+/* ---- Hero 整体入场：图片与文字一起进入（800ms） ---- */
+.js .hero-figure,
+.js .hero-copy {
+  opacity: 0;
+  transform: translateY(60px);
 }
 
-.hero-title {
-  font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(3rem, 7vw, 5.8rem);
-  line-height: 1.05;
+.hero-figure.hero-in,
+.hero-copy.hero-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+}
+
+/* ---- 主标题：Hi，我是卢沁园 ---- */
+.hi-title {
+  font-family: var(--sans);
+  font-weight: 700;
+  font-size: clamp(3.25rem, 6.5vw, 4rem);
+  line-height: 1.1;
   letter-spacing: -.01em;
+  margin-bottom: 1.6rem;
+}
+
+/* 逐字动画 */
+.hc {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .42s var(--ease), transform .42s var(--ease);
+  will-change: opacity, transform;
+}
+
+.hc.on {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- 介绍 ---- */
+.hi-intro {
+  color: var(--ink-2);
+  font-size: clamp(1.125rem, 1.6vw, 1.25rem);
+  font-weight: 400;
+  max-width: 620px;
+  line-height: 1.8;
   margin-bottom: 1.8rem;
 }
 
-.hero-desc {
-  color: var(--ink-2);
-  font-size: clamp(.95rem, 1.4vw, 1.05rem);
-  max-width: 34rem;
-  line-height: 1.9;
-  margin-bottom: 2rem;
-}
-
-.hero-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .5rem;
-  margin-bottom: 2rem;
+/* ---- 状态行 ---- */
+.hi-status {
+  font-size: .875rem;
+  letter-spacing: .14em;
+  opacity: .7;
+  color: var(--ink);
+  margin-bottom: 2.6rem;
 }
 
 .hero-stats {
@@ -381,7 +414,7 @@ em { font-style: italic; }
 
 .hs-item span { font-size: .72rem; letter-spacing: .08em; color: var(--ink-3); }
 
-.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 3.2rem; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
 
 .hero-figure {
   position: relative;
@@ -397,8 +430,6 @@ em { font-style: italic; }
 }
 
 .hero-figure figcaption,
-.about-figure figcaption,
-.gallery-item figcaption,
 .ach-img figcaption {
   margin-top: .8rem;
   font-size: .76rem;
@@ -407,27 +438,43 @@ em { font-style: italic; }
   font-style: normal;
 }
 
+/* ---- 底部滚动提示：Hero 动画完成后显示 ---- */
 .hero-scroll {
+  position: absolute;
+  left: 50%;
+  bottom: 2.4rem;
+  transform: translateX(-50%);
   display: inline-flex;
   flex-direction: column;
   align-items: center;
-  gap: .9rem;
+  gap: .55rem;
   color: var(--ink-3);
-  font-size: .64rem;
-  letter-spacing: .5em;
+  font-size: .72rem;
+  letter-spacing: .34em;
+  opacity: 0;
+  transition: opacity 1s var(--ease);
+  z-index: 1;
 }
 
-.hero-scroll i {
-  width: 1px; height: 46px;
-  background: var(--ink-2);
-  animation: scrollLine 2.2s var(--ease) infinite;
-  transform-origin: top;
+.hero-scroll.show { opacity: 1; }
+
+.hs-arrow {
+  font-style: normal;
+  font-size: 1.05rem;
+  letter-spacing: 0;
+  animation: scrollFloat 2.5s ease-in-out infinite;
 }
 
-@keyframes scrollLine {
-  0% { transform: scaleY(0); }
-  45% { transform: scaleY(1); }
-  100% { transform: scaleY(1) translateY(20px); opacity: 0; }
+@keyframes scrollFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .hero-figure,
+  .js .hero-copy { opacity: 1; transform: none; }
+  .hc { opacity: 1; transform: none; transition: none; }
+  .hs-arrow { animation: none; }
 }
 
 /* ============================================================
@@ -447,6 +494,26 @@ em { font-style: italic; }
 }
 
 .focus-sub { margin-top: 1.4rem; color: var(--ink-3); font-size: .95rem; }
+
+.focus-goal {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 1.8rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-2);
+  font-size: .95rem;
+  line-height: 1.85;
+}
+
+.focus-goal span {
+  flex: none;
+  font-size: .62rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+  padding-top: .35rem;
+}
 
 .focus-tags {
   display: flex;
