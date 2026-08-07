@@ -521,18 +521,6 @@ em { font-style: italic; }
   opacity: .78;
 }
 
-.hero-ai .deco-right-1 {
-  width: 60px;
-  height: 60px;
-  right: 10vw;
-  top: auto;
-  bottom: 10%;
-  border-radius: 50%;
-  background: var(--hero-sage);
-  opacity: .85;
-  animation: heroDrift 6.5s var(--ease) infinite;
-}
-
 .hero-ai .deco-right-2 {
   width: 34px;
   height: 34px;
@@ -570,7 +558,6 @@ em { font-style: italic; }
   line-height: 1.22;
   letter-spacing: -.01em;
   color: var(--ink);
-  white-space: pre-line;
   margin-bottom: 1.1rem;
 }
 
@@ -892,7 +879,7 @@ html.anim .hero-ai .hero-contact-card.in li:nth-child(3) { opacity: 1; transitio
     bottom: 40px;
     animation: heroDriftSm 9s var(--ease) infinite;
   }
-  .hero-ai .deco-right-1, .hero-ai .deco-right-2 { display: none; }
+  .hero-ai .deco-right-2 { display: none; }
 }
 
 @keyframes heroDriftSm {
