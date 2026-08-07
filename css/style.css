@@ -7,8 +7,8 @@
    ============================================================ */
 
 :root {
-  --bg: #FAF9F6;
-  --bg-2: #F2F1EC;
+  --bg: #DDE6D5;
+  --bg-2: #D5E0CC;
   --ink: #1C1C1C;
   --ink-2: rgba(28, 28, 28, .68);
   --ink-3: rgba(28, 28, 28, .42);
@@ -88,14 +88,14 @@ em { font-style: italic; }
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 200;
-  background: rgba(250, 249, 246, .6);
+  background: rgba(221, 230, 213, .6);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   transition: border-color .4s, background .4s;
 }
 
-.nav.scrolled { border-bottom-color: var(--line); background: rgba(250, 249, 246, .88); }
+.nav.scrolled { border-bottom-color: var(--line); background: rgba(221, 230, 213, .88); }
 
 .nav-inner {
   height: 72px;
@@ -2052,7 +2052,7 @@ html.anim .hero-ai .hero-contact-card.in li:nth-child(3) { opacity: 1; transitio
   align-items: center;
   justify-content: center;
   padding: 4vh 4vw;
-  background: rgba(236, 239, 231, .97);
+  background: rgba(221, 230, 213, .97);
   visibility: hidden;
   opacity: 0;
   transition: opacity .45s var(--ease), visibility .45s;
