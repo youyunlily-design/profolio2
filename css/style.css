@@ -7,13 +7,13 @@
    ============================================================ */
 
 :root {
-  --bg: #ECEFE7;
-  --bg-2: #E2E7D9;
-  --ink: #232A22;
-  --ink-2: rgba(35, 42, 34, .68);
-  --ink-3: rgba(35, 42, 34, .42);
-  --line: rgba(35, 42, 34, .12);
-  --line-2: rgba(35, 42, 34, .26);
+  --bg: #FAF9F6;
+  --bg-2: #F2F1EC;
+  --ink: #1C1C1C;
+  --ink-2: rgba(28, 28, 28, .68);
+  --ink-3: rgba(28, 28, 28, .42);
+  --line: rgba(28, 28, 28, .12);
+  --line-2: rgba(28, 28, 28, .26);
   --accent: #4A6E58;
   --serif: "Instrument Serif", "Times New Roman", Times, Georgia, "Songti SC", "SimSun", serif;
   --sans: "Inter", "HarmonyOS Sans SC", "MiSans", "PingFang SC", "Source Han Sans SC",
@@ -58,23 +58,6 @@ em { font-style: italic; }
   overflow: hidden;
 }
 
-.section-bg {
-  position: absolute;
-  top: -12.5%;
-  left: 0;
-  right: 0;
-  height: 125%;
-  background-size: cover;
-  background-position: center;
-  will-change: transform;
-  z-index: 0;
-  opacity: .5;
-  transform: translate3d(0, 0, 0);
-  pointer-events: none;
-}
-
-.hero .section-bg { opacity: .9; }
-
 .section > .container, .hero .hero-grid { position: relative; z-index: 1; }
 
 /* ---------- 动画：慢速渐入 / 图片遮罩揭示 ---------- */
@@ -105,14 +88,14 @@ em { font-style: italic; }
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 200;
-  background: rgba(236, 239, 231, .6);
+  background: rgba(250, 249, 246, .6);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   transition: border-color .4s, background .4s;
 }
 
-.nav.scrolled { border-bottom-color: var(--line); background: rgba(236, 239, 231, .88); }
+.nav.scrolled { border-bottom-color: var(--line); background: rgba(250, 249, 246, .88); }
 
 .nav-inner {
   height: 72px;
@@ -317,15 +300,6 @@ em { font-style: italic; }
   align-items: center;
 }
 
-.hero-vignette {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  background:
-    linear-gradient(to bottom, rgba(236, 239, 231, .16) 0%, rgba(236, 239, 231, .38) 60%, var(--bg) 100%);
-  pointer-events: none;
-}
-
 .hero-grid {
   display: grid;
   grid-template-columns: 1.05fr .95fr;
@@ -486,17 +460,6 @@ em { font-style: italic; }
   --hero-pink: #E8A7B8;
   --hero-beige: #E9DFD0;
   display: block; /* 覆盖 .hero 的 flex，内部为绝对定位编排 */
-}
-
-/* 轻微纸张感：极淡噪点 */
-.hero-ai::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 6;
-  pointer-events: none;
-  opacity: .06;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
 }
 
 /* ---- 背景装饰：organic shapes（柔和圆润，阴影克制） ---- */
