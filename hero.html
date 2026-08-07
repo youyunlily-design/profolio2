@@ -263,7 +263,6 @@
       left: 53%;
       top: 51%;
       transform: translate(-50%, -50%) rotate(1.5deg);
-      width: clamp(300px, 34vw, 520px);
       z-index: 2;
       margin: 0;
     }
@@ -279,13 +278,14 @@
       z-index: 0;
     }
 
-    .portrait img {
+    .portrait img,
+    .portrait svg {
       position: relative;
       z-index: 1;
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 24px;
+      height: 62vh;
+      width: auto;
+      display: block;
+      border-radius: 20px;
       box-shadow: 0 34px 70px rgba(28, 28, 28, .14);
     }
 
@@ -347,7 +347,13 @@
       .portrait {
         left: 50%;
         top: 54%;
-        width: 84vw;
+        width: auto;
+      }
+
+      .portrait img,
+      .portrait svg {
+        height: 58vh;
+        width: auto;
       }
 
       .deco-top-left { width: 54px; height: 54px; left: 28px; top: 140px; }
@@ -411,7 +417,54 @@
     <!-- 中央偏右：人物插画区 -->
     <figure class="portrait">
       <span class="p-blob" aria-hidden="true"></span>
-      <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Playful+minimal+editorial+illustration+of+a+young+product+designer+working+at+a+desk+with+a+small+plant+and+organic+shapes%2C+warm+cream+background%2C+sage+green+and+dusty+pink+color+palette%2C+flat+illustration+style%2C+soft+rounded+shapes%2C+modern+creative+portfolio+artwork&image_size=portrait_4_3" alt="人物插画占位" />
+      <svg viewBox="0 0 400 520" role="img" aria-label="坐在电脑前设计的年轻女性 Product Designer 极简插画" xmlns="http://www.w3.org/2000/svg">
+        <!-- 竖向矩形背景框：Dusty Pink 填充 + 黑色细边框 -->
+        <rect width="400" height="520" rx="20" fill="#E8A7B8" stroke="#1C1C1C" stroke-width="3"/>
+
+        <!-- 人物：黑色宽松上衣（下部被屏幕遮住） -->
+        <rect x="142" y="118" width="116" height="160" rx="30" fill="#1C1C1C"/>
+
+        <!-- Bob 头：黑色圆弧发 + 白色极简脸 -->
+        <circle cx="200" cy="98" r="58" fill="#1C1C1C"/>
+        <circle cx="200" cy="112" r="40" fill="#FFFFFF"/>
+        <!-- 五官：安静专注，微侧向电脑 -->
+        <circle cx="188" cy="118" r="3.5" fill="#1C1C1C"/>
+        <circle cx="216" cy="118" r="3.5" fill="#1C1C1C"/>
+        <path d="M194,140 Q200,144 206,140" fill="none" stroke="#1C1C1C" stroke-width="2.5" stroke-linecap="round"/>
+
+        <!-- 笔记本：浅灰屏幕 + 白色屏（简洁无复杂 UI） -->
+        <rect x="78" y="196" width="244" height="150" rx="10" fill="#FFFFFF" stroke="#C9C5BD" stroke-width="3"/>
+        <rect x="150" y="262" width="100" height="6" rx="3" fill="#C9C5BD"/>
+        <!-- 底座 -->
+        <rect x="88" y="346" width="224" height="14" rx="5" fill="#C9C5BD"/>
+
+        <!-- 键盘 -->
+        <rect x="100" y="428" width="200" height="36" rx="7" fill="#C9C5BD"/>
+        <rect x="120" y="436" width="160" height="3" rx="1.5" fill="#FFFFFF"/>
+        <rect x="120" y="446" width="160" height="3" rx="1.5" fill="#FFFFFF"/>
+
+        <!-- 双手：搭在键盘两端，正在输入 -->
+        <ellipse cx="140" cy="446" rx="17" ry="11" fill="#1C1C1C"/>
+        <ellipse cx="260" cy="446" rx="17" ry="11" fill="#1C1C1C"/>
+
+        <!-- 底部装饰：黑猫（左下，几何填充） -->
+        <path d="M98,500 Q114,490 110,472" fill="none" stroke="#1C1C1C" stroke-width="5" stroke-linecap="round"/>
+        <ellipse cx="74" cy="500" rx="24" ry="15" fill="#1C1C1C"/>
+        <path d="M60,464 L62,448 L74,460 Z" fill="#1C1C1C"/>
+        <path d="M88,464 L86,448 L74,460 Z" fill="#1C1C1C"/>
+        <circle cx="74" cy="476" r="17" fill="#1C1C1C"/>
+        <circle cx="68" cy="476" r="2.2" fill="#FFFFFF"/>
+        <circle cx="80" cy="476" r="2.2" fill="#FFFFFF"/>
+
+        <!-- 底部装饰：白猫（右下，几何线稿） -->
+        <path d="M350,500 Q366,490 362,472" fill="none" stroke="#1C1C1C" stroke-width="4" stroke-linecap="round"/>
+        <ellipse cx="326" cy="500" rx="24" ry="15" fill="#FFFFFF" stroke="#1C1C1C" stroke-width="2.5"/>
+        <path d="M312,464 L314,448 L326,460 Z" fill="#FFFFFF" stroke="#1C1C1C" stroke-width="2.5"/>
+        <path d="M340,464 L338,448 L326,460 Z" fill="#FFFFFF" stroke="#1C1C1C" stroke-width="2.5"/>
+        <circle cx="326" cy="476" r="17" fill="#FFFFFF" stroke="#1C1C1C" stroke-width="2.5"/>
+        <circle cx="320" cy="476" r="2.2" fill="#1C1C1C"/>
+        <circle cx="332" cy="476" r="2.2" fill="#1C1C1C"/>
+      </svg>
       <span class="p-dot" aria-hidden="true"></span>
     </figure>
 
