@@ -510,17 +510,6 @@ em { font-style: italic; }
   opacity: .95;
 }
 
-.hero-ai .deco-left-bottom .b3 {
-  position: absolute;
-  left: 22px;
-  bottom: 104px;
-  width: 96px;
-  height: 48px;
-  border-radius: 96px 96px 0 0;
-  background: var(--hero-sage);
-  opacity: .78;
-}
-
 .hero-ai .deco-right-2 {
   width: 34px;
   height: 34px;
