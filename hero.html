@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hero — Creative Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================================================
+       Hero Section — Playful Minimalism × Editorial
+       画布 16:9 / 非对称构图 / 纯装饰与布局，暂不含内容文字
+       严格色板：Warm White #FAF9F6 / Soft Black #1C1C1C /
+                 Sage Green #A8B89A / Dusty Pink #E8A7B8 / Light Beige #E9DFD0
+       ============================================================ */
+
+    :root {
+      --warm: #FAF9F6;
+      --ink: #1C1C1C;
+      --sage: #A8B89A;
+      --pink: #E8A7B8;
+      --beige: #E9DFD0;
+      --ease: cubic-bezier(.22, 1, .36, 1);
+      --serif: "Instrument Serif", Georgia, "Songti SC", serif;
+      --sans: "Inter", "HarmonyOS Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--ink);
+      background: var(--warm);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+      background: var(--warm);
+    }
+
+    /* ---- 轻微纸张感：极淡噪点 ---- */
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 6;
+      pointer-events: none;
+      opacity: .05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+    }
+
+    /* ============================================================
+       背景装饰：organic shapes（柔和圆润，阴影克制）
+       ============================================================ */
+    .deco {
+      position: absolute;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* 左上：小型绿色圆形 */
+    .deco-top-left {
+      width: 72px;
+      height: 72px;
+      left: 50px;
+      top: 130px;
+      border-radius: 50%;
+      background: var(--sage);
+      animation: drift 7s var(--ease) infinite;
+    }
+
+    /* 左下：三个组合圆形 → 植物叶片抽象 */
+    .deco-left-bottom {
+      left: 54px;
+      bottom: 72px;
+      width: 230px;
+      height: 190px;
+      animation: drift 9s var(--ease) infinite;
+    }
+
+    .deco-left-bottom .b1 {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .deco-left-bottom .b2 {
+      position: absolute;
+      left: 96px;
+      bottom: 74px;
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: var(--beige);
+    }
+
+    .deco-left-bottom .b3 {
+      position: absolute;
+      left: 18px;
+      bottom: 108px;
+      width: 104px;
+      height: 52px;
+      border-radius: 104px 104px 0 0;
+      background: var(--sage);
+    }
+
+    /* 右侧：两个漂浮圆形 */
+    .deco-right-1 {
+      width: 68px;
+      height: 68px;
+      right: 9vw;
+      top: 24%;
+      border-radius: 50%;
+      background: var(--sage);
+      animation: drift 6.5s var(--ease) infinite;
+    }
+
+    .deco-right-2 {
+      width: 38px;
+      height: 38px;
+      right: 4.5vw;
+      top: 34%;
+      border-radius: 50%;
+      background: var(--pink);
+      animation: drift 5.5s var(--ease) infinite reverse;
+    }
+
+    @keyframes drift {
+      0%, 100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    /* ============================================================
+       顶部：左上 Logo 占位 + 顶部中央导航
+       ============================================================ */
+    .top {
+      position: absolute;
+      top: 40px;
+      left: 50px;
+      right: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      text-decoration: none;
+    }
+
+    .logo .lg-dot {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    .logo .lg-dot.pink {
+      width: 9px;
+      height: 9px;
+      background: var(--pink);
+      transform: translateY(6px);
+    }
+
+    .nav {
+      position: absolute;
+      left: 50%;
+      top: 40px;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      gap: 3rem;
+    }
+
+    .nav a {
+      font-size: .8rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      opacity: .82;
+      text-decoration: none;
+      transition: opacity .3s;
+    }
+
+    .nav a:hover { opacity: 1; }
+
+    /* ============================================================
+       右上：悬浮 Contact 卡片（贴纸感，非按钮）
+       尺寸约 15% 宽 × 25% 高（相对视口）
+       ============================================================ */
+    .contact-card {
+      position: absolute;
+      top: 40px;
+      right: 40px;
+      z-index: 10;
+      width: 15vw;
+      min-width: 190px;
+      height: 25vh;
+      min-height: 210px;
+      max-width: 260px;
+      border-radius: 22px;
+      background: var(--pink);
+      box-shadow: 0 24px 48px rgba(28, 28, 28, .10);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      animation: cardFloat 5s var(--ease) infinite;
+    }
+
+    .contact-card .cc-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(28, 28, 28, .55);
+    }
+
+    .contact-card .cc-label {
+      font-size: .72rem;
+      letter-spacing: .32em;
+      text-transform: uppercase;
+      color: rgba(28, 28, 28, .72);
+    }
+
+    /* 底部 Sage Green 半圆贴纸 */
+    .contact-card .cc-sticker {
+      position: absolute;
+      left: 50%;
+      bottom: -30px;
+      width: 150px;
+      height: 78px;
+      border-radius: 0 0 150px 150px;
+      background: var(--sage);
+      transform: translateX(-50%) rotate(-6deg);
+    }
+
+    @keyframes cardFloat {
+      0%, 100% { transform: translateY(0) rotate(-1.2deg); }
+      50%      { transform: translateY(-10px) rotate(-1.2deg); }
+    }
+
+    /* ============================================================
+       中央偏右：人物插画区（视觉中心）
+       ============================================================ */
+    .portrait {
+      position: absolute;
+      left: 53%;
+      top: 51%;
+      transform: translate(-50%, -50%) rotate(1.5deg);
+      width: clamp(300px, 34vw, 520px);
+      z-index: 2;
+      margin: 0;
+    }
+
+    .portrait .p-blob {
+      position: absolute;
+      top: -8%;
+      left: -12%;
+      width: 58%;
+      height: 58%;
+      border-radius: 50%;
+      background: var(--beige);
+      z-index: 0;
+    }
+
+    .portrait img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 24px;
+      box-shadow: 0 34px 70px rgba(28, 28, 28, .14);
+    }
+
+    .portrait .p-dot {
+      position: absolute;
+      right: -26px;
+      bottom: -22px;
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: var(--pink);
+      z-index: 1;
+      animation: drift 6s var(--ease) infinite;
+    }
+
+    /* ---- 底部极简滚动提示 ---- */
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 26px;
+      transform: translateX(-50%);
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .6rem;
+      opacity: .55;
+    }
+
+    .scroll-hint .sh-line {
+      width: 2px;
+      height: 46px;
+      background: var(--beige);
+      border-radius: 2px;
+    }
+
+    .scroll-hint .sh-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--sage);
+    }
+
+    /* ============================================================
+       响应式：移动端收敛，避免拥挤
+       ============================================================ */
+    @media (max-width: 820px) {
+      .nav { display: none; }
+
+      .contact-card {
+        top: 24px;
+        right: 24px;
+        width: 40vw;
+        height: 128px;
+        min-width: 150px;
+        min-height: 128px;
+      }
+
+      .portrait {
+        left: 50%;
+        top: 54%;
+        width: 84vw;
+      }
+
+      .deco-top-left { width: 54px; height: 54px; left: 28px; top: 140px; }
+      .deco-left-bottom {
+        transform: scale(.75);
+        transform-origin: left bottom;
+        left: 16px;
+        bottom: 40px;
+        animation: driftSm 9s var(--ease) infinite;
+      }
+      .deco-right-1, .deco-right-2 { display: none; }
+    }
+
+    @keyframes driftSm {
+      0%, 100% { transform: scale(.75) translateY(0); }
+      50%      { transform: scale(.75) translateY(-10px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .deco, .contact-card, .portrait .p-dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+
+    <!-- 背景装饰：organic shapes -->
+    <span class="deco deco-top-left" aria-hidden="true"></span>
+
+    <span class="deco deco-left-bottom" aria-hidden="true">
+      <i class="b1"></i>
+      <i class="b2"></i>
+      <i class="b3"></i>
+    </span>
+
+    <span class="deco deco-right-1" aria-hidden="true"></span>
+    <span class="deco deco-right-2" aria-hidden="true"></span>
+
+    <!-- 顶部：Logo 占位 + 导航预留 -->
+    <div class="top">
+      <a class="logo" href="#" aria-label="Logo 占位">
+        <i class="lg-dot"></i>
+        <i class="lg-dot pink"></i>
+      </a>
+    </div>
+
+    <nav class="nav" aria-label="导航占位">
+      <a href="#">Work</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+
+    <!-- 右上：悬浮 Contact 卡片 -->
+    <div class="contact-card" aria-hidden="true">
+      <span class="cc-dot"></span>
+      <span class="cc-label">contact</span>
+      <span class="cc-sticker"></span>
+    </div>
+
+    <!-- 中央偏右：人物插画区 -->
+    <figure class="portrait">
+      <span class="p-blob" aria-hidden="true"></span>
+      <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Playful+minimal+editorial+illustration+of+a+young+product+designer+working+at+a+desk+with+a+small+plant+and+organic+shapes%2C+warm+cream+background%2C+sage+green+and+dusty+pink+color+palette%2C+flat+illustration+style%2C+soft+rounded+shapes%2C+modern+creative+portfolio+artwork&image_size=portrait_4_3" alt="人物插画占位" />
+      <span class="p-dot" aria-hidden="true"></span>
+    </figure>
+
+    <!-- 底部滚动提示 -->
+    <div class="scroll-hint" aria-hidden="true">
+      <span class="sh-line"></span>
+      <span class="sh-dot"></span>
+    </div>
+
+  </div>
+
+</body>
+</html>
