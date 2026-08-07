@@ -647,19 +647,31 @@ em { font-style: italic; }
 @keyframes heroCaret { to { visibility: hidden; } }
 
 .hero-ai .intro-card .ic-from {
-  font-size: .85rem;
-  line-height: 1.85;
-  letter-spacing: .012em;
+  font-size: .8rem;
+  line-height: 1.8;
   color: rgba(28, 28, 28, .66);
 }
 
 .hero-ai .intro-card .ic-from .ic-from-label {
-  display: block;
-  font-size: .62rem;
-  letter-spacing: .26em;
+  font-size: .6rem;
+  letter-spacing: .24em;
   text-transform: uppercase;
   color: rgba(28, 28, 28, .5);
-  margin-bottom: .45rem;
+  margin-right: .5rem;
+}
+
+.hero-ai .intro-card .ic-from .ic-from-name {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--ink);
+}
+
+.hero-ai .intro-card .ic-from .ic-from-body {
+  display: block;
+  font-size: .78rem;
+  line-height: 1.75;
+  margin-top: .35rem;
 }
 
 /* 新版 Hero 入场：FROM 简介与 Contact 卡按序淡入（JS 加 .in） */
@@ -755,24 +767,32 @@ html.anim .hero-ai .intro-card .ic-from.in { opacity: 1; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: .5rem;
+  gap: .65rem;
 }
 
 .hero-ai .hero-contact-card li {
+  text-align: center;
   font-size: .8rem;
   letter-spacing: .08em;
   color: var(--ink);
 }
 
-.hero-ai .hero-contact-card li::before {
-  content: "";
-  display: inline-block;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: rgba(28, 28, 28, .5);
-  margin-right: .5rem;
-  vertical-align: middle;
+.hero-ai .hero-contact-card li::before { display: none; }
+
+.hero-ai .hero-contact-card .hc-label {
+  font-size: .56rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(28, 28, 28, .55);
+}
+
+.hero-ai .hero-contact-card .hc-value {
+  display: block;
+  font-size: .7rem;
+  letter-spacing: .04em;
+  color: var(--ink);
+  margin-top: .12rem;
+  word-break: break-all;
 }
 
 .hero-ai .hc-sticker {
@@ -883,10 +903,17 @@ html.anim .hero-ai .hero-contact-card.in li:nth-child(3) { opacity: 1; transitio
   }
 
   .hero-ai .intro-card .ic-from {
-    font-size: .78rem;
+    font-size: .74rem;
     line-height: 1.7;
     letter-spacing: .01em;
   }
+
+  .hero-ai .intro-card .ic-from .ic-from-name { font-size: .92rem; }
+  .hero-ai .intro-card .ic-from .ic-from-body { font-size: .72rem; margin-top: .25rem; }
+
+  .hero-ai .hero-contact-card .hc-label { font-size: .5rem; letter-spacing: .14em; }
+  .hero-ai .hero-contact-card .hc-value { font-size: .62rem; margin-top: .08rem; }
+  .hero-ai .hero-contact-card ul { gap: .4rem; }
 
   .hero-ai .skill-list {
     right: auto;
