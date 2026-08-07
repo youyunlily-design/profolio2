@@ -585,30 +585,6 @@ em { font-style: italic; }
   50%      { transform: translateY(-12px); }
 }
 
-/* ---- 视觉中心大标题 ---- */
-.hero-ai .hero-title {
-  position: absolute;
-  left: 6vw;
-  top: 16vh;
-  z-index: 5;
-  font-family: var(--sans);
-  font-weight: 800;
-  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
-  line-height: .98;
-  letter-spacing: -.015em;
-  text-transform: uppercase;
-  color: var(--ink);
-  max-width: 9em;
-}
-
-.hero-ai .hero-title em {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: .01em;
-  color: var(--ink);
-}
-
 /* ---- 左侧介绍卡片 ---- */
 .hero-ai .intro-card {
   position: absolute;
@@ -872,12 +848,6 @@ html.anim .hero-ai .hero-contact-card.in li:nth-child(3) { opacity: 1; transitio
 
 /* ---- 移动端收敛（避让固定导航 72px，保持信息完整） ---- */
 @media (max-width: 900px) {
-  .hero-ai .hero-title {
-    left: 6vw;
-    top: 8vh;
-    font-size: clamp(1.4rem, 7vw, 2rem);
-  }
-
   .hero-ai .hero-contact-card {
     top: 88px;
     right: 24px;
