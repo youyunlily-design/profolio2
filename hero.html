@@ -6,7 +6,7 @@
   <title>Hero — Creative Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     /* ============================================================
        Hero Section — Playful Minimalism × Editorial
@@ -157,24 +157,12 @@
     }
 
     .logo {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
+      font-family: var(--sans);
+      font-weight: 700;
+      font-size: 1.2rem;
+      letter-spacing: .02em;
+      color: var(--ink);
       text-decoration: none;
-    }
-
-    .logo .lg-dot {
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--sage);
-    }
-
-    .logo .lg-dot.pink {
-      width: 9px;
-      height: 9px;
-      background: var(--pink);
-      transform: translateY(6px);
     }
 
     .nav {
@@ -198,6 +186,104 @@
     }
 
     .nav a:hover { opacity: 1; }
+
+    /* ============================================================
+       新增文字区：大标题 / 介绍卡 / 能力列表 / 左下 Statement
+       ============================================================ */
+
+    /* 页面视觉中心大标题 */
+    .hero-title {
+      position: absolute;
+      left: 6vw;
+      top: 16vh;
+      z-index: 5;
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+      line-height: .98;
+      letter-spacing: -.01em;
+      text-transform: uppercase;
+      color: var(--ink);
+      max-width: 9em;
+    }
+
+    /* 左侧介绍卡片 */
+    .intro-card {
+      position: absolute;
+      left: 8vw;
+      top: 44vh;
+      z-index: 10;
+      max-width: 21vw;
+    }
+
+    .intro-card .ic-hi {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 2rem;
+      color: var(--ink);
+      margin-bottom: 1rem;
+    }
+
+    .intro-card p {
+      font-size: .95rem;
+      line-height: 1.85;
+      color: rgba(28, 28, 28, .72);
+    }
+
+    .intro-card strong {
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    /* 右侧能力列表 */
+    .skill-list {
+      position: absolute;
+      right: 6vw;
+      top: 46vh;
+      z-index: 10;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 1rem;
+    }
+
+    .skill-list li {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: .84rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .skill-list .sk-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 2px;
+      flex: none;
+    }
+
+    .skill-list li:nth-child(1) .sk-dot { background: var(--sage); }
+    .skill-list li:nth-child(2) .sk-dot { background: var(--pink); }
+    .skill-list li:nth-child(3) .sk-dot { background: var(--beige); }
+    .skill-list li:nth-child(4) .sk-dot { background: var(--ink); }
+
+    /* 左下大号 Statement */
+    .statement {
+      position: absolute;
+      left: 54px;
+      bottom: 84px;
+      z-index: 10;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+      line-height: 1.3;
+      color: var(--ink);
+      max-width: 30vw;
+    }
 
     /* ============================================================
        右上：悬浮 Contact 卡片（贴纸感，非按钮）
@@ -224,18 +310,36 @@
       animation: cardFloat 5s var(--ease) infinite;
     }
 
-    .contact-card .cc-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: rgba(28, 28, 28, .55);
-    }
-
-    .contact-card .cc-label {
-      font-size: .72rem;
-      letter-spacing: .32em;
+    .contact-card .cc-title {
+      font-size: .62rem;
+      letter-spacing: .34em;
       text-transform: uppercase;
       color: rgba(28, 28, 28, .72);
+    }
+
+    .contact-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .contact-card li {
+      font-size: .8rem;
+      letter-spacing: .08em;
+      color: var(--ink);
+    }
+
+    .contact-card li::before {
+      content: "";
+      display: inline-block;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: rgba(28, 28, 28, .5);
+      margin-right: .5rem;
+      vertical-align: middle;
     }
 
     /* 底部 Sage Green 半圆贴纸 */
@@ -346,15 +450,52 @@
 
       .portrait {
         left: 50%;
-        top: 54%;
+        top: 56%;
         width: auto;
       }
 
       .portrait img,
       .portrait svg {
-        height: 58vh;
+        height: 40vh;
         width: auto;
       }
+
+      .hero-title {
+        left: 6vw;
+        top: 8vh;
+        font-size: clamp(1.4rem, 7vw, 2rem);
+      }
+
+      .intro-card {
+        left: 6vw;
+        top: 18vh;
+        max-width: 86vw;
+      }
+
+      .intro-card .ic-hi { font-size: 1.6rem; }
+
+      .skill-list {
+        right: auto;
+        left: 6vw;
+        bottom: 20px;
+        top: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+        gap: .7rem 1.1rem;
+      }
+
+      .skill-list li { font-size: .7rem; }
+
+      .statement {
+        left: 6vw;
+        bottom: 110px;
+        max-width: 84vw;
+        font-size: 1.1rem;
+      }
+
+      .scroll-hint { display: none; }
 
       .deco-top-left { width: 54px; height: 54px; left: 28px; top: 140px; }
       .deco-left-bottom {
@@ -393,24 +534,48 @@
     <span class="deco deco-right-1" aria-hidden="true"></span>
     <span class="deco deco-right-2" aria-hidden="true"></span>
 
-    <!-- 顶部：Logo 占位 + 导航预留 -->
+    <!-- 顶部：Logo + 导航 -->
     <div class="top">
-      <a class="logo" href="#" aria-label="Logo 占位">
-        <i class="lg-dot"></i>
-        <i class="lg-dot pink"></i>
-      </a>
+      <a class="logo" href="#">卢沁园</a>
     </div>
 
-    <nav class="nav" aria-label="导航占位">
-      <a href="#">Work</a>
-      <a href="#">About</a>
+    <nav class="nav" aria-label="主导航">
+      <a href="#">Path</a>
+      <a href="#">Numbers</a>
+      <a href="#">Capabilities</a>
+      <a href="#">Focus</a>
+      <a href="#">Projects</a>
       <a href="#">Contact</a>
     </nav>
 
+    <!-- 页面视觉中心大标题 -->
+    <h1 class="hero-title">AI Product<br />Designer</h1>
+
+    <!-- 左侧介绍卡片 -->
+    <div class="intro-card">
+      <p class="ic-hi">Hello :)</p>
+      <p>I'm an <strong>AI Product Designer</strong> exploring the collaboration between human creativity and artificial intelligence.</p>
+    </div>
+
+    <!-- 右侧能力列表 -->
+    <ul class="skill-list">
+      <li><span class="sk-dot"></span>AI Product Design</li>
+      <li><span class="sk-dot"></span>Prompt Engineering</li>
+      <li><span class="sk-dot"></span>LLM Application</li>
+      <li><span class="sk-dot"></span>Product Thinking</li>
+    </ul>
+
+    <!-- 左下大号 Statement -->
+    <p class="statement">Designing products<br />with AI and human insight.</p>
+
     <!-- 右上：悬浮 Contact 卡片 -->
-    <div class="contact-card" aria-hidden="true">
-      <span class="cc-dot"></span>
-      <span class="cc-label">contact</span>
+    <div class="contact-card">
+      <span class="cc-title">Contact</span>
+      <ul>
+        <li>LinkedIn</li>
+        <li>GitHub</li>
+        <li>Email</li>
+      </ul>
       <span class="cc-sticker"></span>
     </div>
 
