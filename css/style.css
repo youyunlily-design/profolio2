@@ -525,7 +525,8 @@ em { font-style: italic; }
   width: 60px;
   height: 60px;
   right: 10vw;
-  top: 24%;
+  top: auto;
+  bottom: 10%;
   border-radius: 50%;
   background: var(--hero-sage);
   opacity: .85;
