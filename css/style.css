@@ -760,14 +760,13 @@ html.anim .hero-ai .intro-card .ic-from.in { opacity: 1; }
   letter-spacing: .2em;
   text-transform: uppercase;
   color: rgba(28, 28, 28, .55);
+  margin-right: .35rem;
 }
 
 .hero-ai .hero-contact-card .hc-value {
-  display: block;
   font-size: .7rem;
   letter-spacing: .04em;
   color: var(--ink);
-  margin-top: .12rem;
   word-break: break-all;
 }
 
@@ -882,7 +881,7 @@ html.anim .hero-ai .hero-contact-card.in li:nth-child(3) { opacity: 1; transitio
   .hero-ai .intro-card .ic-from .ic-from-body { font-size: .72rem; margin-top: .25rem; }
 
   .hero-ai .hero-contact-card .hc-label { font-size: .5rem; letter-spacing: .14em; }
-  .hero-ai .hero-contact-card .hc-value { font-size: .62rem; margin-top: .08rem; }
+  .hero-ai .hero-contact-card .hc-value { font-size: .62rem; }
   .hero-ai .hero-contact-card ul { gap: .4rem; }
 
   .hero-ai .skill-list {
