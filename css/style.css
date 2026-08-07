@@ -478,6 +478,430 @@ em { font-style: italic; }
 }
 
 /* ============================================================
+   ①-A · AI Product Designer Hero（新版首页第一屏）
+   融入主站视觉：Warm Sage 底色 / 粉绿低饱和装饰 / Editorial 排版
+   ============================================================ */
+.hero-ai {
+  --hero-sage: #A8B89A;
+  --hero-pink: #E8A7B8;
+  --hero-beige: #E9DFD0;
+  display: block; /* 覆盖 .hero 的 flex，内部为绝对定位编排 */
+}
+
+/* 轻微纸张感：极淡噪点 */
+.hero-ai::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  opacity: .06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+}
+
+/* ---- 背景装饰：organic shapes（柔和圆润，阴影克制） ---- */
+.hero-ai .deco {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.hero-ai .deco-top-left {
+  width: 62px;
+  height: 62px;
+  left: 60px;
+  top: 138px;
+  border-radius: 50%;
+  background: var(--hero-sage);
+  opacity: .85;
+  animation: heroDrift 7s var(--ease) infinite;
+}
+
+.hero-ai .deco-left-bottom {
+  left: 54px;
+  bottom: 72px;
+  width: 230px;
+  height: 190px;
+  animation: heroDrift 9s var(--ease) infinite;
+}
+
+.hero-ai .deco-left-bottom .b1 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 146px;
+  height: 146px;
+  border-radius: 50%;
+  background: var(--hero-sage);
+  opacity: .9;
+}
+
+.hero-ai .deco-left-bottom .b2 {
+  position: absolute;
+  left: 96px;
+  bottom: 78px;
+  width: 82px;
+  height: 82px;
+  border-radius: 50%;
+  background: var(--hero-beige);
+  opacity: .95;
+}
+
+.hero-ai .deco-left-bottom .b3 {
+  position: absolute;
+  left: 22px;
+  bottom: 104px;
+  width: 96px;
+  height: 48px;
+  border-radius: 96px 96px 0 0;
+  background: var(--hero-sage);
+  opacity: .78;
+}
+
+.hero-ai .deco-right-1 {
+  width: 60px;
+  height: 60px;
+  right: 10vw;
+  top: 24%;
+  border-radius: 50%;
+  background: var(--hero-sage);
+  opacity: .85;
+  animation: heroDrift 6.5s var(--ease) infinite;
+}
+
+.hero-ai .deco-right-2 {
+  width: 34px;
+  height: 34px;
+  right: 5vw;
+  top: 34%;
+  border-radius: 50%;
+  background: var(--hero-pink);
+  opacity: .9;
+  animation: heroDrift 5.5s var(--ease) infinite reverse;
+}
+
+@keyframes heroDrift {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* ---- 视觉中心大标题 ---- */
+.hero-ai .hero-title {
+  position: absolute;
+  left: 6vw;
+  top: 16vh;
+  z-index: 5;
+  font-family: var(--sans);
+  font-weight: 800;
+  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
+  line-height: .98;
+  letter-spacing: -.015em;
+  text-transform: uppercase;
+  color: var(--ink);
+  max-width: 9em;
+}
+
+.hero-ai .hero-title em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: .01em;
+  color: var(--ink);
+}
+
+/* ---- 左侧介绍卡片 ---- */
+.hero-ai .intro-card {
+  position: absolute;
+  left: 8vw;
+  top: 44vh;
+  z-index: 10;
+  max-width: 21vw;
+  background: rgba(233, 223, 208, .25);
+  border: 1px solid rgba(28, 28, 28, .07);
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(28, 28, 28, .05);
+  padding: 1.5rem 1.6rem;
+}
+
+.hero-ai .intro-card .ic-hi {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.85rem;
+  letter-spacing: .02em;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.hero-ai .intro-card p {
+  font-size: .95rem;
+  line-height: 1.9;
+  letter-spacing: .012em;
+  color: rgba(28, 28, 28, .7);
+}
+
+.hero-ai .intro-card strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ---- 右侧能力列表 ---- */
+.hero-ai .skill-list {
+  position: absolute;
+  right: 6vw;
+  top: 46vh;
+  z-index: 10;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+.hero-ai .skill-list li {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .84rem;
+  font-weight: 600;
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.hero-ai .skill-list .sk-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  flex: none;
+}
+
+.hero-ai .skill-list li:nth-child(1) .sk-dot { background: var(--hero-sage); }
+.hero-ai .skill-list li:nth-child(2) .sk-dot { background: var(--hero-pink); }
+.hero-ai .skill-list li:nth-child(3) .sk-dot { background: var(--hero-beige); }
+.hero-ai .skill-list li:nth-child(4) .sk-dot { background: var(--ink); }
+
+/* ---- 左下 Statement ---- */
+.hero-ai .statement {
+  position: absolute;
+  left: 54px;
+  bottom: 84px;
+  z-index: 10;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: 1.3;
+  letter-spacing: .015em;
+  color: var(--ink);
+  max-width: 30vw;
+}
+
+/* ---- 右上 Contact 卡片（贴纸感，非按钮） ---- */
+.hero-ai .hero-contact-card {
+  position: absolute;
+  top: 88px;
+  right: 40px;
+  z-index: 10;
+  width: 15vw;
+  min-width: 190px;
+  height: 25vh;
+  min-height: 210px;
+  max-width: 260px;
+  border-radius: 26px;
+  background: var(--hero-pink);
+  border: 1px solid rgba(28, 28, 28, .08);
+  box-shadow: 0 18px 40px rgba(28, 28, 28, .08), 0 2px 6px rgba(28, 28, 28, .04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  animation: heroFloat 5s var(--ease) infinite;
+}
+
+.hero-ai .hc-title {
+  font-size: .62rem;
+  letter-spacing: .34em;
+  text-transform: uppercase;
+  color: rgba(28, 28, 28, .72);
+}
+
+.hero-ai .hero-contact-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+.hero-ai .hero-contact-card li {
+  font-size: .8rem;
+  letter-spacing: .08em;
+  color: var(--ink);
+}
+
+.hero-ai .hero-contact-card li::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(28, 28, 28, .5);
+  margin-right: .5rem;
+  vertical-align: middle;
+}
+
+.hero-ai .hc-sticker {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  width: 150px;
+  height: 78px;
+  border-radius: 0 0 150px 150px;
+  background: var(--hero-sage);
+  transform: translateX(-50%) rotate(-6deg);
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translateY(0) rotate(-1.2deg); }
+  50%      { transform: translateY(-10px) rotate(-1.2deg); }
+}
+
+/* ---- 中央偏右人物插画 ---- */
+.hero-ai .portrait {
+  position: absolute;
+  left: 53%;
+  top: 51%;
+  transform: translate(-50%, -50%) rotate(1.5deg);
+  z-index: 2;
+  margin: 0;
+}
+
+.hero-ai .portrait .p-blob {
+  position: absolute;
+  top: -8%;
+  left: -12%;
+  width: 58%;
+  height: 58%;
+  border-radius: 50%;
+  background: var(--hero-beige);
+  z-index: 0;
+}
+
+.hero-ai .portrait svg {
+  position: relative;
+  z-index: 1;
+  height: 62vh;
+  width: auto;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 34px 70px rgba(28, 28, 28, .14);
+}
+
+.hero-ai .portrait .p-dot {
+  position: absolute;
+  right: -26px;
+  bottom: -22px;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--hero-pink);
+  z-index: 1;
+  animation: heroDrift 6s var(--ease) infinite;
+}
+
+/* ---- 移动端收敛（避让固定导航 72px，保持信息完整） ---- */
+@media (max-width: 900px) {
+  .hero-ai .hero-title {
+    left: 6vw;
+    top: 8vh;
+    font-size: clamp(1.4rem, 7vw, 2rem);
+  }
+
+  .hero-ai .hero-contact-card {
+    top: 88px;
+    right: 24px;
+    width: 40vw;
+    height: 96px;
+    min-width: 150px;
+    min-height: 96px;
+    gap: .8rem;
+  }
+
+  .hero-ai .hc-sticker { display: none; }
+
+  .hero-ai .intro-card {
+    left: 6vw;
+    top: 26vh;
+    max-width: 86vw;
+    padding: .6rem 1.1rem;
+  }
+
+  .hero-ai .intro-card .ic-hi {
+    font-size: 1.45rem;
+    margin-bottom: .55rem;
+  }
+
+  .hero-ai .intro-card p {
+    font-size: .86rem;
+    line-height: 1.65;
+    letter-spacing: .01em;
+  }
+
+  .hero-ai .skill-list {
+    right: auto;
+    left: 6vw;
+    bottom: 20px;
+    top: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: .7rem 1.1rem;
+  }
+
+  .hero-ai .skill-list li { font-size: .7rem; }
+
+  .hero-ai .statement {
+    left: 6vw;
+    bottom: 110px;
+    max-width: 84vw;
+    font-size: 1.1rem;
+  }
+
+  .hero-ai .portrait {
+    left: 50%;
+    top: 62%;
+    width: auto;
+  }
+
+  .hero-ai .portrait svg {
+    height: 36vh;
+    width: auto;
+  }
+
+  .hero-ai .hero-scroll { display: none; }
+
+  .hero-ai .deco-top-left { width: 54px; height: 54px; left: 28px; top: 140px; }
+  .hero-ai .deco-left-bottom {
+    transform: scale(.75);
+    transform-origin: left bottom;
+    left: 16px;
+    bottom: 40px;
+    animation: heroDriftSm 9s var(--ease) infinite;
+  }
+  .hero-ai .deco-right-1, .hero-ai .deco-right-2 { display: none; }
+}
+
+@keyframes heroDriftSm {
+  0%, 100% { transform: scale(.75) translateY(0); }
+  50%      { transform: scale(.75) translateY(-10px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-ai .deco, .hero-ai .hero-contact-card, .hero-ai .portrait .p-dot { animation: none; }
+}
+
+/* ============================================================
    ② Current Focus · 双栏
    ============================================================ */
 .focus-grid {

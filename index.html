@@ -34,44 +34,98 @@
 
   <main id="top">
 
-    <!-- ===== Hero · 介绍 + 编辑摄影图 ===== -->
-    <section class="hero hero-edit" id="hero">
+    <!-- ===== Hero · AI Product Designer（新版首页第一屏） ===== -->
+    <section class="hero hero-ai" id="hero">
       <div class="section-bg" data-parallax="0.3" aria-hidden="true"
         style="background-image:url('https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Soft%20warm%20beige%20minimal%20editorial%20photography%2C%20sheer%20linen%20curtain%20with%20gentle%20diffused%20sunlight%2C%20subtle%20paper%20texture%2C%20calm%20gallery%20atmosphere%2C%20high%20key%20light%20airy%20fine%20art&image_size=landscape_16_9')"></div>
       <div class="hero-vignette" aria-hidden="true"></div>
-      <div class="container hero-grid">
-        <figure class="hero-figure">
-          <img src="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=Minimal%20editorial%20still%20life%2C%20white%20ceramic%20cup%20on%20warm%20beige%20linen%20table%20with%20soft%20morning%20shadow%2C%20fine%20art%20magazine%20aesthetic%2C%20muted%20warm%20tones&image_size=portrait_4_3" alt="编辑摄影风格装饰图" />
-          <figcaption>Fig. 01 — Intro · 安静、克制、专注</figcaption>
-        </figure>
-        <div class="hero-copy">
-          <h1 class="hi-title">Hi，我是卢沁园</h1>
-          <p class="hi-intro">北京邮电大学通信工程本科在读，专注 AI Agent、产品设计与数据闭环，希望把复杂的问题变成简单自然的体验。</p>
-          <p class="hi-status">Currently building — AI Products · Agent Workflow · Human-centered Design</p>
-          <div class="hero-stats">
-            <div class="hs-item">
-              <strong><span data-count="105" data-suffix="/560">0</span></strong>
-              <span>专业综合排名</span>
-            </div>
-            <div class="hs-item">
-              <strong><span data-count="611">0</span></strong>
-              <span>英语六级</span>
-            </div>
-            <div class="hs-item">
-              <strong><span data-count="10" data-suffix="+">0</span></strong>
-              <span>组织赛事</span>
-            </div>
-            <div class="hs-item">
-              <strong><span data-count="20" data-suffix="+">0</span></strong>
-              <span>实验场景识别</span>
-            </div>
-          </div>
-          <div class="hero-cta">
-            <a href="#projects" class="btn btn-primary" data-scroll>查看精选项目</a>
-            <a href="#contact" class="btn btn-ghost" data-scroll>联系我</a>
-          </div>
-        </div>
+
+      <!-- 背景装饰：organic shapes（柔和低饱和，主站色系语言） -->
+      <span class="deco deco-top-left" aria-hidden="true"></span>
+      <span class="deco deco-left-bottom" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></span>
+      <span class="deco deco-right-1" aria-hidden="true"></span>
+      <span class="deco deco-right-2" aria-hidden="true"></span>
+
+      <!-- 页面视觉中心大标题 -->
+      <h1 class="hero-title">AI Product<br /><em>Designer</em></h1>
+
+      <!-- 左侧介绍卡片 -->
+      <div class="intro-card">
+        <p class="ic-hi">Hello :)</p>
+        <p>I'm an <strong>AI Product Designer</strong> exploring the collaboration between human creativity and artificial intelligence.</p>
       </div>
+
+      <!-- 右侧能力列表 -->
+      <ul class="skill-list">
+        <li><span class="sk-dot"></span>AI Product Design</li>
+        <li><span class="sk-dot"></span>Prompt Engineering</li>
+        <li><span class="sk-dot"></span>LLM Application</li>
+        <li><span class="sk-dot"></span>Product Thinking</li>
+      </ul>
+
+      <!-- 左下大号 Statement -->
+      <p class="statement">Designing products<br />with AI and human insight.</p>
+
+      <!-- 右上：悬浮 Contact 卡片 -->
+      <div class="hero-contact-card">
+        <span class="hc-title">Contact</span>
+        <ul>
+          <li>LinkedIn</li>
+          <li>GitHub</li>
+          <li>Email</li>
+        </ul>
+        <span class="hc-sticker"></span>
+      </div>
+
+      <!-- 中央偏右：人物插画区 -->
+      <figure class="portrait">
+        <span class="p-blob" aria-hidden="true"></span>
+        <svg viewBox="0 0 400 520" role="img" aria-label="坐在电脑前设计的年轻女性 Product Designer 极简插画" xmlns="http://www.w3.org/2000/svg">
+          <!-- 竖向矩形背景框：Dusty Pink 填充 + 黑色细边框 -->
+          <rect width="400" height="520" rx="20" fill="#E8A7B8" stroke="#232A22" stroke-width="2.5"/>
+          <!-- 人物：黑色宽松上衣（下部被屏幕遮住） -->
+          <rect x="142" y="118" width="116" height="160" rx="30" fill="#232A22"/>
+          <!-- Bob 头：黑色圆弧发 + 白色极简脸 -->
+          <circle cx="200" cy="98" r="58" fill="#232A22"/>
+          <circle cx="200" cy="112" r="40" fill="#FFFFFF"/>
+          <!-- 刘海弧线 -->
+          <path d="M176,90 Q200,72 224,90" fill="none" stroke="#232A22" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- 五官：安静专注，日式极简短线眼，微侧向电脑 -->
+          <path d="M185,118 L191,118" stroke="#232A22" stroke-width="3" stroke-linecap="round"/>
+          <path d="M209,118 L215,118" stroke="#232A22" stroke-width="3" stroke-linecap="round"/>
+          <path d="M194,140 Q200,144 206,140" fill="none" stroke="#232A22" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- 笔记本：浅灰屏幕 + 白色屏（简洁无复杂 UI） -->
+          <rect x="78" y="196" width="244" height="150" rx="10" fill="#FFFFFF" stroke="#C9C5BD" stroke-width="2.5"/>
+          <rect x="150" y="262" width="100" height="6" rx="3" fill="#C9C5BD"/>
+          <!-- 底座 -->
+          <rect x="88" y="346" width="224" height="14" rx="5" fill="#C9C5BD"/>
+          <!-- 键盘 -->
+          <rect x="100" y="428" width="200" height="36" rx="7" fill="#C9C5BD"/>
+          <rect x="120" y="436" width="160" height="2.5" rx="1.25" fill="#FFFFFF"/>
+          <rect x="120" y="446" width="160" height="2.5" rx="1.25" fill="#FFFFFF"/>
+          <!-- 双手：搭在键盘两端，正在输入 -->
+          <ellipse cx="140" cy="446" rx="17" ry="11" fill="#232A22"/>
+          <ellipse cx="260" cy="446" rx="17" ry="11" fill="#232A22"/>
+          <!-- 底部装饰：黑猫（左下，几何填充） -->
+          <path d="M98,500 Q114,490 110,472" fill="none" stroke="#232A22" stroke-width="4.5" stroke-linecap="round"/>
+          <ellipse cx="74" cy="500" rx="24" ry="15" fill="#232A22"/>
+          <path d="M60,464 L62,448 L74,460 Z" fill="#232A22"/>
+          <path d="M88,464 L86,448 L74,460 Z" fill="#232A22"/>
+          <circle cx="74" cy="476" r="17" fill="#232A22"/>
+          <circle cx="68" cy="476" r="2.2" fill="#FFFFFF"/>
+          <circle cx="80" cy="476" r="2.2" fill="#FFFFFF"/>
+          <!-- 底部装饰：白猫（右下，几何线稿） -->
+          <path d="M350,500 Q366,490 362,472" fill="none" stroke="#232A22" stroke-width="3.5" stroke-linecap="round"/>
+          <ellipse cx="326" cy="500" rx="24" ry="15" fill="#FFFFFF" stroke="#232A22" stroke-width="2.5"/>
+          <path d="M312,464 L314,448 L326,460 Z" fill="#FFFFFF" stroke="#232A22" stroke-width="2.5"/>
+          <path d="M340,464 L338,448 L326,460 Z" fill="#FFFFFF" stroke="#232A22" stroke-width="2.5"/>
+          <circle cx="326" cy="476" r="17" fill="#FFFFFF" stroke="#232A22" stroke-width="2.5"/>
+          <circle cx="320" cy="476" r="2.2" fill="#232A22"/>
+          <circle cx="332" cy="476" r="2.2" fill="#232A22"/>
+        </svg>
+        <span class="p-dot" aria-hidden="true"></span>
+      </figure>
+
       <div class="hero-scroll" aria-hidden="true"><span>Scroll to explore</span><i class="hs-arrow">↓</i></div>
     </section>
 
