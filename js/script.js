@@ -185,6 +185,57 @@
     else document.addEventListener('DOMContentLoaded', runHeroIntro);
   }
 
+  /* ---------- 4.6 新版 Hero：介绍卡片打字机 → FROM 简介 → Contact 顺序入场 ----------
+     顺序：粉色框/装饰立即显示 → 卡片打字机（Hello: 我是卢沁园）→
+           FROM 简介缓慢浮现 → Contact 卡整体浮现 → 内部逐行淡入。
+     打字机：文本节点逐字写入，光标 span 始终位于行尾，pre-line 下换行自然跟随。 */
+  var aiIntro = $('.hero-ai .intro-card');
+  var aiHi = aiIntro ? $('.ic-hi', aiIntro) : null;
+  var aiFrom = aiIntro ? $('.ic-from', aiIntro) : null;
+  var aiContact = $('.hero-ai .hero-contact-card');
+
+  if (aiHi) {
+    var AI_FULL_TEXT = 'Hello:\n我是卢沁园';
+    var TYPE_SPEED = 70;
+
+    function aiTypeText(text, done) {
+      aiHi.textContent = '';
+      var tn = document.createTextNode('');
+      aiHi.appendChild(tn);
+      var caret = document.createElement('span');
+      caret.className = 'tw-caret';
+      caret.setAttribute('aria-hidden', 'true');
+      aiHi.appendChild(caret);
+      var i = 0;
+      var tick = function () {
+        i++;
+        tn.nodeValue = text.slice(0, i);
+        if (i < text.length) setTimeout(tick, TYPE_SPEED);
+        else if (done) done(caret);
+      };
+      setTimeout(tick, 280);
+    }
+
+    function runAiIntro() {
+      if (prefersReduced) {
+        aiHi.textContent = AI_FULL_TEXT;
+        if (aiFrom) aiFrom.classList.add('in');
+        if (aiContact) aiContact.classList.add('in');
+        return;
+      }
+      aiTypeText(AI_FULL_TEXT, function (caret) {
+        caret.style.display = 'none';
+        // 姓名打字完成 → 短暂等待 → FROM 简介缓慢浮现
+        setTimeout(function () { if (aiFrom) aiFrom.classList.add('in'); }, 450);
+        // FROM 出现后 → Contact 卡整体浮现 → 内部逐行淡入
+        setTimeout(function () { if (aiContact) aiContact.classList.add('in'); }, 1450);
+      });
+    }
+
+    if (document.readyState !== 'loading') runAiIntro();
+    else document.addEventListener('DOMContentLoaded', runAiIntro);
+  }
+
   /* ---------- 4.7 Project 01 · 三栏滚动叙事（左图列 / 中正文 / 右 Reading Index） ----------
      只在 #story-p1 生效。滚动时同步切换三处高亮（图片 / 正文 / Index 节点），
      内容始终完整展示，只改变视觉焦点。
