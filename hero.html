@@ -34,7 +34,9 @@
       font-family: var(--sans);
       color: var(--ink);
       background: var(--warm);
+      letter-spacing: .005em;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
     .hero {
@@ -53,8 +55,8 @@
       inset: 0;
       z-index: 6;
       pointer-events: none;
-      opacity: .05;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.45'/%3E%3C/svg%3E");
+      opacity: .06;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
     }
 
     /* ============================================================
@@ -68,16 +70,17 @@
 
     /* 左上：小型绿色圆形 */
     .deco-top-left {
-      width: 72px;
-      height: 72px;
-      left: 50px;
-      top: 130px;
+      width: 62px;
+      height: 62px;
+      left: 60px;
+      top: 138px;
       border-radius: 50%;
       background: var(--sage);
+      opacity: .85;
       animation: drift 7s var(--ease) infinite;
     }
 
-    /* 左下：三个组合圆形 → 植物叶片抽象 */
+    /* 左下：三个组合圆形 → 植物叶片抽象（分层透明度） */
     .deco-left-bottom {
       left: 54px;
       bottom: 72px;
@@ -90,50 +93,55 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      width: 150px;
-      height: 150px;
+      width: 146px;
+      height: 146px;
       border-radius: 50%;
       background: var(--sage);
+      opacity: .9;
     }
 
     .deco-left-bottom .b2 {
       position: absolute;
       left: 96px;
-      bottom: 74px;
-      width: 88px;
-      height: 88px;
+      bottom: 78px;
+      width: 82px;
+      height: 82px;
       border-radius: 50%;
       background: var(--beige);
+      opacity: .95;
     }
 
     .deco-left-bottom .b3 {
       position: absolute;
-      left: 18px;
-      bottom: 108px;
-      width: 104px;
-      height: 52px;
-      border-radius: 104px 104px 0 0;
+      left: 22px;
+      bottom: 104px;
+      width: 96px;
+      height: 48px;
+      border-radius: 96px 96px 0 0;
       background: var(--sage);
+      opacity: .78;
     }
 
     /* 右侧：两个漂浮圆形 */
     .deco-right-1 {
-      width: 68px;
-      height: 68px;
-      right: 9vw;
+      width: 60px;
+      height: 60px;
+      right: 10vw;
       top: 24%;
       border-radius: 50%;
       background: var(--sage);
+      opacity: .85;
       animation: drift 6.5s var(--ease) infinite;
     }
 
     .deco-right-2 {
-      width: 38px;
-      height: 38px;
-      right: 4.5vw;
+      width: 34px;
+      height: 34px;
+      right: 5vw;
       top: 34%;
       border-radius: 50%;
       background: var(--pink);
+      opacity: .9;
       animation: drift 5.5s var(--ease) infinite reverse;
     }
 
@@ -177,10 +185,10 @@
 
     .nav a {
       font-size: .8rem;
-      letter-spacing: .18em;
+      letter-spacing: .24em;
       text-transform: uppercase;
       color: var(--ink);
-      opacity: .82;
+      opacity: .72;
       text-decoration: none;
       transition: opacity .3s;
     }
@@ -201,10 +209,17 @@
       font-weight: 800;
       font-size: clamp(2.6rem, 5.2vw, 4.4rem);
       line-height: .98;
-      letter-spacing: -.01em;
+      letter-spacing: -.015em;
       text-transform: uppercase;
       color: var(--ink);
       max-width: 9em;
+    }
+
+    .hero-title em {
+      font-family: var(--serif);
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: .01em;
     }
 
     /* 左侧介绍卡片 */
@@ -214,20 +229,27 @@
       top: 44vh;
       z-index: 10;
       max-width: 21vw;
+      background: rgba(233, 223, 208, .25);
+      border: 1px solid rgba(28, 28, 28, .07);
+      border-radius: 18px;
+      box-shadow: 0 14px 30px rgba(28, 28, 28, .05);
+      padding: 1.5rem 1.6rem;
     }
 
     .intro-card .ic-hi {
       font-family: var(--serif);
       font-style: italic;
-      font-size: 2rem;
+      font-size: 1.85rem;
+      letter-spacing: .02em;
       color: var(--ink);
       margin-bottom: 1rem;
     }
 
     .intro-card p {
       font-size: .95rem;
-      line-height: 1.85;
-      color: rgba(28, 28, 28, .72);
+      line-height: 1.9;
+      letter-spacing: .012em;
+      color: rgba(28, 28, 28, .7);
     }
 
     .intro-card strong {
@@ -254,7 +276,7 @@
       gap: .6rem;
       font-size: .84rem;
       font-weight: 600;
-      letter-spacing: .14em;
+      letter-spacing: .17em;
       text-transform: uppercase;
       color: var(--ink);
     }
@@ -281,6 +303,7 @@
       font-style: italic;
       font-size: clamp(1.5rem, 2.6vw, 2.2rem);
       line-height: 1.3;
+      letter-spacing: .015em;
       color: var(--ink);
       max-width: 30vw;
     }
@@ -299,9 +322,10 @@
       height: 25vh;
       min-height: 210px;
       max-width: 260px;
-      border-radius: 22px;
+      border-radius: 26px;
       background: var(--pink);
-      box-shadow: 0 24px 48px rgba(28, 28, 28, .10);
+      border: 1px solid rgba(28, 28, 28, .08);
+      box-shadow: 0 18px 40px rgba(28, 28, 28, .08), 0 2px 6px rgba(28, 28, 28, .04);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -470,9 +494,19 @@
         left: 6vw;
         top: 18vh;
         max-width: 86vw;
+        padding: .6rem 1.1rem;
       }
 
-      .intro-card .ic-hi { font-size: 1.6rem; }
+      .intro-card .ic-hi {
+        font-size: 1.45rem;
+        margin-bottom: .55rem;
+      }
+
+      .intro-card p {
+        font-size: .86rem;
+        line-height: 1.65;
+        letter-spacing: .01em;
+      }
 
       .skill-list {
         right: auto;
@@ -549,7 +583,7 @@
     </nav>
 
     <!-- 页面视觉中心大标题 -->
-    <h1 class="hero-title">AI Product<br />Designer</h1>
+    <h1 class="hero-title">AI Product<br /><em>Designer</em></h1>
 
     <!-- 左侧介绍卡片 -->
     <div class="intro-card">
@@ -584,7 +618,7 @@
       <span class="p-blob" aria-hidden="true"></span>
       <svg viewBox="0 0 400 520" role="img" aria-label="坐在电脑前设计的年轻女性 Product Designer 极简插画" xmlns="http://www.w3.org/2000/svg">
         <!-- 竖向矩形背景框：Dusty Pink 填充 + 黑色细边框 -->
-        <rect width="400" height="520" rx="20" fill="#E8A7B8" stroke="#1C1C1C" stroke-width="3"/>
+        <rect width="400" height="520" rx="20" fill="#E8A7B8" stroke="#1C1C1C" stroke-width="2.5"/>
 
         <!-- 人物：黑色宽松上衣（下部被屏幕遮住） -->
         <rect x="142" y="118" width="116" height="160" rx="30" fill="#1C1C1C"/>
@@ -592,28 +626,30 @@
         <!-- Bob 头：黑色圆弧发 + 白色极简脸 -->
         <circle cx="200" cy="98" r="58" fill="#1C1C1C"/>
         <circle cx="200" cy="112" r="40" fill="#FFFFFF"/>
-        <!-- 五官：安静专注，微侧向电脑 -->
-        <circle cx="188" cy="118" r="3.5" fill="#1C1C1C"/>
-        <circle cx="216" cy="118" r="3.5" fill="#1C1C1C"/>
+        <!-- 刘海弧线 -->
+        <path d="M176,90 Q200,72 224,90" fill="none" stroke="#1C1C1C" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- 五官：安静专注，日式极简短线眼，微侧向电脑 -->
+        <path d="M185,118 L191,118" stroke="#1C1C1C" stroke-width="3" stroke-linecap="round"/>
+        <path d="M209,118 L215,118" stroke="#1C1C1C" stroke-width="3" stroke-linecap="round"/>
         <path d="M194,140 Q200,144 206,140" fill="none" stroke="#1C1C1C" stroke-width="2.5" stroke-linecap="round"/>
 
         <!-- 笔记本：浅灰屏幕 + 白色屏（简洁无复杂 UI） -->
-        <rect x="78" y="196" width="244" height="150" rx="10" fill="#FFFFFF" stroke="#C9C5BD" stroke-width="3"/>
+        <rect x="78" y="196" width="244" height="150" rx="10" fill="#FFFFFF" stroke="#C9C5BD" stroke-width="2.5"/>
         <rect x="150" y="262" width="100" height="6" rx="3" fill="#C9C5BD"/>
         <!-- 底座 -->
         <rect x="88" y="346" width="224" height="14" rx="5" fill="#C9C5BD"/>
 
         <!-- 键盘 -->
         <rect x="100" y="428" width="200" height="36" rx="7" fill="#C9C5BD"/>
-        <rect x="120" y="436" width="160" height="3" rx="1.5" fill="#FFFFFF"/>
-        <rect x="120" y="446" width="160" height="3" rx="1.5" fill="#FFFFFF"/>
+        <rect x="120" y="436" width="160" height="2.5" rx="1.25" fill="#FFFFFF"/>
+        <rect x="120" y="446" width="160" height="2.5" rx="1.25" fill="#FFFFFF"/>
 
         <!-- 双手：搭在键盘两端，正在输入 -->
         <ellipse cx="140" cy="446" rx="17" ry="11" fill="#1C1C1C"/>
         <ellipse cx="260" cy="446" rx="17" ry="11" fill="#1C1C1C"/>
 
         <!-- 底部装饰：黑猫（左下，几何填充） -->
-        <path d="M98,500 Q114,490 110,472" fill="none" stroke="#1C1C1C" stroke-width="5" stroke-linecap="round"/>
+        <path d="M98,500 Q114,490 110,472" fill="none" stroke="#1C1C1C" stroke-width="4.5" stroke-linecap="round"/>
         <ellipse cx="74" cy="500" rx="24" ry="15" fill="#1C1C1C"/>
         <path d="M60,464 L62,448 L74,460 Z" fill="#1C1C1C"/>
         <path d="M88,464 L86,448 L74,460 Z" fill="#1C1C1C"/>
@@ -622,7 +658,7 @@
         <circle cx="80" cy="476" r="2.2" fill="#FFFFFF"/>
 
         <!-- 底部装饰：白猫（右下，几何线稿） -->
-        <path d="M350,500 Q366,490 362,472" fill="none" stroke="#1C1C1C" stroke-width="4" stroke-linecap="round"/>
+        <path d="M350,500 Q366,490 362,472" fill="none" stroke="#1C1C1C" stroke-width="3.5" stroke-linecap="round"/>
         <ellipse cx="326" cy="500" rx="24" ry="15" fill="#FFFFFF" stroke="#1C1C1C" stroke-width="2.5"/>
         <path d="M312,464 L314,448 L326,460 Z" fill="#FFFFFF" stroke="#1C1C1C" stroke-width="2.5"/>
         <path d="M340,464 L338,448 L326,460 Z" fill="#FFFFFF" stroke="#1C1C1C" stroke-width="2.5"/>
